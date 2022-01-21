@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,7 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 
 // All Admin Routes
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+Route::get('/admin/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
 
 
 
