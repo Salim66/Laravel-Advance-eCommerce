@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
 
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="{{ asset('backend/css/custom/custom.css') }}">
+
   </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">

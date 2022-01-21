@@ -35,6 +35,7 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 // All Admin Routes
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 Route::get('/admin/profile', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
+Route::get('/admin/profile/edit', [AdminProfileController::class, 'adminProfileEdit'])->name('admin.profile.edit');
 
 
 
