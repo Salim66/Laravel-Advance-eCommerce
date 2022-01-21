@@ -5,9 +5,9 @@
 			<a class="nav-link" href="javascript:void(0)">FAQ</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">Purchase Now</a>
+			<a class="nav-link" href="{{ asset('www.techdynobd.') }}com">www.techdynobd.com</a>
 		  </li>
 		</ul>
     </div>
-	  &copy; 2020 <a href="#">Psd to Html Expert</a>. All Rights Reserved.
+	  &copy; 2022 <a href="#">Techdyno BD</a>. All Rights Reserved.
 </footer>
