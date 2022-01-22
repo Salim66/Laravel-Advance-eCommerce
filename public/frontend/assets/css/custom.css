@@ -17,7 +17,7 @@
 }
 
 .user-container {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .user-top-image {
@@ -31,4 +31,13 @@
     -o-border-radius: 50%;
 }
 
+.bg-input {
+    background: #eee;
+    transition: .2s;
+}
+
+.bg-input:focus {
+    border: 2px solid #eee;
+    /* border-color: #eee; */
+}
 
