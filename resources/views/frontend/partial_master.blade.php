@@ -34,7 +34,7 @@
       @include('frontend.body.partial_header')
 
       @section('partial_content')
-       @show
+      @show
 
       @include('frontend.body.partial_footer')
 

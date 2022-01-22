@@ -1,15 +1,25 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('frontend.partial_master')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+@section('partial_content')
+<div class="body-content">
+    <div class="container user-container">
+        <div class="row">
+            <div class="col-md-2"><br>
+                <img class="user-top-image" src="{{ (!empty($data->profile_photo_path))? URL::to('upload/admin_images/'.$data->profile_photo_path) : URL::to('upload/no_image.png') }}" alt=""><br><br>
+                <ul class="list-group list-group-flush">
+                    <a href="#" class="btn btn-primary btn-sm btn-block mb-1">Home</a>
+                    <a href="#" class="btn btn-primary btn-sm btn-block mb-1">Profile Update</a>
+                    <a href="#" class="btn btn-primary btn-sm btn-block mb-1">Change Password</a>
+                    <a href="#" class="btn btn-danger btn-sm btn-block mb-1">Logout</a>
+                </ul>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8 my-5">
+                <div class="card">
+                    <h3 class="text-center"><span class="text-danger">Hi.....</span><strong>{{ Auth::user()->name }}</strong> Welcome to Elegant Furnitur QR</h3>
+                </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
