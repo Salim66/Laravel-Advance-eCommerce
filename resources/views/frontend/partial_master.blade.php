@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zxx">
-   <!-- Mirrored from templates.envytheme.com/outo/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Jan 2022 13:35:03 GMT -->
    <head>
       <meta charset="utf-8">
       <meta name="description" content="Outo">
@@ -32,15 +31,15 @@
          </div>
       </div>
 
-      @include('frontend.body.home_header')
+      @include('frontend.body.partial_header')
 
-      @section('content')
-      @show
+      @section('partial_content')
+       @show
 
-      @include('frontend.body.home_footer')
+      @include('frontend.body.partial_footer')
 
       <div class="scroll-top" id="scrolltop">
-         <div class="scroll-top-inner">
+         <div class="scroll-top-inner scroll-top-inner-secondcolor">
             <i class="flaticon-up-arrow"></i>
          </div>
       </div>
@@ -57,5 +56,4 @@
       <script src="{{ asset('frontend/assets') }}/js/jquery.meanmenu.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
    </body>
-   <!-- Mirrored from templates.envytheme.com/outo/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Jan 2022 13:36:04 GMT -->
 </html>
