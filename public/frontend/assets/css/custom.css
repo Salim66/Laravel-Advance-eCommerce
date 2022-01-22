@@ -1,0 +1,17 @@
+.category-button {
+    width: 162px;
+    display: flex;
+    align-items: center;
+    background: #4f5ac2;
+    padding: 10px;
+    color: #FFF;
+}
+
+.category-button i {
+    font-size: 20px;
+}
+
+.category-button a {
+    font-size: 18px !important;
+    color: #FFF !important;
+}
