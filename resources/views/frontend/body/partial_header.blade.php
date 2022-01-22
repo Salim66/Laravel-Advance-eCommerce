@@ -21,10 +21,17 @@
                 <div class="topbar-item topbar-item-rightside">
                    <div class="topbar-action">
                       <div class="topbar-action-item topbar-action-item-secondcolor">
-                         <a href="login.html">
-                         <i class="flaticon-user"></i>
-                         <span>Account</span>
-                         </a>
+                        @auth
+                        <a href="login.html">
+                           <i class="flaticon-user"></i>
+                           <span>User Profile</span>
+                        </a>
+                        @else
+                        <a href="{{ route('login') }}">
+                           <i class="flaticon-user"></i>
+                           <span>Login</span>
+                        </a>
+                        @endauth
                       </div>
                       <div class="topbar-action-item topbar-action-item-secondcolor">
                          <a href="wishlist.html">

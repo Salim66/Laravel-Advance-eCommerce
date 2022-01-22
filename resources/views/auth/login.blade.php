@@ -30,10 +30,10 @@
        <div class="authentication-header mb-30">
           <ul>
              <li>
-                <a href="login.html" class="active">Login</a>
+                <a href="{{ route('login') }}" class="active">Login</a>
              </li>
              <li>
-                <a href="register.html">Register</a>
+                <a href="{{ route('register') }}">Register</a>
              </li>
           </ul>
        </div>
