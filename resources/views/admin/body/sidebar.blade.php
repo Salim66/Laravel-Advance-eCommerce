@@ -1,3 +1,8 @@
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+@endphp
+
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar-->
@@ -5,11 +10,11 @@
 
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="index.html">
+				 <a href="{{ route('dashboard') }}">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
 						  <img src="{{ URL::to('/backend/') }}/images/logo-dark.png" alt="">
-						  <h3><b>eShop</b> Admin</h3>
+						  <h3><b>Elegant Furnitur QR</b> Admin</h3>
 					 </div>
 				</a>
 			</div>
@@ -18,14 +23,14 @@
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree">
 
-		<li>
-          <a href="index.html">
+		<li class="{{ ($route == 'dashboard')? 'active' : '' }}">
+          <a href="{{ route('dashboard') }}">
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
         </li>
 
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/brand')? 'active' : '' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
             <span>Brands</span>
@@ -34,7 +39,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
+            <li class="{{ ($route == 'all.brand')? 'active' : '' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
           </ul>
         </li>
 
