@@ -6,66 +6,26 @@
     <section class="content">
       <div class="row">
 
-
-        <div class="col-8">
-
-         <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Brand List</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="table-responsive">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Brand En</th>
-                            <th>Brand Ar</th>
-                            <th>Image</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($brands as $data)
-                        <tr>
-                            <td>{{ $data->brand_name_en }}</td>
-                            <td>{{ $data->brand_name_ar }}</td>
-                            <td>
-                                <img class="brand__img-table" src="{{ URL::to('/') }}/{{ $data->brand_image }}" alt="">
-                            </td>
-                            <td>
-                                <a href="{{ route('brand.edit', $data->id) }}" class="btn btn-info">Edit</a>
-                                <a href="#" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                  </table>
-                </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-        </div>
-
-        <!-- /.col -->
-
-        <!-- Add Brand Page  -->
+        <!-- Edit Brand Page  -->
         <div class="col-4">
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Add Brand</h3>
+                 <h3 class="box-title">Edit Brand</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                        <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('brand.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
+                            <input type="hidden" name="id" value="{{ $data->id }}">
+                            <input type="hidden" name="old_image" value="{{ $data->brand_image }}">
+
                             <div class="form-group">
                                 <h5>Brand Name English <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="brand_name_en" class="form-control">
+                                    <input type="text" name="brand_name_en" class="form-control" value="{{ $data->brand_name_en }}">
                                     @error('brand_name_en')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -74,7 +34,7 @@
                             <div class="form-group">
                                 <h5>Brand Name Arabic <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="brand_name_ar" class="form-control">
+                                    <input type="text" name="brand_name_ar" class="form-control" value="{{ $data->brand_name_ar }}">
                                     @error('brand_name_ar')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

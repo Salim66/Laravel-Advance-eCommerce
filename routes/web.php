@@ -61,4 +61,6 @@ Route::post('/user/password/update', [IndexController::class, 'userPasswordUpdat
 Route::prefix('brand')->group(function(){
     Route::get('/view', [BrandController::class, 'brnadView'])->name('all.brand');
     Route::post('/store', [BrandController::class, 'brnadStore'])->name('brand.store');
+    Route::get('/edit/{id}', [BrandController::class, 'brnadEdit'])->name('brand.edit');
+    Route::post('/update', [BrandController::class, 'brnadUpdate'])->name('brand.update');
 });
