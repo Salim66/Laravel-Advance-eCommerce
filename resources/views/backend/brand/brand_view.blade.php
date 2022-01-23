@@ -34,8 +34,8 @@
                                 <img class="brand__img-table" src="{{ URL::to('/') }}/{{ $data->brand_image }}" alt="">
                             </td>
                             <td>
-                                <a href="{{ route('brand.edit', $data->id) }}" class="btn btn-info">Edit</a>
-                                <a href="#" class="btn btn-danger">Delete</a>
+                                <a title="Edit Data" href="{{ route('brand.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                <a title="Delete Data" href="{{ route('brand.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
