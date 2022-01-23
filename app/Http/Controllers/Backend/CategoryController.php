@@ -9,44 +9,39 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-    * Category view page
-    */
+     * Category view page
+     */
     public function categoryView(){
         $categories = Category::latest()->get();
         return view('backend.category.category_view', compact('categories'));
     }
 
     /**
-     * Brand store
+     * Category store
      */
-    public function brnadStore(Request $request){
+    public function categoryStore(Request $request){
 
         // Validation
         $request->validate([
-            'brand_name_en' => 'required',
-            'brand_name_ar' => 'required',
-            'brand_image' => 'required'
+            'category_name_en' => 'required',
+            'category_name_ar' => 'required',
+            'category_icon' => 'required'
         ],
         [
-            'brand_name_en.required' => 'The brand name english is required!',
-            'brand_name_ar.required' => 'The brand name arabic is required!'
+            'category_name_en.required' => 'The category name english is required!',
+            'category_name_ar.required' => 'The category name arabic is required!'
         ]);
 
-        $image = $request->file('brand_image');
-        $name_gen = hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
-        Image::make($image)->resize(300, 300)->save('upload/brand/'. $name_gen);
-        $save_url = 'upload/brand/'.$name_gen;
-
-        Brand::create([
-            'brand_name_en' => $request->brand_name_en,
-            'brand_name_ar' => $request->brand_name_ar,
-            'brand_slug_en' => strtolower(str_replace(' ', '-', $request->brand_name_en)),
-            'brand_slug_ar' => strtolower(str_replace(' ', '-', $request->brand_name_ar)),
-            'brand_image'   => $save_url
+        Category::create([
+            'category_name_en' => $request->category_name_en,
+            'category_name_ar' => $request->category_name_ar,
+            'category_slug_en' => strtolower(str_replace(' ', '-', $request->category_name_en)),
+            'category_slug_ar' => strtolower(str_replace(' ', '-', $request->category_name_ar)),
+            'category_icon'    => $request->category_icon
         ]);
 
         $notification = [
-            'message' => 'Brand Added Successfully',
+            'message' => 'Category Added Successfully',
             'alert-type' => 'success'
         ];
 

@@ -29,7 +29,7 @@
                         @foreach($categories as $data)
                         <tr>
                             <td>
-                                <span><i class="{{ $data->category_icon }}"></i></span>
+                                <span>{!! htmlspecialchars_decode($data->category_icon) !!}</span>
                             </td>
                             <td>{{ $data->category_name_en }}</td>
                             <td>{{ $data->category_name_ar }}</td>
