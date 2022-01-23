@@ -50,48 +50,34 @@ class CategoryController extends Controller
     }
 
     /**
-     * Brand edit
+     * Category edit
      */
-    public function brnadEdit($id){
-        $data = Brand::findOrFail($id);
-        return view('backend.brand.brand_edit', compact('data'));
+    public function categoryEdit($id){
+        $data = Category::findOrFail($id);
+        return view('backend.category.category_edit', compact('data'));
     }
 
     /**
-     * Brand update
+     * Category update
      */
-    public function brnadUpdate(Request $request){
+    public function categoryUpdate(Request $request){
 
-        $brand_id = $request->id;
-        $old_image = $request->old_image;
+        $category_id = $request->id;
 
-        $save_url = '';
-        if($request->file('brand_image')){
-            $image = $request->file('brand_image');
-            $name_gen = hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
-            Image::make($image)->resize(300, 300)->save('upload/brand/'. $name_gen);
-            $save_url = 'upload/brand/'.$name_gen;
-            if(file_exists($old_image) && !empty($old_image)){
-                unlink($old_image);
-            }
-        }else {
-            $save_url = $old_image;
-        }
-
-        Brand::findOrFail($brand_id)->update([
-            'brand_name_en' => $request->brand_name_en,
-            'brand_name_ar' => $request->brand_name_ar,
-            'brand_slug_en' => strtolower(str_replace(' ', '-', $request->brand_name_en)),
-            'brand_slug_ar' => strtolower(str_replace(' ', '-', $request->brand_name_ar)),
-            'brand_image'   => $save_url
+        Category::findOrFail($category_id)->update([
+            'category_name_en' => $request->category_name_en,
+            'category_name_ar' => $request->category_name_ar,
+            'category_slug_en' => strtolower(str_replace(' ', '-', $request->category_name_en)),
+            'category_slug_ar' => strtolower(str_replace(' ', '-', $request->category_name_ar)),
+            'category_icon'    => $request->category_icon
         ]);
 
         $notification = [
-            'message' => 'Brand Updated Successfully',
+            'message' => 'Category Updated Successfully',
             'alert-type' => 'info'
         ];
 
-        return redirect()->route('all.brand')->with($notification);
+        return redirect()->route('all.category')->with($notification);
 
     }
 
