@@ -82,20 +82,15 @@ class CategoryController extends Controller
     }
 
     /**
-     * Brand Delete
+     * Category Delete
      */
-    public function brnadDelete($id){
-        $data = Brand::findOrFail($id);
+    public function categoryDelete($id){
 
-        if(file_exists($data->brand_image) && !empty($data->brand_image)){
-            unlink($data->brand_image);
-        }
-
-        $data->delete();
+        Category::findOrFail($id)->delete();
 
         $notification = [
-            'message' => 'Brand Deleted Successfully',
-            'alert-type' => 'info'
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success'
         ];
 
         return redirect()->back()->with($notification);
