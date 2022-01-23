@@ -34,6 +34,11 @@
 .bg-input {
     background: #eee;
     transition: .2s;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    padding: 10px !important;
 }
 
 .bg-input:focus {

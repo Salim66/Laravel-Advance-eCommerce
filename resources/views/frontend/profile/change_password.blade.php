@@ -20,7 +20,7 @@
                         <h3 class="text-center"><span class="text-danger">Change Password</span></h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('user.password.update') }}" method="POST">
                             @csrf
 
                             <div class="form-group mb-20">
@@ -28,7 +28,7 @@
                                 <input type="password" id="current_password" name="current_password" class="form-control bg-input">
                             </div>
                             <div class="form-group mb-20">
-                                <label for="password">New Password</label>
+                                <label for="password">New Password <span class="text-danger"> (Password must be 8 length)</span></label>
                                 <input type="password" id="password" name="password" class="form-control bg-input">
                             </div>
                             <div class="form-group mb-20">
