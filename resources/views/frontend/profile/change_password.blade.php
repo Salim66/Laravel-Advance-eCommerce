@@ -17,27 +17,23 @@
             <div class="col-md-6 my-4">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center"><span class="text-danger">Hi.....</span><strong>{{ Auth::user()->name }}</strong> Update Your Profile</h3>
+                        <h3 class="text-center"><span class="text-danger">Change Password</span></h3>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group mb-20">
-                                <label for="">Name</label>
-                                <input type="text" name="name" class="form-control bg-input" value="{{ $data->name }}">
+                                <label for="current_password">Current Password</label>
+                                <input type="password" id="current_password" name="current_password" class="form-control bg-input">
                             </div>
                             <div class="form-group mb-20">
-                                <label for="">Email</label>
-                                <input type="email" name="email" class="form-control bg-input" value="{{ $data->email }}">
+                                <label for="password">New Password</label>
+                                <input type="password" id="password" name="password" class="form-control bg-input">
                             </div>
                             <div class="form-group mb-20">
-                                <label for="">Phone</label>
-                                <input type="text" name="phone" class="form-control bg-input" value="{{ $data->phone }}">
-                            </div>
-                            <div class="form-group mb-20">
-                                <label for="">User Image</label>
-                                <input type="file" name="profile_photo_path" class="form-control bg-input">
+                                <label for="password_confirmation">Confirm Password</label>
+                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control bg-input">
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-danger" value="Update">
