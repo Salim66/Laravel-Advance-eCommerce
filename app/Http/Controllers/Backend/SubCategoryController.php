@@ -60,38 +60,38 @@ class SubCategoryController extends Controller {
     }
 
     /**
-     * Category update
+     * SubCategory update
      */
-    public function categoryUpdate( Request $request ) {
+    public function subCategoryUpdate( Request $request ) {
 
-        $category_id = $request->id;
+        $subcategory_id = $request->id;
 
-        Category::findOrFail( $category_id )->update( [
-            'category_name_en' => $request->category_name_en,
-            'category_name_ar' => $request->category_name_ar,
-            'category_slug_en' => strtolower( str_replace( ' ', '-', $request->category_name_en ) ),
-            'category_slug_ar' => strtolower( str_replace( ' ', '-', $request->category_name_ar ) ),
-            'category_icon'    => $request->category_icon,
+        SubCategory::findOrFail( $subcategory_id )->update( [
+            'category_id'    => $request->category_id,
+            'subcategory_name_en' => $request->subcategory_name_en,
+            'subcategory_name_ar' => $request->subcategory_name_ar,
+            'subcategory_slug_en' => strtolower( str_replace( ' ', '-', $request->subcategory_name_en ) ),
+            'subcategory_slug_ar' => strtolower( str_replace( ' ', '-', $request->subcategory_name_ar ) ),
         ] );
 
         $notification = [
-            'message'    => 'Category Updated Successfully',
+            'message'    => 'Sub Category Updated Successfully',
             'alert-type' => 'info',
         ];
 
-        return redirect()->route( 'all.category' )->with( $notification );
+        return redirect()->route( 'all.subcategory' )->with( $notification );
 
     }
 
     /**
-     * Category Delete
+     * SubCategory Delete
      */
-    public function categoryDelete( $id ) {
+    public function subCategoryDelete( $id ) {
 
-        Category::findOrFail( $id )->delete();
+        SubCategory::findOrFail( $id )->delete();
 
         $notification = [
-            'message'    => 'Category Deleted Successfully',
+            'message'    => 'SubCategory Deleted Successfully',
             'alert-type' => 'success',
         ];
 
