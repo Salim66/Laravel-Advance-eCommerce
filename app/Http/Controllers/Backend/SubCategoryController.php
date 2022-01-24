@@ -191,5 +191,21 @@ class SubCategoryController extends Controller {
 
     }
 
+    /**
+     * Sub->SubCategory Delete
+     */
+    public function subSubCategoryDelete( $id ) {
+
+        SubSubCategory::findOrFail( $id )->delete();
+
+        $notification = [
+            'message'    => 'Sub SubCategory Deleted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with( $notification );
+
+    }
+
 
 }
