@@ -33,7 +33,7 @@
                             </td>
                             <td>{{ $data->category_name_en }}</td>
                             <td>{{ $data->category_name_ar }}</td>
-                            <td>
+                            <td width="30%">
                                 <a title="Edit Data" href="{{ route('category.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                                 <a title="Delete Data" href="{{ route('category.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
