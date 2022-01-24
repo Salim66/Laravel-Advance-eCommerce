@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 
 /*
@@ -90,4 +91,14 @@ Route::prefix('category')->group(function(){
     Route::post('/sub/sub/update', [SubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
     Route::get('/sub/sub/update/{id}', [SubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
     Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'getSubCategory']);
+});
+
+
+// Admin All Product Routes
+Route::prefix('product')->group(function(){
+    Route::get('/add', [ProductController::class, 'addProduct'])->name('add.product');
+    Route::post('/store', [BrandController::class, 'brnadStore'])->name('brand.store');
+    Route::get('/edit/{id}', [BrandController::class, 'brnadEdit'])->name('brand.edit');
+    Route::post('/update', [BrandController::class, 'brnadUpdate'])->name('brand.update');
+    Route::get('/update/{id}', [BrandController::class, 'brnadDelete'])->name('brand.delete');
 });
