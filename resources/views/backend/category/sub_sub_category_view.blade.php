@@ -32,7 +32,7 @@
                                 {{ $data->category->category_name_en }}
                             </td>
                             <td>{{ $data->subCategory->subcategory_name_en }}</td>
-                            <td>{{ $data->subcategory_name_en }}</td>
+                            <td>{{ $data->subsubcategory_name_en }}</td>
                             <td width="30%">
                                 <a title="Edit Data" href="{{ route('subsubcategory.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                                 <a title="Delete Data" href="{{ route('subsubcategory.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
@@ -60,7 +60,7 @@
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                        <form action="{{ route('subcategory.store') }}" method="POST">
+                        <form action="{{ route('subsubcategory.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
 								<h5>Category Select <span class="text-danger">*</span></h5>
@@ -121,27 +121,28 @@
     <!-- /.content -->
 
 </div>
+
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('select[name=category_id]').change(function(){
-            let category_id = $(this).val();
-            if(category_id){
-                $.ajax({
-                    url: "{{ url('/category/subcategory/ajax') }}/" + category_id,
-                    method: "GET",
-                    success: function(data){
-                        // console.log(data);
-                        let d = $('select[name=subcategory_id]').empty();
-                        for(const value of data){
-                            $('select[name=subcategory_id]').append('<option value="'+value.id +'">'+value.subcategory_name_en +'</option>');
-                        }
-                    }
-                });
-            }else {
-                alert('danger');
-            }
-        });
-    });
-</script>
+    $(document).ready(function() {
+      $('select[name="category_id"]').on('change', function(){
+          var category_id = $(this).val();
+          if(category_id) {
+              $.ajax({
+                  url: "{{  url('/category/subcategory/ajax') }}/"+category_id,
+                  type:"GET",
+                  dataType:"json",
+                  success:function(data) {
+                     var d =$('select[name="subcategory_id"]').empty();
+                        $.each(data, function(key, value){
+                            $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">' + value.subcategory_name_en + '</option>');
+                        });
+                  },
+              });
+          } else {
+              alert('danger');
+          }
+      });
+  });
+  </script>
 
 @endsection

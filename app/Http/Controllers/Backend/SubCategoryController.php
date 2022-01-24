@@ -118,10 +118,43 @@ class SubCategoryController extends Controller {
      */
     public function getSubCategory($category_id){
         $data = SubCategory::where('category_id', $category_id)->orderBy('subcategory_name_en', 'ASC')->get();
-        return $data;
+        return json_encode($data);
     }
 
+    /**
+     * Sub-SubCategory store
+     */
+    public function subSubCategoryStore( Request $request ) {
 
+        // Validation
+        $request->validate( [
+            'subsubcategory_name_en' => 'required',
+            'subsubcategory_name_ar' => 'required',
+            'category_id'         => 'required',
+            'subcategory_id'         => 'required'
+        ],
+            [
+                'subsubcategory_name_en.required' => 'The sub sub category name english is required!',
+                'subsubcategory_name_ar.required' => 'The sub sub category name arabic is required!',
+            ] );
+
+        SubSubCategory::create( [
+            'category_id'    => $request->category_id,
+            'subcategory_id'    => $request->subcategory_id,
+            'subsubcategory_name_en' => $request->subsubcategory_name_en,
+            'subsubcategory_name_ar' => $request->subsubcategory_name_ar,
+            'subsubcategory_slug_en' => strtolower( str_replace( ' ', '-', $request->subsubcategory_name_en ) ),
+            'subsubcategory_slug_ar' => strtolower( str_replace( ' ', '-', $request->subsubcategory_name_ar ) ),
+        ] );
+
+        $notification = [
+            'message'    => 'Sub-SubCategory Added Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with( $notification );
+
+    }
 
 
 }
