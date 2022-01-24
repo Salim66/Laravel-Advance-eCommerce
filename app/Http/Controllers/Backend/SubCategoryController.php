@@ -3,97 +3,99 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
-class SubCategoryController extends Controller
-{
+class SubCategoryController extends Controller {
     /**
-     * Category view page
+     * SubCategory view page
      */
-    public function subCategoryView(){
+    public function subCategoryView() {
+        $categories = Category::orderBy( 'category_name_en', 'ASC' )->get();
         $subcategories = SubCategory::latest()->get();
-        return view('backend.category.sub_category_view', compact('subcategories'));
+        return view( 'backend.category.sub_category_view', compact( 'subcategories', 'categories' ) );
     }
 
     /**
-     * Category store
+     * SubCategory store
      */
-    public function categoryStore(Request $request){
+    public function subCategoryStore( Request $request ) {
 
         // Validation
-        $request->validate([
-            'category_name_en' => 'required',
-            'category_name_ar' => 'required',
-            'category_icon' => 'required'
+        $request->validate( [
+            'subcategory_name_en' => 'required',
+            'subcategory_name_ar' => 'required',
+            'category_id'         => 'required',
         ],
-        [
-            'category_name_en.required' => 'The category name english is required!',
-            'category_name_ar.required' => 'The category name arabic is required!'
-        ]);
+            [
+                'subcategory_name_en.required' => 'The sub category name english is required!',
+                'subcategory_name_ar.required' => 'The sub category name arabic is required!',
+            ] );
 
-        Category::create([
-            'category_name_en' => $request->category_name_en,
-            'category_name_ar' => $request->category_name_ar,
-            'category_slug_en' => strtolower(str_replace(' ', '-', $request->category_name_en)),
-            'category_slug_ar' => strtolower(str_replace(' ', '-', $request->category_name_ar)),
-            'category_icon'    => $request->category_icon
-        ]);
+        SubCategory::create( [
+            'category_id'    => $request->category_id,
+            'subcategory_name_en' => $request->subcategory_name_en,
+            'subcategory_name_ar' => $request->subcategory_name_ar,
+            'subcategory_slug_en' => strtolower( str_replace( ' ', '-', $request->subcategory_name_en ) ),
+            'subcategory_slug_ar' => strtolower( str_replace( ' ', '-', $request->subcategory_name_ar ) ),
+        ] );
 
         $notification = [
-            'message' => 'Category Added Successfully',
-            'alert-type' => 'success'
+            'message'    => 'SubCategory Added Successfully',
+            'alert-type' => 'success',
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with( $notification );
 
     }
 
     /**
-     * Category edit
+     * SubCategory edit
      */
-    public function categoryEdit($id){
-        $data = Category::findOrFail($id);
-        return view('backend.category.category_edit', compact('data'));
+    public function subCategoryEdit( $id ) {
+        $categories = Category::orderBy( 'category_name_en', 'ASC' )->get();
+        $data = SubCategory::findOrFail( $id );
+        return view( 'backend.category.sub_category_edit', compact( 'data', 'categories' ) );
     }
 
     /**
      * Category update
      */
-    public function categoryUpdate(Request $request){
+    public function categoryUpdate( Request $request ) {
 
         $category_id = $request->id;
 
-        Category::findOrFail($category_id)->update([
+        Category::findOrFail( $category_id )->update( [
             'category_name_en' => $request->category_name_en,
             'category_name_ar' => $request->category_name_ar,
-            'category_slug_en' => strtolower(str_replace(' ', '-', $request->category_name_en)),
-            'category_slug_ar' => strtolower(str_replace(' ', '-', $request->category_name_ar)),
-            'category_icon'    => $request->category_icon
-        ]);
+            'category_slug_en' => strtolower( str_replace( ' ', '-', $request->category_name_en ) ),
+            'category_slug_ar' => strtolower( str_replace( ' ', '-', $request->category_name_ar ) ),
+            'category_icon'    => $request->category_icon,
+        ] );
 
         $notification = [
-            'message' => 'Category Updated Successfully',
-            'alert-type' => 'info'
+            'message'    => 'Category Updated Successfully',
+            'alert-type' => 'info',
         ];
 
-        return redirect()->route('all.category')->with($notification);
+        return redirect()->route( 'all.category' )->with( $notification );
 
     }
 
     /**
      * Category Delete
      */
-    public function categoryDelete($id){
+    public function categoryDelete( $id ) {
 
-        Category::findOrFail($id)->delete();
+        Category::findOrFail( $id )->delete();
 
         $notification = [
-            'message' => 'Category Deleted Successfully',
-            'alert-type' => 'success'
+            'message'    => 'Category Deleted Successfully',
+            'alert-type' => 'success',
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->back()->with( $notification );
 
     }
 }
