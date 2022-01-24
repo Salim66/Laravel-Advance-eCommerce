@@ -14,7 +14,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
 						  <img src="{{ URL::to('/backend/') }}/images/logo-dark.png" alt="">
-						  <h3><b>Elegant Furnitur QR</b> Admin</h3>
+						  <h3><b>Elegant Furnitur QR</h3>
 					 </div>
 				</a>
 			</div>
