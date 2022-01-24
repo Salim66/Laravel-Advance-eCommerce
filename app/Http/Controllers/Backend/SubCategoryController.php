@@ -122,6 +122,14 @@ class SubCategoryController extends Controller {
     }
 
     /**
+     * Get Sub->SubCategory by ajax request
+     */
+    public function getSubSubCategory($subcategory_id){
+        $data = SubSubCategory::where('subcategory_id', $subcategory_id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+        return json_encode($data);
+    }
+
+    /**
      * Sub-SubCategory store
      */
     public function subSubCategoryStore( Request $request ) {
