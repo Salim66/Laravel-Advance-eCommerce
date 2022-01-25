@@ -17,7 +17,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col">
-                <form method="POST" action="{{ route('product.update') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('product.update') }}">
                     @csrf
                     <input type="hidden" name="id" value="{{ $product->id }}">
                   <div class="row">
@@ -352,6 +352,47 @@
 
     </section>
     <!-- /.content -->
+
+    <!-- ///////////////// Start Multiple Image Edit ////////////////// -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                      <h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
+                    </div>
+
+                    <div class="box-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="row row-sm">
+                                @foreach($multiple_imags as $img)
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <img src="{{ URL::to($img->photo_name) }}" class="card-img-top up_image_multi">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <a href="#" class="btn btn-danger btn-sm" title="Delete Image"><i class="fa fa-trash"></i></a>
+                                            </h5>
+                                            <p class="card-text">
+                                                <label for="" class="form-control-label">Change Image <span class="text-danger">*</span></label>
+                                                <input type="file" name="multiple_img[$img->id]" class="form-control">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="text-xs-right">
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image" />
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+
+
   </div>
   <script type="text/javascript">
     $(document).ready(function() {

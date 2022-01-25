@@ -134,7 +134,8 @@ class ProductController extends Controller
         $subcategories = SubCategory::latest()->get();
         $subsubcategories = SubSubCategory::latest()->get();
         $product = Product::findOrFail($id);
-        return view('backend.product.edit_product', compact('brands', 'categories', 'subcategories', 'subsubcategories', 'product'));
+        $multiple_imags = MultiImg::where('product_id', $id)->get();
+        return view('backend.product.edit_product', compact('brands', 'categories', 'subcategories', 'subsubcategories', 'product', 'multiple_imags'));
     }
 
     /**
