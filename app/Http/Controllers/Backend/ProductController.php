@@ -115,4 +115,12 @@ class ProductController extends Controller
 
     }
 
+    /**
+     * Product view
+     */
+    public function productManage(){
+        $products = Product::latest()->get();
+        return view('backend.product.view_product', compact('products'));
+    }
+
 }
