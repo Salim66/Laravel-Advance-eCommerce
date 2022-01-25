@@ -337,7 +337,7 @@
                                         <label for="checkbox_5">Best Seller</label>
                                     </fieldset>
                                     <fieldset>
-                                        <input type="checkbox" name="" id="checkbox_6" value="1">
+                                        <input type="checkbox" name="daily_sales" id="checkbox_6" value="1">
                                         <label for="checkbox_6">Daily Sales</label>
                                     </fieldset>
                                 </div>
