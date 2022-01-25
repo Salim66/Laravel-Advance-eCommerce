@@ -280,7 +280,7 @@
                                 <div class="form-group">
                                     <h5>Long Description English <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <textarea name="logn_descp_en" id="editor1" class="form-control" placeholder="Long Description English"></textarea>
+                                        <textarea name="long_descp_en" id="editor1" class="form-control" placeholder="Long Description English"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -337,7 +337,7 @@
                                         <label for="checkbox_5">Best Seller</label>
                                     </fieldset>
                                     <fieldset>
-                                        <input type="checkbox" name="daily_sales" id="checkbox_6" value="1">
+                                        <input type="checkbox" name="" id="checkbox_6" value="1">
                                         <label for="checkbox_6">Daily Sales</label>
                                     </fieldset>
                                 </div>
