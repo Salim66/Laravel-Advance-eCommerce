@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\MultiImg;
-use App\Models\Product;
-use Carbon\Carbon;
 use Image;
+use Carbon\Carbon;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\MultiImg;
+use App\Models\SubCategory;
+use Illuminate\Http\Request;
+use App\Models\SubSubCategory;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -111,7 +113,7 @@ class ProductController extends Controller
             'alert-type' => 'success'
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.product')->with($notification);
 
     }
 
@@ -121,6 +123,18 @@ class ProductController extends Controller
     public function productManage(){
         $products = Product::latest()->get();
         return view('backend.product.view_product', compact('products'));
+    }
+
+    /**
+     * Product edit
+     */
+    public function productEdit($id){
+        $brands = Brand::latest()->get();
+        $categories = Category::latest()->get();
+        $subcategories = SubCategory::latest()->get();
+        $subsubcategories = SubSubCategory::latest()->get();
+        $product = Product::findOrFail($id);
+        return view('backend.product.edit_product', compact('brands', 'categories', 'subcategories', 'subsubcategories', 'product'));
     }
 
 }
