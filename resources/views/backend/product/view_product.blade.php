@@ -35,9 +35,19 @@
                                 <img src="{{ URL::to($data->product_thumbnail) }}" class="backend_table_product-img" alt="">
                             </td>
                             <td>{{ $data->product_name_en }}</td>
-                            <td>{{ $data->selling_price }}</td>
-                            <td>{{ $data->product_qty }}</td>
-                            <td>{{ $data->discount_price }}</td>
+                            <td>{{ $data->selling_price }} $</td>
+                            <td>{{ $data->product_qty }} pcs</td>
+                            <td>
+                                @if($data->discount_price == NULL)
+                                <span class="badge badge-pill badge-danger">No Discount</span>
+                                @else
+                                @php
+                                    $amount = $data->selling_price - $data->discount_price;
+                                    $discount = ($amount/$data->selling_price) * 100;
+                                @endphp
+                                <span class="badge badge-pill badge-danger">{{ round($discount) }} %</span>
+                                @endif
+                            </td>
                             <td>
                                 @if($data->status == 1)
                                 <span class="badge badge-pill badge-success">Active</span>
@@ -48,7 +58,7 @@
                             <td width="30%">
                                 <a title="View Product Data" href="{{ route('product.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                 <a title="Edit Data" href="{{ route('product.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                <a title="Delete Data" href="{{ route('category.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a title="Delete Data" href="{{ route('product.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 @if($data->status == 1)
                                 <a title="Inactive Product" href="{{ route('product.inactive', $data->id) }}" class="btn btn-danger"><i class="fa fa-arrow-down"></i></a>
                                 @else
