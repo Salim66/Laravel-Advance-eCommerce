@@ -6,45 +6,51 @@
     <section class="content">
       <div class="row">
 
-        <!-- Edit Brand Page  -->
-        <div class="col-4">
+        <!-- Edit Slider Page  -->
+        <div class="col-12">
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Edit Brand</h3>
+                 <h3 class="box-title">Edit Slider</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                        <form action="{{ route('brand.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('slider.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" name="id" value="{{ $data->id }}">
-                            <input type="hidden" name="old_image" value="{{ $data->brand_image }}">
+                            <input type="hidden" name="old_image" value="{{ $data->slider_img }}">
 
                             <div class="form-group">
-                                <h5>Brand Name English <span class="text-danger">*</span></h5>
+                                <h5>Slider Title English <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="brand_name_en" class="form-control" value="{{ $data->brand_name_en }}">
-                                    @error('brand_name_en')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <input type="text" name="slider_title_en" class="form-control" value="{{ $data->slider_title_en }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h5>Brand Name Arabic <span class="text-danger">*</span></h5>
+                                <h5>Slider Title Arabic <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="brand_name_ar" class="form-control" value="{{ $data->brand_name_ar }}">
-                                    @error('brand_name_ar')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <input type="text" name="slider_title_ar" class="form-control" value="{{ $data->slider_title_ar }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h5>Brand Image <span class="text-danger">*</span></h5>
+                                <h5>Slider Description English<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="file" name="brand_image" class="form-control">
-                                    @error('brand_image')
+                                    <textarea name="slider_descp_en" id="textarea" class="form-control">{{ $data->slider_descp_en }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h5>Slider Description Arabic<span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <textarea name="slider_descp_ar" id="textarea" class="form-control">{{ $data->slider_descp_ar }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h5>Slider Image <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <input type="file" name="slider_img" class="form-control">
+                                    @error('slider_img')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
