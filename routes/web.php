@@ -101,6 +101,7 @@ Route::prefix('product')->group(function(){
     Route::get('/add', [ProductController::class, 'addProduct'])->name('add.product');
     Route::post('/store', [ProductController::class, 'productStore'])->name('product.store');
     Route::get('/manage', [ProductController::class, 'productManage'])->name('manage.product');
+    Route::get('/view/{id}', [ProductController::class, 'productView'])->name('product.view');
     Route::get('/edit/{id}', [ProductController::class, 'productEdit'])->name('product.edit');
     Route::post('/update', [ProductController::class, 'productUpdate'])->name('product.update');
     Route::post('/image/update', [ProductController::class, 'productImageUpdate'])->name('product.image.update');

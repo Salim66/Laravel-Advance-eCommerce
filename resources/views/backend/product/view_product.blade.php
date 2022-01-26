@@ -56,7 +56,7 @@
                                 @endif
                             </td>
                             <td width="30%">
-                                <a title="View Product Data" href="{{ route('product.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                <a title="View Product Data" href="{{ route('product.view', $data->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                 <a title="Edit Data" href="{{ route('product.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                                 <a title="Delete Data" href="{{ route('product.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 @if($data->status == 1)

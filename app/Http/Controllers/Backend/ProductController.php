@@ -126,6 +126,19 @@ class ProductController extends Controller
     }
 
     /**
+     * Product view
+     */
+    public function productView($id){
+        $brands = Brand::latest()->get();
+        $categories = Category::latest()->get();
+        $subcategories = SubCategory::latest()->get();
+        $subsubcategories = SubSubCategory::latest()->get();
+        $product = Product::findOrFail($id);
+        $multiple_imags = MultiImg::where('product_id', $id)->get();
+        return view('backend.product.single_product', compact('brands', 'categories', 'subcategories', 'subsubcategories', 'product', 'multiple_imags'));
+    }
+
+    /**
      * Product edit
      */
     public function productEdit($id){
