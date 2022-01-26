@@ -189,7 +189,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Product Image update
+     * Product Multi Image update
      */
     public function productImageUpdate(Request $request){
         $imags = $request->multiple_img;
@@ -212,6 +212,38 @@ class ProductController extends Controller
 
         $notification = [
             'message' => 'Product Image Updated Successfully',
+            'alert-type' => 'info'
+        ];
+
+        return redirect()->back()->with($notification);
+
+    }
+
+    /**
+     * Product Thumbnail Image Update
+     */
+    public function productThumbnailImageUpdate(Request $request){
+
+        $pro_id = $request->id;
+        $old_image = $request->old_image;
+
+        if(file_exists($old_image) && !empty($old_image)){
+            unlink($old_image);
+        }
+
+        // Product Thumbnail Image
+        $image = $request->file('product_thumbnail');
+        $name_gen = hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
+        Image::make($image)->resize(550, 600)->save('upload/products/thumbnail/'. $name_gen);
+        $save_url = 'upload/products/thumbnail/'.$name_gen;
+
+        Product::findOrFail($pro_id)->update([
+            'product_thumbnail' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Product Thumbnail Image Updated Successfully',
             'alert-type' => 'info'
         ];
 

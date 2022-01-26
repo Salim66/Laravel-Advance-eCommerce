@@ -394,6 +394,48 @@
     </section>
     <!-- ///////////////// End Multiple Image Edit ////////////////// -->
 
+    <!-- ///////////////// Start Thumbnail Image Edit ////////////////// -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                      <h4 class="box-title">Product Thumbnail Image <strong>Update</strong></h4>
+                    </div>
+
+                    <div class="box-body">
+                        <form action="{{ route('product.thumbnail.image.update') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="old_image" value="{{ $product->product_thumbnail }}">
+
+                            <div class="row row-sm">
+
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <img src="{{ URL::to($product->product_thumbnail) }}" class="card-img-top up_image_multi">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <label for="" class="form-control-label">Change Image <span class="text-danger">*</span></label>
+                                                <input type="file" name="product_thumbnail" class="form-control" onchange="mainThamUrl(this)" />
+                                                <img src="" id="mainThmb" alt="">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs-right">
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image" />
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+    <!-- ///////////////// End Thumbnail Image Edit ////////////////// -->
+
 
   </div>
   <script type="text/javascript">
