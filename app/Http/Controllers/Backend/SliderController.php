@@ -98,5 +98,26 @@ class SliderController extends Controller
 
     }
 
+    /**
+     * Slider Delete
+     */
+    public function sliderDelete($id){
+        $data = Slider::findOrFail($id);
+
+        if(file_exists($data->slider_img) && !empty($data->slider_img)){
+            unlink($data->slider_img);
+        }
+
+        $data->delete();
+
+        $notification = [
+            'message' => 'Slider Deleted Successfully',
+            'alert-type' => 'info'
+        ];
+
+        return redirect()->back()->with($notification);
+
+    }
+
 
 }
