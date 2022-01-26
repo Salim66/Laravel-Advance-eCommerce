@@ -372,7 +372,7 @@
                                         <img src="{{ URL::to($img->photo_name) }}" class="card-img-top up_image_multi">
                                         <div class="card-body">
                                             <h5 class="card-title">
-                                                <a href="#" class="btn btn-danger btn-sm" title="Delete Image"><i class="fa fa-trash"></i></a>
+                                                <a id="delete" href="{{ route('delete.product.image', $img->id) }}" class="btn btn-danger btn-sm" title="Delete Image"><i class="fa fa-trash"></i></a>
                                             </h5>
                                             <p class="card-text">
                                                 <label for="" class="form-control-label">Change Image <span class="text-danger">*</span></label>

@@ -105,5 +105,6 @@ Route::prefix('product')->group(function(){
     Route::post('/update', [ProductController::class, 'productUpdate'])->name('product.update');
     Route::post('/image/update', [ProductController::class, 'productImageUpdate'])->name('product.image.update');
     Route::post('/thumbnail/image/update', [ProductController::class, 'productThumbnailImageUpdate'])->name('product.thumbnail.image.update');
+    Route::get('/image/delete/{id}', [ProductController::class, 'productImageDelete'])->name('delete.product.image');
     Route::get('/delete/{id}', [ProductController::class, 'productDelete'])->name('product.delete');
 });
