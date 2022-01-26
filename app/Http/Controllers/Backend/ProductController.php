@@ -188,4 +188,35 @@ class ProductController extends Controller
 
     }
 
+    /**
+     * Product Image update
+     */
+    public function productImageUpdate(Request $request){
+        $imags = $request->multiple_img;
+
+        foreach($imags as $id => $img){
+            $delete_img = MultiImg::findOrFail($id);
+            if(file_exists($delete_img->photo_name) && !empty($delete_img->photo_name)){
+                unlink($delete_img->photo_name);
+            }
+            $make_name = hexdec(uniqid()).'.'. $img->getClientOriginalExtension();
+            Image::make($img)->resize(550, 600)->save('upload/products/multi-img/'. $make_name);
+            $upload_path = 'upload/products/multi-img/'.$make_name;
+
+            MultiImg::where('id', $id)->update([
+                'photo_name' => $upload_path,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }
+
+        $notification = [
+            'message' => 'Product Image Updated Successfully',
+            'alert-type' => 'info'
+        ];
+
+        return redirect()->back()->with($notification);
+
+    }
+
 }
