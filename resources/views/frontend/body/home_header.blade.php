@@ -14,8 +14,10 @@
                 <div class="topbar-item">
                    <div class="topbar-search">
                       <form>
-                         <input type="text" class="form-control" placeholder="Search product">
-                         <button class="btn main-btn" type="submit">Search</button>
+                        <input type="text" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif">
+                        <button class="btn main-btn" type="submit">
+                         @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                         </button>
                       </form>
                    </div>
                 </div>
@@ -119,6 +121,12 @@
           </div>
        </div>
     </div>
+
+    <!-- //////////// Get Category Data ///////////// -->
+    @php
+        $categories = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
+    @endphp
+
     <div class="navbar-area">
        <div class="container">
           <div class="mobile-nav">
@@ -127,81 +135,67 @@
                    <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                        <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                           <div class="category-button">
-                               <i class="flaticon-menu"></i>
-                               <a href="#" class="nav-link dropdown-toggle">Categories</a>
+
+                            <div class="category-button">
+                              <i class="flaticon-menu"></i>
+                              <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                @if(session()->get('language') == 'arabic') التصنيفات @else Categories @endif         
+                                </a>
                             </div>
-                            <ul class="dropdown-menu">
-                               <li class="nav-item">
-                                  <a href="faqs.html" class="nav-link">FAQ's</a>
-                               </li>
-                               <li class="nav-item">
-                                  <a href="#" class="nav-link dropdown-toggle">Users</a>
-                                  <ul class="dropdown-menu">
-                                     <li class="nav-item">
-                                        <a href="login.html" class="nav-link">Login</a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="register.html" class="nav-link dropdown-toggle">Registration</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item">
-                                               <a href="login.html" class="nav-link">Login</a>
-                                            </li>
-                                            <li class="nav-item">
-                                               <a href="register.html" class="nav-link">Registration</a>
-                                            </li>
-                                            <li class="nav-item">
-                                               <a href="forget-password.html" class="nav-link">Forget Password</a>
-                                            </li>
-                                            <li class="nav-item">
-                                               <a href="my-account.html" class="nav-link">My Account</a>
-                                            </li>
-                                            <li class="nav-item">
-                                               <a href="my-orders.html" class="nav-link">My Orders</a>
-                                            </li>
-                                            <li class="nav-item">
-                                               <a href="my-addresses.html" class="nav-link">My Addresses</a>
-                                            </li>
-                                         </ul>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="forget-password.html" class="nav-link">Forget Password</a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="my-account.html" class="nav-link">My Account</a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="my-orders.html" class="nav-link">My Orders</a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="my-addresses.html" class="nav-link">My Addresses</a>
-                                     </li>
-                                  </ul>
-                               </li>
-                               <li class="nav-item">
-                                  <a href="order-tracking.html" class="nav-link">Order Tracking</a>
-                               </li>
-                               <li class="nav-item">
-                                  <a href="#" class="nav-link dropdown-toggle">Others</a>
-                                  <ul class="dropdown-menu">
-                                     <li class="nav-item">
-                                        <a href="terms-conditions.html" class="nav-link">Terms & Conditions</a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
-                                     </li>
-                                     <li class="nav-item">
-                                        <a href="search-page.html" class="nav-link">Search Page</a>
-                                     </li>
-                                  </ul>
-                               </li>
-                               <li class="nav-item">
-                                  <a href="404.html" class="nav-link">404 Error Page</a>
-                               </li>
-                               <li class="nav-item">
-                                  <a href="coming-soon-page.html" class="nav-link">Coming Soon Page</a>
-                               </li>
-                            </ul>
+                           <ul class="dropdown-menu">
+
+                            @foreach($categories as $category)
+                              <li class="nav-item nav-item__border">
+                                 <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                    @if(session()->get('language') == 'arabic') 
+                                    {{ $category->category_name_ar }}
+                                    @else 
+                                    {{ $category->category_name_en }}
+                                    @endif                                     
+                                 </a>
+                                 <ul class="dropdown-menu">
+
+                                    @php
+                                         $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name_en', 'ASC')->get();
+                                    @endphp
+
+                                    @foreach($subcategories as $sub)
+                                    <li class="nav-item nav-item__border">
+                                        <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                            @if(session()->get('language') == 'arabic') 
+                                            {{ $sub->subcategory_name_ar }}
+                                            @else 
+                                            {{ $sub->subcategory_name_en }}
+                                            @endif
+                                            
+                                        </a>
+                                       <ul class="dropdown-menu">
+
+                                        @php
+                                            $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $sub->id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+                                        @endphp
+
+                                        @foreach($subsubcategories as $subsub)
+                                           <li class="nav-item nav-item__border">
+                                            <a href="login.html" class="nav-link">
+                                                @if(session()->get('language') == 'arabic') 
+                                                {{ $subsub->subsubcategory_name_ar }}
+                                                @else 
+                                                {{ $subsub->subsubcategory_name_en }}
+                                                @endif
+                                            </a>
+                                           </li>
+                                        @endforeach
+
+                                        </ul>
+                                    </li>
+                                    @endforeach
+
+                                 </ul>
+                              </li>
+                            @endforeach
+
+                           </ul>
                          </li>
                        </ul>
                     </div>
@@ -248,8 +242,10 @@
                          </button>
                          <div class="dropdown-menu mobile-search" aria-labelledby="search2">
                             <form>
-                               <input type="text" class="form-control" placeholder="Search product">
-                               <button class="btn main-btn" type="submit">Search</button>
+                               <input type="text" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif">
+                               <button class="btn main-btn" type="submit">
+                                @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                                </button>
                             </form>
                          </div>
                       </div>
@@ -389,13 +385,21 @@
                        <li class="nav-item">
                           <div class="category-button">
                               <i class="flaticon-menu"></i>
-                              <a href="javascript:void(0)" class="nav-link dropdown-toggle">Categories</a>
+                              <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                @if(session()->get('language') == 'arabic') التصنيفات @else Categories @endif         
+                                </a>
                            </div>
                            <ul class="dropdown-menu">
 
                             @foreach($categories as $category)
                               <li class="nav-item nav-item__border">
-                                 <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $category->category_name_en }}</a>
+                                 <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                    @if(session()->get('language') == 'arabic') 
+                                    {{ $category->category_name_ar }}
+                                    @else 
+                                    {{ $category->category_name_en }}
+                                    @endif                                     
+                                 </a>
                                  <ul class="dropdown-menu">
 
                                     @php
@@ -404,7 +408,14 @@
 
                                     @foreach($subcategories as $sub)
                                     <li class="nav-item nav-item__border">
-                                       <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $sub->subcategory_name_en }}</a>
+                                        <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                            @if(session()->get('language') == 'arabic') 
+                                            {{ $sub->subcategory_name_ar }}
+                                            @else 
+                                            {{ $sub->subcategory_name_en }}
+                                            @endif
+                                            
+                                        </a>
                                        <ul class="dropdown-menu">
 
                                         @php
@@ -413,7 +424,13 @@
 
                                         @foreach($subsubcategories as $subsub)
                                            <li class="nav-item nav-item__border">
-                                              <a href="login.html" class="nav-link">{{ $subsub->subsubcategory_name_en }}</a>
+                                            <a href="login.html" class="nav-link">
+                                                @if(session()->get('language') == 'arabic') 
+                                                {{ $subsub->subsubcategory_name_ar }}
+                                                @else 
+                                                {{ $subsub->subsubcategory_name_en }}
+                                                @endif
+                                            </a>
                                            </li>
                                         @endforeach
 
@@ -434,7 +451,9 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                    <ul class="navbar-nav mx-auto">
                       <li class="nav-item">
-                         <a href="{{ url('/') }}" class="nav-link">Home</a>
+                         <a href="{{ url('/') }}" class="nav-link">
+                            @if(session()->get('language') == 'arabic') مسكن @else Home @endif
+                            </a>
                       </li>
 
                         <!-- //////////// Get Category Data ///////////// -->
@@ -444,7 +463,12 @@
                       
                       @foreach($categories_h as $category)
                             <li class="nav-item">
-                                <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $category->category_name_en }}</a>
+                                <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                    @if(session()->get('language') == 'arabic') {{ $category->category_name_ar }} 
+                                    @else 
+                                    {{ $category->category_name_en }} 
+                                    @endif
+                                </a>
                                 <ul class="dropdown-menu">
 
                                 @php
@@ -453,7 +477,14 @@
 
                                 @foreach($subcategories as $sub)
                                 <li class="nav-item nav-item__border">
-                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $sub->subcategory_name_en }}</a>
+                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                        @if(session()->get('language') == 'arabic') 
+                                        {{ $sub->subcategory_name_ar }}
+                                        @else 
+                                        {{ $sub->subcategory_name_en }}
+                                        @endif
+                                        
+                                    </a>
                                     <ul class="dropdown-menu">
 
                                     @php
@@ -462,7 +493,13 @@
 
                                     @foreach($subsubcategories as $subsub)
                                         <li class="nav-item nav-item__border">
-                                            <a href="login.html" class="nav-link">{{ $subsub->subsubcategory_name_en }}</a>
+                                            <a href="login.html" class="nav-link">
+                                                @if(session()->get('language') == 'arabic') 
+                                                {{ $subsub->subsubcategory_name_ar }}
+                                                @else 
+                                                {{ $subsub->subsubcategory_name_en }}
+                                                @endif
+                                            </a>
                                         </li>
                                     @endforeach
 
