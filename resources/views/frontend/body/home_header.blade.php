@@ -376,6 +376,10 @@
              </div>
           </div>
        </div>
+       <!-- //////////// Get Category Data ///////////// -->
+       @php
+            $categories = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
+       @endphp
        <div class="main-nav">
           <div class="container">
              <nav class="navbar navbar-expand-md navbar-light">
@@ -385,78 +389,42 @@
                        <li class="nav-item">
                           <div class="category-button">
                               <i class="flaticon-menu"></i>
-                              <a href="#" class="nav-link dropdown-toggle">Categories</a>
+                              <a href="javascript:void(0)" class="nav-link dropdown-toggle">Categories</a>
                            </div>
                            <ul class="dropdown-menu">
-                              <li class="nav-item">
-                                 <a href="faqs.html" class="nav-link">FAQ's</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a href="#" class="nav-link dropdown-toggle">Users</a>
+
+                            @foreach($categories as $category)
+                              <li class="nav-item nav-item__border">
+                                 <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $category->category_name_en }}</a>
                                  <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                       <a href="login.html" class="nav-link">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a href="register.html" class="nav-link dropdown-toggle">Registration</a>
+
+                                    @php
+                                         $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name_en', 'ASC')->get();
+                                    @endphp
+
+                                    @foreach($subcategories as $sub)
+                                    <li class="nav-item nav-item__border">
+                                       <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $sub->subcategory_name_en }}</a>
                                        <ul class="dropdown-menu">
-                                           <li class="nav-item">
-                                              <a href="login.html" class="nav-link">Login</a>
+
+                                        @php
+                                            $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $sub->id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+                                        @endphp
+
+                                        @foreach($subsubcategories as $subsub)
+                                           <li class="nav-item nav-item__border">
+                                              <a href="login.html" class="nav-link">{{ $subsub->subsubcategory_name_en }}</a>
                                            </li>
-                                           <li class="nav-item">
-                                              <a href="register.html" class="nav-link">Registration</a>
-                                           </li>
-                                           <li class="nav-item">
-                                              <a href="forget-password.html" class="nav-link">Forget Password</a>
-                                           </li>
-                                           <li class="nav-item">
-                                              <a href="my-account.html" class="nav-link">My Account</a>
-                                           </li>
-                                           <li class="nav-item">
-                                              <a href="my-orders.html" class="nav-link">My Orders</a>
-                                           </li>
-                                           <li class="nav-item">
-                                              <a href="my-addresses.html" class="nav-link">My Addresses</a>
-                                           </li>
+                                        @endforeach
+
                                         </ul>
                                     </li>
-                                    <li class="nav-item">
-                                       <a href="forget-password.html" class="nav-link">Forget Password</a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a href="my-account.html" class="nav-link">My Account</a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a href="my-orders.html" class="nav-link">My Orders</a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a href="my-addresses.html" class="nav-link">My Addresses</a>
-                                    </li>
+                                    @endforeach
+
                                  </ul>
                               </li>
-                              <li class="nav-item">
-                                 <a href="order-tracking.html" class="nav-link">Order Tracking</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a href="#" class="nav-link dropdown-toggle">Others</a>
-                                 <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                       <a href="terms-conditions.html" class="nav-link">Terms & Conditions</a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
-                                    </li>
-                                    <li class="nav-item">
-                                       <a href="search-page.html" class="nav-link">Search Page</a>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li class="nav-item">
-                                 <a href="404.html" class="nav-link">404 Error Page</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a href="coming-soon-page.html" class="nav-link">Coming Soon Page</a>
-                              </li>
+                            @endforeach
+
                            </ul>
                         </li>
                       </ul>
@@ -466,125 +434,46 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                    <ul class="navbar-nav mx-auto">
                       <li class="nav-item">
-                         <a href="#" class="nav-link dropdown-toggle active">Home</a>
-                         <ul class="dropdown-menu">
-                            <li class="nav-item  nav-item-1">
-                               <a href="index.html" class="nav-link active">Home Demo 1</a>
-                            </li>
-                            <li class="nav-item  nav-item-2">
-                               <a href="index-2.html" class="nav-link">Home Demo 2</a>
-                            </li>
-                            <li class="nav-item  nav-item-3">
-                               <a href="index-3.html" class="nav-link">Home Demo 3</a>
-                            </li>
-                         </ul>
+                         <a href="{{ url('/') }}" class="nav-link">Home</a>
                       </li>
-                      <li class="nav-item">
-                         <a href="about-us.html" class="nav-link">About Us</a>
-                      </li>
-                      <li class="nav-item">
-                         <a href="#" class="nav-link dropdown-toggle">Shop</a>
-                         <ul class="dropdown-menu">
+
+                        <!-- //////////// Get Category Data ///////////// -->
+                        @php
+                            $categories_h = App\Models\Category::orderBy('category_name_en', 'ASC')->take(5)->get();
+                        @endphp
+                      
+                      @foreach($categories_h as $category)
                             <li class="nav-item">
-                               <a href="shops-grid.html" class="nav-link">Shop Grid</a>
+                                <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $category->category_name_en }}</a>
+                                <ul class="dropdown-menu">
+
+                                @php
+                                        $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name_en', 'ASC')->get();
+                                @endphp
+
+                                @foreach($subcategories as $sub)
+                                <li class="nav-item nav-item__border">
+                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle">{{ $sub->subcategory_name_en }}</a>
+                                    <ul class="dropdown-menu">
+
+                                    @php
+                                        $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $sub->id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+                                    @endphp
+
+                                    @foreach($subsubcategories as $subsub)
+                                        <li class="nav-item nav-item__border">
+                                            <a href="login.html" class="nav-link">{{ $subsub->subsubcategory_name_en }}</a>
+                                        </li>
+                                    @endforeach
+
+                                    </ul>
+                                </li>
+                                @endforeach
+
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                               <a href="shops-full.html" class="nav-link">Shop Full</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="shops-grid-best-seller.html" class="nav-link">Shop Grid Best Seller</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="shops-grid-daily-sales.html" class="nav-link">Shop Grid Daily Sales</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="shops-grid-new.html" class="nav-link">Shop Grid New</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="single-shop.html" class="nav-link">Single Shop</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="cart.html" class="nav-link">Cart</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="wishlist.html" class="nav-link">Wishlist</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="checkout.html" class="nav-link">Checkout</a>
-                            </li>
-                         </ul>
-                      </li>
-                      <li class="nav-item">
-                         <a href="#" class="nav-link dropdown-toggle">Pages</a>
-                         <ul class="dropdown-menu">
-                            <li class="nav-item">
-                               <a href="faqs.html" class="nav-link">FAQ's</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="#" class="nav-link dropdown-toggle">Users</a>
-                               <ul class="dropdown-menu">
-                                  <li class="nav-item">
-                                     <a href="login.html" class="nav-link">Login</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="register.html" class="nav-link">Registration</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="forget-password.html" class="nav-link">Forget Password</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="my-account.html" class="nav-link">My Account</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="my-orders.html" class="nav-link">My Orders</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="my-addresses.html" class="nav-link">My Addresses</a>
-                                  </li>
-                               </ul>
-                            </li>
-                            <li class="nav-item">
-                               <a href="order-tracking.html" class="nav-link">Order Tracking</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="#" class="nav-link dropdown-toggle">Others</a>
-                               <ul class="dropdown-menu">
-                                  <li class="nav-item">
-                                     <a href="terms-conditions.html" class="nav-link">Terms & Conditions</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
-                                  </li>
-                                  <li class="nav-item">
-                                     <a href="search-page.html" class="nav-link">Search Page</a>
-                                  </li>
-                               </ul>
-                            </li>
-                            <li class="nav-item">
-                               <a href="404.html" class="nav-link">404 Error Page</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="coming-soon-page.html" class="nav-link">Coming Soon Page</a>
-                            </li>
-                         </ul>
-                      </li>
-                      <li class="nav-item">
-                         <a href="#" class="nav-link dropdown-toggle">Blogs</a>
-                         <ul class="dropdown-menu">
-                            <li class="nav-item">
-                               <a href="blogs-grid.html" class="nav-link">Blogs Grid</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="blogs-full.html" class="nav-link">Blogs Full</a>
-                            </li>
-                            <li class="nav-item">
-                               <a href="single-blog.html" class="nav-link">Single Blog</a>
-                            </li>
-                         </ul>
-                      </li>
-                      <li class="nav-item">
-                         <a href="contact.html" class="nav-link">Contact</a>
-                      </li>
+                        @endforeach
+                      
                    </ul>
                 </div>
                 <div class="navbar-option">

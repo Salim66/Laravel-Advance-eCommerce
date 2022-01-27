@@ -46,3 +46,6 @@
     /* border-color: #eee; */
 }
 
+.nav-item__border:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
