@@ -25,12 +25,13 @@
                           @auth
                          <a href="login.html">
                             <i class="flaticon-user"></i>
-                            <span>User Profile</span>
+
+                            <span>@if(session()->get('language') == 'arabic') ملف تعريفي للمستخدم @else User Profile @endif</span>
                          </a>
                          @else
                          <a href="{{ route('login') }}">
                             <i class="flaticon-user"></i>
-                            <span>Login</span>
+                            <span>@if(session()->get('language') == 'arabic') تسجيل الدخول @else Login @endif</span>
                          </a>
                          @endauth
 
@@ -38,14 +39,14 @@
                       <div class="topbar-action-item">
                          <a href="wishlist.html">
                          <i class="flaticon-like"></i>
-                         <span>Wishlist</span>
+                         <span>@if(session()->get('language') == 'arabic') قائمة الرغبات @else Wishlist @endif</span>
                          <span class="topbar-action-counter">05</span>
                          </a>
                       </div>
                       <div class="topbar-action-item cart-option-dropdown">
                          <a href="#" class="cartbtn">
                          <i class="flaticon-shopping-cart"></i>
-                         <span>Cart</span>
+                         <span>@if(session()->get('language') == 'arabic') عربة التسوق @else Cart @endif</span>
                          <span class="topbar-action-counter">02</span>
                          </a>
                          <div class="cart-modal">
@@ -219,21 +220,20 @@
                          <div class="navbar-language dropdown language-option">
                             <button class="dropdown-toggle" type="button" id="language2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="flaticon-worldwide"></i>
-                            <span class="lang-name"></span>
+                            <span>@if(session()->get('language') == 'arabic') لغة @else Language @endif</span>
                             </button>
-                            <div class="dropdown-menu language-dropdown-menu" aria-labelledby="language2">
-                               <a class="dropdown-item" href="#">
-                               <img src="{{ asset('frontend/assets') }}/images/uk.png" alt="flag">
-                               English
-                               </a>
-                               <a class="dropdown-item" href="#">
-                               <img src="{{ asset('frontend/assets') }}/images/china.png" alt="flag">
-                               简体中文
-                               </a>
-                               <a class="dropdown-item" href="#">
-                               <img src="{{ asset('frontend/assets') }}/images/uae.png" alt="flag">
-                               العربيّة
-                               </a>
+                            <div class="dropdown-menu language-dropdown-menu" aria-labelledby="language1">
+                            @if(session()->get('language') == 'arabic')
+                            <a class="dropdown-item" href="{{ route('english.language') }}">
+                            <img src="{{ asset('frontend/assets') }}/images/uk.png" alt="flag">
+                            English
+                            </a>
+                            @else
+                            <a class="dropdown-item" href="{{ route('arabic.language') }}">
+                            <img src="{{ asset('frontend/assets') }}/images/uae.png" alt="flag">
+                            العربيّة
+                            </a>
+                            @endif
                             </div>
                          </div>
                       </div>
@@ -265,21 +265,20 @@
                    <div class="navbar-language dropdown language-option">
                       <button class="dropdown-toggle" type="button" id="language1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="flaticon-worldwide"></i>
-                      <span class="lang-name"></span>
+                      <span>@if(session()->get('language') == 'arabic') لغة @else Language @endif</span>
                       </button>
                       <div class="dropdown-menu language-dropdown-menu" aria-labelledby="language1">
-                         <a class="dropdown-item" href="#">
-                         <img src="{{ asset('frontend/assets') }}/images/uk.png" alt="flag">
-                         English
-                         </a>
-                         <a class="dropdown-item" href="#">
-                         <img src="{{ asset('frontend/assets') }}/images/china.png" alt="flag">
-                         简体中文
-                         </a>
-                         <a class="dropdown-item" href="#">
-                         <img src="{{ asset('frontend/assets') }}/images/uae.png" alt="flag">
-                         العربيّة
-                         </a>
+                        @if(session()->get('language') == 'arabic')
+                        <a class="dropdown-item" href="{{ route('english.language') }}">
+                        <img src="{{ asset('frontend/assets') }}/images/uk.png" alt="flag">
+                        English
+                        </a>
+                        @else
+                        <a class="dropdown-item" href="{{ route('arabic.language') }}">
+                        <img src="{{ asset('frontend/assets') }}/images/uae.png" alt="flag">
+                        العربيّة
+                        </a>
+                        @endif
                       </div>
                    </div>
                 </div>
@@ -592,21 +591,20 @@
                    <div class="navbar-option-item navbar-language dropdown language-option">
                       <button class="dropdown-toggle" type="button" id="language3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="flaticon-worldwide"></i>
-                      <span class="lang-name"></span>
+                      <span>@if(session()->get('language') == 'arabic') لغة @else Language @endif</span>
                       </button>
                       <div class="dropdown-menu language-dropdown-menu" aria-labelledby="language3">
-                         <a class="dropdown-item" href="#">
+                         @if(session()->get('language') == 'arabic')
+                         <a class="dropdown-item" href="{{ route('english.language') }}">
                          <img src="{{ asset('frontend/assets') }}/images/uk.png" alt="flag">
                          English
                          </a>
-                         <a class="dropdown-item" href="#">
-                         <img src="{{ asset('frontend/assets') }}/images/china.png" alt="flag">
-                         简体中文
-                         </a>
-                         <a class="dropdown-item" href="#">
+                         @else
+                         <a class="dropdown-item" href="{{ route('arabic.language') }}">
                          <img src="{{ asset('frontend/assets') }}/images/uae.png" alt="flag">
                          العربيّة
                          </a>
+                         @endif
                       </div>
                    </div>
                 </div>
