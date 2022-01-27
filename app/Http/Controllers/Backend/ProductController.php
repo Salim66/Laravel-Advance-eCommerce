@@ -44,7 +44,6 @@ class ProductController extends Controller
             'product_color_en' => 'required',
             'product_color_ar' => 'required',
             'selling_price' => 'required',
-            'discount_price' => 'required',
             'product_thumbnail' => 'required',
             'multiple_img' => 'required',
             'short_descp_en' => 'required',
