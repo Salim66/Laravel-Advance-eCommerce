@@ -539,6 +539,9 @@
        </div>
     </div>
  </div>
+@php
+ $sliders = App\Models\Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
+@endphp
  <header class="header header-bg-gradient overflow-hidden">
     <div class="container position-relative">
        <div class="bubble-bg-animation">
@@ -560,38 +563,38 @@
        </div>
        <div class="header-bg-inner">
           <div class="header-carousel owl-carousel owl-theme default-carousel default-carousel-radius">
+              @foreach($sliders as $slider)
              <div class="item">
                 <div class="row align-items-center">
                    <div class="col-lg-5 pb-30">
                       <div class="header-content text-center text-lg-start">
-                         <h1>New Arrival On Spring 2021</h1>
-                         <p>This is one of the best and latest collection on to global & international market. Try to buy.</p>
-                         <a href="shop-details.html" class="btn main-btn main-btn-radius">Buy Now</a>
+                         <h1>
+                            @if(session()->get('language') == 'arabic') 
+                            {{ $slider->slider_title_ar }}
+                            @else 
+                            {{ $slider->slider_title_en }}
+                            @endif 
+                            </h1>
+                         <p>
+                            @if(session()->get('language') == 'arabic') 
+                            {{ $slider->slider_descp_ar }}
+                            @else 
+                            {{ $slider->slider_descp_en }}
+                            @endif  
+                            </p>
+                         <a href="shop-details.html" class="btn main-btn main-btn-radius">
+                            @if(session()->get('language') == 'arabic') اشتري الآن @else Buy Now @endif 
+                            </a>
                       </div>
                    </div>
                    <div class="offset-lg-1 col-lg-6 pb-30">
                       <div class="header-content-image">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-12.png" alt="product">
+                         <img src="{{ asset($slider->slider_img) }}" alt="product">
                       </div>
                    </div>
                 </div>
              </div>
-             <div class="item">
-                <div class="row align-items-center">
-                   <div class="col-lg-5 pb-30">
-                      <div class="header-content text-center text-lg-start">
-                         <h1>Latest Offer For Spring 2021</h1>
-                         <p>This is one of the best and latest collection on to global & international market. Try to buy.</p>
-                         <a href="shop-details.html" class="btn main-btn main-btn-radius">Buy Now</a>
-                      </div>
-                   </div>
-                   <div class="offset-lg-1 col-lg-6 pb-30">
-                      <div class="header-content-image">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-17.png" alt="product">
-                      </div>
-                   </div>
-                </div>
-             </div>
+             @endforeach
           </div>
        </div>
     </div>

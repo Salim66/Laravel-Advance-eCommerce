@@ -478,6 +478,8 @@
        </div>
     </div>
 </section>
+
+
 <section class="special-offer-banner pb-100">
     <div class="container">
        <div class="product-banner product-banner-7 product-banner-full">

@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h5>Cateogry Icon <span class="text-danger">*</span></h5>
+                                <h5>Cateogry Icon <span class="text-danger">(Optional)</span></h5>
                                 <div class="controls">
                                     <input type="text" name="category_icon" class="form-control" value="{{ $data->category_icon }}">
                                     @error('category_icon')
