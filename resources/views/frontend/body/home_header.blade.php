@@ -6,7 +6,7 @@
              <div class="row align-items-center justify-content-center justify-content-lg-between">
                 <div class="topbar-item">
                    <div class="topbar-brand">
-                      <a href="index.html">
+                      <a href="{{ url('/') }}">
                       <img src="{{ asset('frontend/assets') }}/images/logo.png" alt="logo">
                       </a>
                    </div>

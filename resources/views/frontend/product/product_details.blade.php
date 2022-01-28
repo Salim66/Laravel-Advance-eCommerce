@@ -13,38 +13,25 @@
                 <div class="product-details-item desk-pad-right-40">
                    <div class="product-details-slider">
                       <div class="product-slider-for owl-carousel owl-theme gallery-grid">
-                         <div class="item">
+                         
+                        @foreach($multiple_img as $img)
+                        <div class="item">
                             <div class="product-gallery-trigger">
-                               <a href="assets/images/products/product-13.png" title="Stylish Chair"><i class="flaticon-full-screen"></i></a>
+                               <a href="{{ URL::to($img->photo_name) }}" title="Stylish Chair"><i class="flaticon-full-screen"></i></a>
                             </div>
-                            <img src="assets/images/products/product-13.png" alt="product">
+                            <img src="{{ URL::to($img->photo_name) }}" alt="product">
                          </div>
-                         <div class="item">
-                            <div class="product-gallery-trigger">
-                               <a href="assets/images/products/product-13.png" title="Stylish Chair"><i class="flaticon-full-screen"></i></a>
-                            </div>
-                            <img src="assets/images/products/product-13.png" alt="product">
-                         </div>
-                         <div class="item">
-                            <div class="product-gallery-trigger">
-                               <a href="assets/images/products/product-13.png" title="Stylish Chair"><i class="flaticon-full-screen"></i></a>
-                            </div>
-                            <img src="assets/images/products/product-13.png" alt="product">
-                         </div>
+                        @endforeach
+                      
                       </div>
                       <div class="product-slider-nav owl-carousel owl-theme">
-                         <div class="item">
-                            <img src="assets/images/products/product-13.png" alt="product">
+
+                        @foreach($multiple_img as $img)
+                        <div class="item">
+                            <img src="{{ URL::to($img->photo_name) }}" alt="product">
                          </div>
-                         <div class="item">
-                            <img src="assets/images/products/product-13.png" alt="product">
-                         </div>
-                         <div class="item">
-                            <img src="assets/images/products/product-13.png" alt="product">
-                         </div>
-                         <div class="item">
-                            <img src="assets/images/products/product-13.png" alt="product">
-                         </div>
+                        @endforeach
+                         
                       </div>
                    </div>
                 </div>

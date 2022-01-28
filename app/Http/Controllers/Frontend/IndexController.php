@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\MultiImg;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -105,7 +106,8 @@ class IndexController extends Controller
      */
     public function productDetails($id, $slug){
         $product = Product::findOrFail($id);
-        return view('frontend.product.product_details', compact('product'));
+        $multiple_img = MultiImg::where('product_id', $product->id)->get();
+        return view('frontend.product.product_details', compact('product', 'multiple_img'));
     }
 
 }
