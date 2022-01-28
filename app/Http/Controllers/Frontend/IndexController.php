@@ -19,8 +19,15 @@ class IndexController extends Controller
     public function index() {
         $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
         $featureds = Product::where('status', 1)->where('featured', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $hot_deals = Product::where('status', 1)->where('hot_deals', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $special_offer = Product::where('status', 1)->where('special_offer', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $best_seller = Product::where('status', 1)->where('best_seller', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $daily_sales = Product::where('status', 1)->where('daily_sales', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $special_deals = Product::where('status', 1)->where('special_deals', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $new_arrivals = Product::where('status', 1)->where('new_arrivals', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $product = Product::where('status', 1)->where('new_arrivals', 1)->orderBy('id', 'DESC')->limit(1)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
-        return view('frontend.index', compact('categories', 'products', 'featureds'));
+        return view('frontend.index', compact('categories', 'products', 'featureds', 'hot_deals', 'special_offer', 'best_seller', 'daily_sales', 'new_arrivals', 'product', 'special_deals'));
     }
 
     /**

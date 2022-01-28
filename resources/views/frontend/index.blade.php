@@ -83,21 +83,143 @@ Elegant Furnitur QR
 </section>
 
 
-
-<section class="special-offer-banner pb-100">
+<div class="new-product-section pb-70">
     <div class="container">
-       <div class="product-banner product-banner-7 product-banner-full">
-          <a href="single-shop.html" class="product-banner-image">
-          </a>
-          <div class="product-banner-content product-banner-content-sm">
-             <small>Sitting chair with flower table</small>
-             <h3>New Arrival Products</h3>
-             <div class="product-price">$200.50 <del>$230.0</del></div>
-             <a href="single-shop.html" class="btn main-btn main-btn-radius">Shop Now</a>
+       <div class="row">
+          <div class="col-sm-6 col-lg-4 pb-30">
+             <div class="product-info-header product-info-header-borderless">
+                <h2>@if(session()->get('language') == 'arabic') صفقات ساخنة @else Hot Deals @endif</h2>
+                <div class="carousel-control-arrows">
+                   <button class="bestseller-control-left carousel-control-arrow carousel-control-arrow-radius">
+                   <i class="flaticon-back"></i>
+                   </button>
+                   <button class="bestseller-control-right carousel-control-arrow carousel-control-arrow-radius">
+                   <i class="flaticon-next"></i>
+                   </button>
+                </div>
+             </div>
+             <div class="best-seller-carousel owl-carousel">
+                
+            @foreach($hot_deals as $key => $product)
+                <div class="item">
+                   <div class="product-info-card product-info-card-green mb-30">
+                      <div class="product-info-card-thumb">
+                         <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                      </div>
+                      <div class="product-info-card-content">
+                         <h3>
+                            <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                                @if(session()->get('language') == 'arabic')
+                                {{ $product->product_name_ar }}
+                                @else
+                                {{ $product->product_name_en }}
+                                @endif
+                             </a>
+                         </h3>
+                         <ul class="review-star">
+                            <li class="full-star"><i class="flaticon-star"></i></li>
+                            <li class="full-star"><i class="flaticon-star"></i></li>
+                            <li class="full-star"><i class="flaticon-star"></i></li>
+                            <li class="full-star"><i class="flaticon-star"></i></li>
+                            <li class="full-star"><i class="flaticon-star"></i></li>
+                         </ul>
+                         <a href="#" class="redirect-link">Add To Cart</a>
+                      </div>
+                   </div>
+                </div>
+            @endforeach    
+
+             </div>
           </div>
+
+
+
+          <div class="col-sm-6 col-lg-8 pb-30">
+             <div class="product-info-header product-info-header-borderless">
+                <h2>@if(session()->get('language') == 'arabic') عرض خاص  @else Special Offer @endif</h2>
+                <div class="carousel-control-arrows">
+                   <button class="dailysale-control-left carousel-control-arrow carousel-control-arrow-radius">
+                   <i class="flaticon-back"></i>
+                   </button>
+                   <button class="dailysale-control-right carousel-control-arrow carousel-control-arrow-radius">
+                   <i class="flaticon-next"></i>
+                   </button>
+                </div>
+             </div>
+             <div class="daily-sales-carousel owl-carousel">
+                
+                @foreach($special_offer as $key => $product)
+                <div class="item">
+                   <div class="product-card-flat">
+                      <div class="product-card-thumb">
+                         <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                         <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                         </a>
+                         <ul class="product-card-action">
+                            <li>
+                               <a href="#">
+                               <i class="flaticon-shopping-cart"></i>
+                               <span>Add Cart</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="#" class="quick-view-trigger">
+                               <i class="flaticon-visibility"></i>
+                               <span>Quick View</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="#">
+                               <i class="flaticon-like"></i>
+                               <span>Add Wishlist</span>
+                               </a>
+                            </li>
+                         </ul>
+                         @php
+                          $amount = $product->selling_price - $product->discount_price;
+                          $discount = round(($amount/$product->selling_price)*100);
+                         @endphp
+                           
+                         @if($product->discount_price == NULL)
+                         <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+                         @else
+                         <div class="product-status">{{ $discount }}%</div>
+                         @endif
+                         <div class="product-counter daily-counter-1">
+                            <div class="product-counter-item day1"></div>
+                            <div class="product-counter-item hour1"></div>
+                            <div class="product-counter-item min1"></div>
+                            <div class="product-counter-item sec1"></div>
+                         </div>
+                      </div>
+                      <div class="product-card-content">
+                         <h3>
+                            <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                                @if(session()->get('language') == 'arabic')
+                                {{ $product->product_name_ar }}
+                                @else
+                                {{ $product->product_name_en }}
+                                @endif
+                             </a>
+                         </h3>
+                         <p class="product-id">{{ $product->product_code }}</p>
+                         @if($product->discount_price == NULL)
+                         <div class="product-price">${{ $product->selling_price }}</div>
+                         @else
+                         <div class="product-price">${{ $product->selling_price }} <del>${{ $product->discount_price }}</del></div>
+                         @endif
+                      </div>
+                   </div>
+                </div>
+                @endforeach
+
+             </div>
+          </div>
+
        </div>
     </div>
-</section>
+</div>
+
 
 <section class="top-rated-product-section pb-70">
     <div class="container">
@@ -170,12 +292,13 @@ Elegant Furnitur QR
 
 @include('frontend.body.brand')
 
+
 <div class="new-product-section pb-70">
     <div class="container">
        <div class="row">
           <div class="col-sm-6 col-lg-4 pb-30">
              <div class="product-info-header product-info-header-borderless">
-                <h2>Best Seller</h2>
+                <h2>@if(session()->get('language') == 'arabic') الأكثر مبيعا  @else Best Seller @endif</h2>
                 <div class="carousel-control-arrows">
                    <button class="bestseller-control-left carousel-control-arrow carousel-control-arrow-radius">
                    <i class="flaticon-back"></i>
@@ -186,32 +309,22 @@ Elegant Furnitur QR
                 </div>
              </div>
              <div class="best-seller-carousel owl-carousel">
+                
+            @foreach($best_seller as $key => $product)
                 <div class="item">
                    <div class="product-info-card product-info-card-green mb-30">
                       <div class="product-info-card-thumb">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-2.png" alt="product">
+                         <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
                       </div>
                       <div class="product-info-card-content">
                          <h3>
-                            <a href="single-shop.html">New Micro <br> Chairs</a>
-                         </h3>
-                         <ul class="review-star">
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                         </ul>
-                         <a href="#" class="redirect-link">Add To Cart</a>
-                      </div>
-                   </div>
-                   <div class="product-info-card product-info-card-violet">
-                      <div class="product-info-card-thumb">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-19.png" alt="product">
-                      </div>
-                      <div class="product-info-card-content">
-                         <h3>
-                            <a href="single-shop.html">New Micro <br> Lamps</a>
+                            <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                                @if(session()->get('language') == 'arabic')
+                                {{ $product->product_name_ar }}
+                                @else
+                                {{ $product->product_name_en }}
+                                @endif
+                             </a>
                          </h3>
                          <ul class="review-star">
                             <li class="full-star"><i class="flaticon-star"></i></li>
@@ -224,49 +337,16 @@ Elegant Furnitur QR
                       </div>
                    </div>
                 </div>
-                <div class="item">
-                   <div class="product-info-card product-info-card-yellow mb-30">
-                      <div class="product-info-card-thumb">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-3.png" alt="product">
-                      </div>
-                      <div class="product-info-card-content">
-                         <h3>
-                            <a href="single-shop.html">Best Warm <br> Chair</a>
-                         </h3>
-                         <ul class="review-star">
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                         </ul>
-                         <a href="#" class="redirect-link">Add To Cart</a>
-                      </div>
-                   </div>
-                   <div class="product-info-card product-info-card-blue">
-                      <div class="product-info-card-thumb">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-1.png" alt="product">
-                      </div>
-                      <div class="product-info-card-content">
-                         <h3>
-                            <a href="single-shop.html">New Hold <br> Lamps</a>
-                         </h3>
-                         <ul class="review-star">
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                            <li class="full-star"><i class="flaticon-star"></i></li>
-                         </ul>
-                         <a href="#" class="redirect-link">Add To Cart</a>
-                      </div>
-                   </div>
-                </div>
+            @endforeach    
+
              </div>
           </div>
+
+
+
           <div class="col-sm-6 col-lg-8 pb-30">
              <div class="product-info-header product-info-header-borderless">
-                <h2>Daily Sales</h2>
+                <h2>@if(session()->get('language') == 'arabic') المبيعات اليومية  @else Daily Sales @endif</h2>
                 <div class="carousel-control-arrows">
                    <button class="dailysale-control-left carousel-control-arrow carousel-control-arrow-radius">
                    <i class="flaticon-back"></i>
@@ -277,11 +357,13 @@ Elegant Furnitur QR
                 </div>
              </div>
              <div class="daily-sales-carousel owl-carousel">
+                
+                @foreach($daily_sales as $key => $product)
                 <div class="item">
                    <div class="product-card-flat">
                       <div class="product-card-thumb">
-                         <a href="single-shop.html">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-7.png" alt="product">
+                         <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                         <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
                          </a>
                          <ul class="product-card-action">
                             <li>
@@ -303,7 +385,16 @@ Elegant Furnitur QR
                                </a>
                             </li>
                          </ul>
-                         <div class="product-status">New</div>
+                         @php
+                          $amount = $product->selling_price - $product->discount_price;
+                          $discount = round(($amount/$product->selling_price)*100);
+                         @endphp
+                           
+                         @if($product->discount_price == NULL)
+                         <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+                         @else
+                         <div class="product-status">{{ $discount }}%</div>
+                         @endif
                          <div class="product-counter daily-counter-1">
                             <div class="product-counter-item day1"></div>
                             <div class="product-counter-item hour1"></div>
@@ -313,147 +404,33 @@ Elegant Furnitur QR
                       </div>
                       <div class="product-card-content">
                          <h3>
-                            <a href="single-shop.html">Plastic Sitting Chair</a>
+                            <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                                @if(session()->get('language') == 'arabic')
+                                {{ $product->product_name_ar }}
+                                @else
+                                {{ $product->product_name_en }}
+                                @endif
+                             </a>
                          </h3>
-                         <p class="product-id">N23HN456</p>
-                         <div class="product-price">$20.0 <del>$33.0</del></div>
+                         <p class="product-id">{{ $product->product_code }}</p>
+                         @if($product->discount_price == NULL)
+                         <div class="product-price">${{ $product->selling_price }}</div>
+                         @else
+                         <div class="product-price">${{ $product->selling_price }} <del>${{ $product->discount_price }}</del></div>
+                         @endif
                       </div>
                    </div>
                 </div>
-                <div class="item">
-                   <div class="product-card-flat">
-                      <div class="product-card-thumb">
-                         <a href="single-shop.html">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-6.png" alt="product">
-                         </a>
-                         <ul class="product-card-action">
-                            <li>
-                               <a href="#">
-                               <i class="flaticon-shopping-cart"></i>
-                               <span>Add Cart</span>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="quick-view-trigger">
-                               <i class="flaticon-visibility"></i>
-                               <span>Quick View</span>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#">
-                               <i class="flaticon-like"></i>
-                               <span>Add Wishlist</span>
-                               </a>
-                            </li>
-                         </ul>
-                         <div class="product-status">New</div>
-                         <div class="product-counter daily-counter-2">
-                            <div class="product-counter-item day2"></div>
-                            <div class="product-counter-item hour2"></div>
-                            <div class="product-counter-item min2"></div>
-                            <div class="product-counter-item sec2"></div>
-                         </div>
-                      </div>
-                      <div class="product-card-content">
-                         <h3>
-                            <a href="single-shop.html">Mini Table</a>
-                         </h3>
-                         <p class="product-id">R24HER324</p>
-                         <div class="product-price">$120.0 <del>$150.0</del></div>
-                      </div>
-                   </div>
-                </div>
-                <div class="item">
-                   <div class="product-card-flat">
-                      <div class="product-card-thumb">
-                         <a href="single-shop.html">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-10.png" alt="product">
-                         </a>
-                         <ul class="product-card-action">
-                            <li>
-                               <a href="#">
-                               <i class="flaticon-shopping-cart"></i>
-                               <span>Add Cart</span>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="quick-view-trigger">
-                               <i class="flaticon-visibility"></i>
-                               <span>Quick View</span>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#">
-                               <i class="flaticon-like"></i>
-                               <span>Add Wishlist</span>
-                               </a>
-                            </li>
-                         </ul>
-                         <div class="product-status">New</div>
-                         <div class="product-counter daily-counter">
-                            <div class="product-counter-item day1"></div>
-                            <div class="product-counter-item hour1"></div>
-                            <div class="product-counter-item min1"></div>
-                            <div class="product-counter-item sec1"></div>
-                         </div>
-                      </div>
-                      <div class="product-card-content">
-                         <h3>
-                            <a href="single-shop.html">Park Sitting Chair</a>
-                         </h3>
-                         <p class="product-id">R23HY45</p>
-                         <div class="product-price">$150.0 <del>$170.0</del></div>
-                      </div>
-                   </div>
-                </div>
-                <div class="item">
-                   <div class="product-card-flat">
-                      <div class="product-card-thumb">
-                         <a href="single-shop.html">
-                         <img src="{{ asset('frontend/assets') }}/images/products/product-8.png" alt="product">
-                         </a>
-                         <ul class="product-card-action">
-                            <li>
-                               <a href="#">
-                               <i class="flaticon-shopping-cart"></i>
-                               <span>Add Cart</span>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="quick-view-trigger">
-                               <i class="flaticon-visibility"></i>
-                               <span>Quick View</span>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#">
-                               <i class="flaticon-like"></i>
-                               <span>Add Wishlist</span>
-                               </a>
-                            </li>
-                         </ul>
-                         <div class="product-status">New</div>
-                         <div class="product-counter daily-counter-2">
-                            <div class="product-counter-item day2"></div>
-                            <div class="product-counter-item hour2"></div>
-                            <div class="product-counter-item min2"></div>
-                            <div class="product-counter-item sec2"></div>
-                         </div>
-                      </div>
-                      <div class="product-card-content">
-                         <h3>
-                            <a href="single-shop.html">Simple Sitting Chair</a>
-                         </h3>
-                         <p class="product-id">TN232EN</p>
-                         <div class="product-price">$250.0 <del>$350.0</del></div>
-                      </div>
-                   </div>
-                </div>
+                @endforeach
+
              </div>
           </div>
+
        </div>
     </div>
- </div>
+</div>
+
+
  <section class="testimonial-section p-tb-100 bg-yellow bg-shape">
     <div class="container">
        <div class="section-title">
@@ -616,6 +593,7 @@ Elegant Furnitur QR
        </div>
     </div>
  </section>
+
  <section class="service-section pt-100 pb-70">
     <div class="container">
        <div class="row">
@@ -666,18 +644,109 @@ Elegant Furnitur QR
        </div>
     </div>
  </section>
+
+ <div class="new-product-section pb-70">
+    <div class="container">
+       <div class="row">
+            <div class="col-sm-12 col-lg-12 pb-30">
+             <div class="product-info-header product-info-header-borderless">
+                <h2>@if(session()->get('language') == 'arabic') صفقة خاصة  @else Special Deals @endif</h2>
+                <div class="carousel-control-arrows">
+                   <button class="dailysale-control-left carousel-control-arrow carousel-control-arrow-radius">
+                   <i class="flaticon-back"></i>
+                   </button>
+                   <button class="dailysale-control-right carousel-control-arrow carousel-control-arrow-radius">
+                   <i class="flaticon-next"></i>
+                   </button>
+                </div>
+             </div>
+             <div class="daily-sales-carousel owl-carousel">
+                
+                @foreach($special_deals as $key => $product)
+                <div class="item">
+                   <div class="product-card-flat">
+                      <div class="product-card-thumb">
+                         <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                         <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                         </a>
+                         <ul class="product-card-action">
+                            <li>
+                               <a href="#">
+                               <i class="flaticon-shopping-cart"></i>
+                               <span>Add Cart</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="#" class="quick-view-trigger">
+                               <i class="flaticon-visibility"></i>
+                               <span>Quick View</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="#">
+                               <i class="flaticon-like"></i>
+                               <span>Add Wishlist</span>
+                               </a>
+                            </li>
+                         </ul>
+                         @php
+                          $amount = $product->selling_price - $product->discount_price;
+                          $discount = round(($amount/$product->selling_price)*100);
+                         @endphp
+                           
+                         @if($product->discount_price == NULL)
+                         <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+                         @else
+                         <div class="product-status">{{ $discount }}%</div>
+                         @endif
+                         <div class="product-counter daily-counter-1">
+                            <div class="product-counter-item day1"></div>
+                            <div class="product-counter-item hour1"></div>
+                            <div class="product-counter-item min1"></div>
+                            <div class="product-counter-item sec1"></div>
+                         </div>
+                      </div>
+                      <div class="product-card-content">
+                         <h3>
+                            <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                                @if(session()->get('language') == 'arabic')
+                                {{ $product->product_name_ar }}
+                                @else
+                                {{ $product->product_name_en }}
+                                @endif
+                             </a>
+                         </h3>
+                         <p class="product-id">{{ $product->product_code }}</p>
+                         @if($product->discount_price == NULL)
+                         <div class="product-price">${{ $product->selling_price }}</div>
+                         @else
+                         <div class="product-price">${{ $product->selling_price }} <del>${{ $product->discount_price }}</del></div>
+                         @endif
+                      </div>
+                   </div>
+                </div>
+                @endforeach
+
+             </div>
+          </div>
+
+       </div>
+    </div>
+</div>
+
  <section class="recent-arrival pb-100">
     <div class="container">
        <div class="section-title">
-          <h2>Our Recent Arrivals</h2>
+          <h2>@if(session()->get('language') == 'arabic') الوافدون الجدد لدينا @else Our Recent Arrivals @endif</h2>
        </div>
        <div class="recent-arrival-gallery">
           <div class="row">
+            @foreach($new_arrivals as $key => $product)
              <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
                 <div class="product-card-flat">
                    <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-5.png" alt="product">
+                      <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                      <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
                       </a>
                       <ul class="product-card-action">
                          <li>
@@ -699,286 +768,49 @@ Elegant Furnitur QR
                             </a>
                          </li>
                       </ul>
-                      <div class="product-status">-20%</div>
+                      @php
+                      $amount = $product->selling_price - $product->discount_price;
+                      $discount = round(($amount/$product->selling_price)*100);
+                      @endphp
+                        
+                      @if($product->discount_price == NULL)
+                      <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+                      @else
+                      <div class="product-status">{{ $discount }}%</div>
+                      @endif
                    </div>
                    <div class="product-card-content">
                       <h3>
-                         <a href="single-shop.html">Relaxation Sofa</a>
+                         <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                            @if(session()->get('language') == 'arabic')
+                            {{ $product->product_name_ar }}
+                            @else
+                            {{ $product->product_name_en }}
+                            @endif
+                         </a>
                       </h3>
-                      <p class="product-id">N23HN456</p>
-                      <div class="product-price">$300.0 <del>$330.0</del></div>
+                      <p class="product-id">{{ $product->product_code }}</p>
+                      @if($product->discount_price == NULL)
+                      <div class="product-price">${{ $product->selling_price }}</div>
+                      @else
+                      <div class="product-price">${{ $product->selling_price }} <del>${{ $product->discount_price }}</del></div>
+                      @endif
                    </div>
                 </div>
              </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-4.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">New</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">Book Self</a>
-                      </h3>
-                      <p class="product-id">M43HG435</p>
-                      <div class="product-price">$50.0 <del>$80.0</del></div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-2.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">-20%</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">Relax Chairs</a>
-                      </h3>
-                      <p class="product-id">R23HY45</p>
-                      <div class="product-price">$220.0 <del>$250.0</del></div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-3.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">-33%</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">Relax Sofa</a>
-                      </h3>
-                      <p class="product-id">TM232EN</p>
-                      <div class="product-price">$320.0 <del>$330.0</del></div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-9.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">New</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">Gaming Chair</a>
-                      </h3>
-                      <p class="product-id">M43HG435</p>
-                      <div class="product-price">$320.0 <del>$340.0</del></div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-17.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">New</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">Hanging Chair</a>
-                      </h3>
-                      <p class="product-id">N23GH345</p>
-                      <div class="product-price">$250.0 <del>$350.0</del></div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-8.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">New</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">3 Leg Chair</a>
-                      </h3>
-                      <p class="product-id">TN232EN</p>
-                      <div class="product-price">$110.0 <del>$120.0</del></div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
-                <div class="product-card-flat">
-                   <div class="product-card-thumb">
-                      <a href="single-shop.html">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-18.png" alt="product">
-                      </a>
-                      <ul class="product-card-action">
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-shopping-cart"></i>
-                            <span>Add Cart</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#" class="quick-view-trigger">
-                            <i class="flaticon-visibility"></i>
-                            <span>Quick View</span>
-                            </a>
-                         </li>
-                         <li>
-                            <a href="#">
-                            <i class="flaticon-like"></i>
-                            <span>Add Wishlist</span>
-                            </a>
-                         </li>
-                      </ul>
-                      <div class="product-status">-23%</div>
-                   </div>
-                   <div class="product-card-content">
-                      <h3>
-                         <a href="single-shop.html">Dining Table</a>
-                      </h3>
-                      <p class="product-id">N23GH345</p>
-                      <div class="product-price">$200.0 <del>$230.0</del></div>
-                   </div>
-                </div>
-             </div>
+             @endforeach
           </div>
        </div>
        <div class="text-center load-more">
           <button class="btn main-btn main-btn-radius load-more-btn">
           <i class="flaticon-loading"></i>
-          Load More
+          @if(session()->get('language') == 'arabic') تحميل المزيد  @else Load More @endif
           </button>
        </div>
     </div>
- </section>
+</section>
+
+
  <section class="reach-us-section pb-70">
     <div class="container">
        <div class="row">
