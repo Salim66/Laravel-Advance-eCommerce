@@ -18,8 +18,9 @@ class IndexController extends Controller
      */
     public function index() {
         $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
+        $featureds = Product::where('status', 1)->where('featured', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
-        return view('frontend.index', compact('categories', 'products'));
+        return view('frontend.index', compact('categories', 'products', 'featureds'));
     }
 
     /**

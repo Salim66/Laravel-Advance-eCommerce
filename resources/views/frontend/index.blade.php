@@ -99,6 +99,75 @@ Elegant Furnitur QR
     </div>
 </section>
 
+<section class="top-rated-product-section pb-70">
+    <div class="container">
+       <div class="section-title">
+          <h2>@if(session()->get('language') == 'arabic') منتجات مميزة @else Featured Products @endif</h2>
+       </div>
+       <div class="row">
+
+
+        @foreach($featureds as $product)
+          <div class="col-sm-6 col-lg-3 pb-30">
+             <div class="product-card-two product-card-two-thirdcolor">
+                <div class="product-card-thumb">
+                   <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                   <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                   </a>
+                   <ul class="product-card-action">
+                      <li>
+                         <a href="#">
+                         <i class="flaticon-shopping-cart"></i>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#" class="quick-view-trigger">
+                         <i class="flaticon-visibility"></i>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#">
+                         <i class="flaticon-like"></i>
+                         </a>
+                      </li>
+                   </ul>
+                </div>
+                <div class="product-card-content">
+                   <h3>
+                        <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                            @if(session()->get('language') == 'arabic')
+                            {{ $product->product_name_ar }}
+                            @else
+                            {{ $product->product_name_en }}
+                            @endif
+                        </a>
+                   </h3>
+                   <p class="product-id">{{ $product->product_code }}</p>
+                   @if($product->discount_price == NULL)
+                    <div class="product-price">${{ $product->selling_price }}</div>
+                    @else
+                    <div class="product-price">${{ $product->selling_price }} <del>${{ $product->discount_price }}</del></div>
+                    @endif
+                </div>
+                @php
+                $amount = $product->selling_price - $product->discount_price;
+                $discount = round(($amount/$product->selling_price)*100);
+                @endphp
+                  
+                @if($product->discount_price == NULL)
+                <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+                @else
+                <div class="product-status product-status-thirdcolor">{{ $discount }}%</div>
+                @endif
+             </div>
+          </div>
+        @endforeach  
+
+
+       </div>
+    </div>
+ </section>
+
 @include('frontend.body.brand')
 
 <div class="new-product-section pb-70">
