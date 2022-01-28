@@ -7,7 +7,7 @@
       <meta name="author" content="EnvyTheme">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-      <title>Outo - Furniture Shop</title>
+      <title>@yield('title') - Furniture Shop</title>
       <link rel="icon" href="{{ asset('frontend/assets') }}/images/favicon.png" type="image/png" sizes="16x16">
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/bootstrap.min.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/animate.min.css" type="text/css" media="all" />

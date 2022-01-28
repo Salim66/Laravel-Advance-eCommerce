@@ -1,5 +1,9 @@
 @extends('frontend.partial_master')
 
+@section('title')
+{{ $product->product_name_en }}
+@endsection
+
 @section('partial_content')
 <section class="product-details-section pt-100 pb-100">
     <div class="container">
@@ -48,9 +52,15 @@
              <div class="col-12 col-lg-6 pb-30">
                 <div class="product-details-item">
                    <div class="product-details-caption product-details-caption-secondcolor">
-                      <h3>Stylish Chair</h3>
-                      <p class="product-id">N23GH345</p>
-                      <div class="review-star-group">
+                      <h3>
+                        @if(session()->get('language') == 'arabic')
+                        {{ $product->product_name_ar }}
+                        @else
+                        {{ $product->product_name_en }}
+                        @endif
+                      </h3>
+                      <p class="product-id">{{ $product->product_code }}</p>
+                      {{-- <div class="review-star-group">
                          <ul class="review-star">
                             <li class="full-star"><i class="flaticon-star"></i></li>
                             <li class="full-star"><i class="flaticon-star"></i></li>
@@ -59,10 +69,20 @@
                             <li class="full-star"><i class="flaticon-star"></i></li>
                          </ul>
                          <span>(4.5 Reviews)</span>
-                      </div>
-                      <div class="product-price">$300.0 <del>$330.0</del></div>
+                      </div> --}}
+                       @if($product->discount_price == NULL)
+                      <div class="product-price">${{ $product->selling_price }}</div>
+                      @else
+                      <div class="product-price">${{ $product->discount_price }} <del>${{ $product->selling_price }}</del></div>
+                      @endif
                       <div class="product-details-para">
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimquae aut fugit, sed quia consequuntur magni doloreratione voluptatem a incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                         <p>
+                            @if(session()->get('language') == 'arabic')
+                            {{ $product->short_descp_ar }}
+                            @else
+                            {{ $product->short_descp_en }}
+                            @endif
+                         </p>
                       </div>
                       <div class="product-choice">
                          <div class="product-choice-item">
@@ -121,15 +141,11 @@
              <div class="product-tab-information">
                 <div class="product-tab-information-item active" data-product-details-tab="1">
                    <div class="product-description">
-                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tey mpor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At veropei eos et accu sam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea tak imata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, conset. </p>
-                      <ul>
-                         <li>Lorem ipsum dolor sit amet, consete.</li>
-                         <li>Ture sadipscing elitr, sed diam. </li>
-                         <li>Nonumy eirmo od tey mpor invidunt.</li>
-                         <li>Uti labore et dolorer magna aliqu. </li>
-                         <li>Erat, sed diam voluptui. At veropei. </li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tey mpor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+                        @if(session()->get('language') == 'arabic')
+                        {!! $product->long_descp_ar !!}
+                        @else
+                        {!! $product->long_descp_en !!}
+                        @endif
                    </div>
                 </div>
                 <div class="product-tab-information-item" data-product-details-tab="2">
