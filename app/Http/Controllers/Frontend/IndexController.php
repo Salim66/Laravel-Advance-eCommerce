@@ -16,7 +16,7 @@ class IndexController extends Controller
      * Home page load
      */
     public function index() {
-        $products = Product::where('status', 1)->orderBy('id', 'DESC')->limit(12)->get();
+        $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
         return view('frontend.index', compact('categories', 'products'));
     }

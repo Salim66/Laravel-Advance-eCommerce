@@ -3,7 +3,7 @@
 @section('content')
 
 
-<section class="featured-product-section pb-70">
+{{-- <section class="featured-product-section pb-70">
     <div class="container">
        <div class="section-title">
           <h2>@if(session()->get('language') == 'arabic') منتجات جديدة @else New Products @endif</h2>
@@ -34,8 +34,8 @@
             $cat_products = App\Models\Product::where('status', 1)->where('category_id', $category->id)->latest()->get();
             // dd($cat_products);
         @endphp
-        @foreach($cat_products as $product)
-
+        @foreach($cat_products as $key => $product)
+            @if($key < 12)
           <div class="col-sm-6 col-lg-3 pb-30 product-item element-item category{{ $category->id }}">
              <div class="product-card-flat">
                 <div class="product-card-thumb">
@@ -62,7 +62,17 @@
                          </a>
                       </li>
                    </ul>
-                   <div class="product-status">-20%</div>
+                   @php
+                       $amount = $product->selling_price - $product->discount_price;
+                       $discount = round(($amount/$product->selling_price)*100);
+                   @endphp
+                   
+                   @if($product->discount_price == NULL)
+                   <div class="product-status">New</div>
+                   @else
+                   <div class="product-status">{{ $discount }}</div>
+                   @endif
+
                 </div>
                 <div class="product-card-content">
                    <h3>
@@ -79,6 +89,7 @@
                 </div>
              </div>
           </div>
+          @endif
         @endforeach
          
     @endforeach
@@ -90,7 +101,86 @@
 
        </div>
     </div>
- </section>
+ </section> --}}
+
+
+
+ <section class="recent-arrival pb-100">
+    <div class="container">
+       <div class="section-title">
+          <h2>@if(session()->get('language') == 'arabic') منتجات جديدة @else New Products @endif</h2>
+       </div>
+       <div class="recent-arrival-gallery">
+          <div class="row">
+            @foreach($products as $key => $product)
+             <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
+                <div class="product-card-flat">
+                   <div class="product-card-thumb">
+                      <a href="single-shop.html">
+                      <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                      </a>
+                      <ul class="product-card-action">
+                         <li>
+                            <a href="#">
+                            <i class="flaticon-shopping-cart"></i>
+                            <span>Add Cart</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#" class="quick-view-trigger">
+                            <i class="flaticon-visibility"></i>
+                            <span>Quick View</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="#">
+                            <i class="flaticon-like"></i>
+                            <span>Add Wishlist</span>
+                            </a>
+                         </li>
+                      </ul>
+                      @php
+                      $amount = $product->selling_price - $product->discount_price;
+                      $discount = round(($amount/$product->selling_price)*100);
+                      @endphp
+                        
+                      @if($product->discount_price == NULL)
+                      <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+                      @else
+                      <div class="product-status">{{ $discount }}%</div>
+                      @endif
+                   </div>
+                   <div class="product-card-content">
+                      <h3>
+                         <a href="single-shop.html">
+                            @if(session()->get('language') == 'arabic')
+                            {{ $product->product_name_ar }}
+                            @else
+                            {{ $product->product_name_en }}
+                            @endif
+                         </a>
+                      </h3>
+                      <p class="product-id">N23HN456</p>
+                      @if($product->discount_price == NULL)
+                      <div class="product-price">${{ $product->selling_price }}</div>
+                      @else
+                      <div class="product-price">${{ $product->selling_price }} <del>${{ $product->discount_price }}</del></div>
+                      @endif
+                   </div>
+                </div>
+             </div>
+             @endforeach
+          </div>
+       </div>
+       <div class="text-center load-more">
+          <button class="btn main-btn main-btn-radius load-more-btn">
+          <i class="flaticon-loading"></i>
+          @if(session()->get('language') == 'arabic') تحميل المزيد  @else Load More @endif
+          </button>
+       </div>
+    </div>
+</section>
+
 
 
 <section class="special-offer-banner pb-100">
