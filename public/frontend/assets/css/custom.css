@@ -49,3 +49,8 @@
 .nav-item__border:not(:last-child) {
     border-bottom: 1px solid #eee;
 }
+
+.product-selection-tab li {
+    padding: 45px 80px !important;
+    align-items: center;
+}

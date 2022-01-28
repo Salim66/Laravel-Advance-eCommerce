@@ -2,17 +2,18 @@
 
 @section('content')
 
+
 <section class="featured-product-section pb-70">
     <div class="container">
        <div class="section-title">
-          <h2>
-            @if(session()->get('language') == 'arabic') منتجات جديدة @else New Products @endif
-          </h2>
+          <h2>@if(session()->get('language') == 'arabic') منتجات جديدة @else New Products @endif</h2>
        </div>
        <ul class="product-selection-tab">
+
           <li class="active" data-filter="*">@if(session()->get('language') == 'arabic') الجميع <br> العنصر @else All <br> Item @endif</li>
+
           @foreach($categories as $category)
-          <li data-filter=".chair">
+          <li data-filter=".category{{ $category->id }}">
              <i class="flaticon-armchair"></i>
              @if(session()->get('language') == 'arabic')
              {{ $category->category_name_ar }}
@@ -21,26 +22,21 @@
              @endif
           </li>
           @endforeach
-          {{-- <li data-filter=".bed">
-             <i class="flaticon-single-bed"></i>
-             Bed
-          </li>
-          <li data-filter=".sofa">
-             <i class="flaticon-sofa"></i>
-             Sofa
-          </li>
-          <li data-filter=".lamp">
-             <i class="flaticon-table-lamp-1"></i>
-             Lamp
-          </li>
-          <li data-filter=".tables">
-             <i class="flaticon-table"></i>
-             Table
-          </li> --}}
+       
        </ul>
        <div class="product-tab-gallery row">
-        @foreach($products as $product)
-          <div class="col-sm-6 col-lg-3 pb-30 product-item element-item chair sofa">
+
+
+    @foreach($categories as $category)
+
+
+        @php
+            $cat_products = App\Models\Product::where('status', 1)->where('category_id', $category->id)->latest()->get();
+            // dd($cat_products);
+        @endphp
+        @foreach($cat_products as $product)
+
+          <div class="col-sm-6 col-lg-3 pb-30 product-item element-item category{{ $category->id }}">
              <div class="product-card-flat">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
@@ -73,7 +69,7 @@
                       <a href="single-shop.html">
                         @if(session()->get('language') == 'arabic')
                         {{ $product->product_name_ar }}
-                        @else 
+                        @else
                         {{ $product->product_name_en }}
                         @endif
                       </a>
@@ -84,10 +80,17 @@
              </div>
           </div>
         @endforeach
-  
+         
+    @endforeach
+
+
+
+   
+
+
        </div>
     </div>
-</section>
+ </section>
 
 
 <section class="special-offer-banner pb-100">

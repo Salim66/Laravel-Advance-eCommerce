@@ -20,6 +20,9 @@
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/nice-select.css" type="text/css" media="all" />
       <!-- Toastr CSS -->
 	  <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}">
+      <!-- Fontawesome -->
+	  <link rel="stylesheet" href="{{ asset('frontend/assets/css/fontawesome.min.css') }}">
+
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/style.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/responsive.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/custom.css" type="text/css" media="all" />
@@ -58,6 +61,7 @@
       <script src="{{ asset('frontend/assets') }}/js/form-validator.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/contact-form-script.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/jquery.meanmenu.min.js"></script>
+      <script src="{{ asset('frontend/assets') }}/js/fontawesome.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
 
       <!-- Toastr JS -->
