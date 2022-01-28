@@ -116,7 +116,7 @@
              <div class="col-sm-6 col-lg-3 pb-30 recent-product-item">
                 <div class="product-card-flat">
                    <div class="product-card-thumb">
-                      <a href="single-shop.html">
+                      <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
                       <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
                       </a>
                       <ul class="product-card-action">
@@ -152,7 +152,7 @@
                    </div>
                    <div class="product-card-content">
                       <h3>
-                         <a href="single-shop.html">
+                         <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
                             @if(session()->get('language') == 'arabic')
                             {{ $product->product_name_ar }}
                             @else
@@ -160,7 +160,7 @@
                             @endif
                          </a>
                       </h3>
-                      <p class="product-id">N23HN456</p>
+                      <p class="product-id">{{ $product->product_code }}</p>
                       @if($product->discount_price == NULL)
                       <div class="product-price">${{ $product->selling_price }}</div>
                       @else

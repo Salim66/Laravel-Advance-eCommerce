@@ -100,4 +100,12 @@ class IndexController extends Controller
 
     }
 
+    /**
+     * Product Details page
+     */
+    public function productDetails($id, $slug){
+        $product = Product::findOrFail($id);
+        return view('frontend.product.product_details', compact('product'));
+    }
+
 }
