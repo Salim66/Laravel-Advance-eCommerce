@@ -100,15 +100,37 @@
                       </div>
                       <div class="product-choice">
                          <div class="product-choice-item">
-                            <label>Select Colors</label>
+                            <label>@if(session()->get('language') == 'arabic') حدد الألوان @else Select Colors @endif</label>
                             <select class="form-control product-color">
-                               <option value="1">Available colors</option>
-                               <option value="2">Blue</option>
-                               <option value="3">Green</option>
+                               <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
+                               @if(session()->get('language') == 'arabic')
+                                @foreach($product_color_ar as $color)
+                                    <option value="{{ $color }}">{{ $color }}</option>
+                                @endforeach
+                               @else    
+                                @foreach($product_color_en as $color)
+                                    <option value="{{ $color }}">{{ $color }}</option>
+                                @endforeach
+                               @endif
                             </select>
                          </div>
                          <div class="product-choice-item">
-                            <label>Select Amount</label>
+                            <label>@if(session()->get('language') == 'arabic') أختر الحجم @else Select Size @endif</label>
+                            <select class="form-control product-color">
+                               <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
+                               @if(session()->get('language') == 'arabic')
+                               @foreach($product_size_ar as $size)
+                                   <option value="{{ $size }}">{{ $size }}</option>
+                               @endforeach
+                              @else    
+                               @foreach($product_size_en as $size)
+                                   <option value="{{ $size }}">{{ $size }}</option>
+                               @endforeach
+                              @endif
+                            </select>
+                         </div>
+                         <div class="product-choice-item mt-3">
+                            <label>@if(session()->get('language') == 'arabic') حدد المبلغ @else Select Amount @endif</label>
                             <div class="cart-quantity">
                                <button class="qu-btn dec">-</button>
                                <input type="text" class="qu-input" value="1">

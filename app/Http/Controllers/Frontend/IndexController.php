@@ -123,8 +123,21 @@ class IndexController extends Controller
      */
     public function productDetails($id, $slug){
         $product = Product::findOrFail($id);
+
+        $color_en = $product->product_color_en;
+        $product_color_en = explode(',', $color_en);
+
+        $color_ar = $product->product_color_ar;
+        $product_color_ar = explode(',', $color_ar);
+
+        $size_en = $product->product_size_en;
+        $product_size_en = explode(',', $size_en);
+
+        $size_ar = $product->product_size_ar;
+        $product_size_ar = explode(',', $size_ar);
+
         $multiple_img = MultiImg::where('product_id', $product->id)->get();
-        return view('frontend.product.product_details', compact('product', 'multiple_img'));
+        return view('frontend.product.product_details', compact('product', 'multiple_img', 'product_color_en', 'product_color_ar', 'product_size_en', 'product_size_ar'));
     }
 
     /**
