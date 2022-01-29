@@ -54,3 +54,13 @@
     padding: 45px 80px !important;
     align-items: center;
 }
+
+.navbar-area-two .main-nav nav .navbar-nav .nav-item:hover>a {
+    background-color: #4f5ac2 !important;
+    color: #fff !important;
+}
+
+.product-card-action li:hover {
+    background-color: #4f5ac2 !important;
+    color: #fff !important;
+}

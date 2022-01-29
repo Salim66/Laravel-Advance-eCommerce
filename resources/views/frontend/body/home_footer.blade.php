@@ -207,6 +207,11 @@
        </div>
     </div>
 </div>
+
+@php
+    $product = App\Models\Product::where('status', 1)->where('special_offer', 1)->latest()->first();
+@endphp
+
 <div class="newsletter-popup-wrapepr">
     <div class="newsletter-modal">
        <div class="close-btn newsletter-modal-close">
@@ -216,9 +221,25 @@
           <div class="col-md-6 pb-30">
              <div class="newsletter-item">
                 <div class="section-title section-title-left text-md-start">
-                   <small>Get 30% offer in first buy.</small>
-                   <h2>Add Us To Newsletter And Get A Discount</h2>
-                   <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed en diam nonumy eirmod tempor.</p>
+                    @php
+                    $amount = $product->selling_price - $product->discount_price;
+                    $discount = round(($amount/$product->selling_price)*100);
+                    @endphp
+                   <small>Get {{ $discount }}% offer in first buy.</small>
+                   <h2>
+                    @if(session()->get('language') == 'arabic')
+                    {{ $product->product_name_ar }}
+                    @else
+                    {{ $product->product_name_en }}
+                    @endif
+                   </h2>
+                   <p>
+                    @if(session()->get('language') == 'arabic')
+                    {{ $product->short_descp_ar }}
+                    @else
+                    {{ $product->short_descp_en }}
+                    @endif
+                   </p>
                 </div>
                 <form class="newsletter-form">
                    <div class="form-group form-group-radius">
@@ -230,7 +251,7 @@
           </div>
           <div class="col-md-6 pb-30 d-none d-md-block">
              <div class="newsletter-item text-center">
-                <img src="{{ asset('frontend/assets') }}/images/newsletter-popup.png" alt="newsletter">
+                <img src="{{ URL::to($product->product_thumbnail) }}" alt="newsletter">
              </div>
           </div>
        </div>

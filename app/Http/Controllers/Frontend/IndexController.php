@@ -25,9 +25,16 @@ class IndexController extends Controller
         $daily_sales = Product::where('status', 1)->where('daily_sales', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $special_deals = Product::where('status', 1)->where('special_deals', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $new_arrivals = Product::where('status', 1)->where('new_arrivals', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $product = Product::where('status', 1)->where('new_arrivals', 1)->orderBy('id', 'DESC')->limit(1)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
-        return view('frontend.index', compact('categories', 'products', 'featureds', 'hot_deals', 'special_offer', 'best_seller', 'daily_sales', 'new_arrivals', 'product', 'special_deals'));
+
+        $category_skip_0 = Category::skip(0)->first();
+        $product_category_skip_0 = Product::where('status', 1)->where('category_id', $category_skip_0->id)->limit(8)->get();
+        $category_skip_1 = Category::skip(1)->first();
+        $product_category_skip_1 = Product::where('status', 1)->where('category_id', $category_skip_1->id)->limit(8)->get();
+        $category_skip_2 = Category::skip(2)->first();
+        $product_category_skip_2 = Product::where('status', 1)->where('category_id', $category_skip_2->id)->limit(8)->get();
+
+        return view('frontend.index', compact('categories', 'products', 'featureds', 'hot_deals', 'special_offer', 'best_seller', 'daily_sales', 'new_arrivals', 'special_deals', 'category_skip_0', 'product_category_skip_0', 'category_skip_1', 'product_category_skip_1', 'category_skip_2', 'product_category_skip_2' ));
     }
 
     /**

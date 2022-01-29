@@ -38,13 +38,13 @@
       @section('partial_content')
       @show
 
-      @include('frontend.body.partial_footer')
+      @include('frontend.body.home_footer')
 
       <div class="scroll-top" id="scrolltop">
-         <div class="scroll-top-inner scroll-top-inner-secondcolor">
-            <i class="flaticon-up-arrow"></i>
-         </div>
-      </div>
+        <div class="scroll-top-inner">
+           <i class="flaticon-up-arrow"></i>
+        </div>
+     </div>
       <script src="{{ asset('frontend/assets') }}/js/jquery-3.6.0.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/bootstrap.bundle.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/jquery-ui.js"></script>

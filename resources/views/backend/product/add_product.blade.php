@@ -111,7 +111,7 @@
                         </div> <!-- end 2nd row -->
 
                         <div class="row"> <!-- start 3rd row -->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Product Code <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -122,7 +122,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Product Quantity <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -133,32 +133,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <h5>Product Tags English <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <input type="text" name="product_tags_en" value="Lorem,Ipsum,Amet" data-role="tagsinput" required />
-                                        @error('product_name_ar')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
                         </div> <!-- end 3rd row -->
 
                         <div class="row"> <!-- start 4th row -->
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <h5>Product Tags Arabic <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <input type="text" name="product_tags_ar" value="لوريم,إبسوم,أميت" data-role="tagsinput" required />
-                                        @error('product_tags_ar')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Product Size English <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -169,7 +147,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <h5>Product Size Arabic <span class="text-danger">*</span></h5>
                                     <div class="controls">

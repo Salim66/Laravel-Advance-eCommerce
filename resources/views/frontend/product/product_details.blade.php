@@ -246,6 +246,9 @@
        </div>
     </div>
  </section>
+
+
+
  <section class="related-product-section pb-100">
     <div class="container">
        <div class="product-info-header product-info-header-two product-info-header-borderless">
@@ -264,7 +267,7 @@
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
-                   <img src="assets/images/products/product-16.png" alt="product">
+                   <img src="{{  URL::to('frontend/assets/images/products/product-16.png') }}" alt="product">
                    </a>
                    <ul class="product-card-action">
                       <li>
@@ -296,7 +299,7 @@
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
-                   <img src="assets/images/products/product-1.png" alt="product">
+                   <img src="{{  URL::to('frontend/') }}/assets/images/products/product-1.png" alt="product">
                    </a>
                    <ul class="product-card-action">
                       <li>
@@ -328,7 +331,7 @@
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
-                   <img src="assets/images/products/product-17.png" alt="product">
+                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-17.png" alt="product">
                    </a>
                    <ul class="product-card-action">
                       <li>
@@ -360,7 +363,7 @@
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
-                   <img src="assets/images/products/product-18.png" alt="product">
+                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-18.png" alt="product">
                    </a>
                    <ul class="product-card-action">
                       <li>
@@ -392,7 +395,7 @@
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
-                   <img src="assets/images/products/product-6.png" alt="product">
+                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-6.png" alt="product">
                    </a>
                    <ul class="product-card-action">
                       <li>
@@ -424,7 +427,7 @@
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
                    <a href="single-shop.html">
-                   <img src="assets/images/products/product-11.png" alt="product">
+                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-11.png" alt="product">
                    </a>
                    <ul class="product-card-action">
                       <li>
