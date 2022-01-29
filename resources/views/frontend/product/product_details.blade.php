@@ -5,6 +5,33 @@
 @endsection
 
 @section('partial_content')
+
+<header class="header header-page-bg">
+    <div class="container">
+       <div class="header-page-content">
+          <div class="row align-items-center">
+             <div class="col-md-7">
+                <div class="header-content">
+                   <h1>@if(session()->get('language') == 'arabic') متجر واحد @else Single Shop @endif </h1>
+                   <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                         <li class="breadcrumb-item"><a href="index.html">@if(session()->get('language') == 'arabic') مسكن @else Home @endif</a></li>
+                         <li class="breadcrumb-item active" aria-current="page">@if(session()->get('language') == 'arabic') متجر واحد @else Single Shop @endif</li>
+                      </ol>
+                   </nav>
+                </div>
+             </div>
+             <div class="col-md-5 d-none d-md-block">
+                <div class="header-content-image header-content-abs-image header-content-abs-image-lg">
+                   <img src="{{ URL::to('frontend/assets/images/inner-page-header/page-3.png') }}" alt="page">
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </header>
+ 
+
 <section class="product-details-section pt-100 pb-100">
     <div class="container">
        <div class="product-details-content">

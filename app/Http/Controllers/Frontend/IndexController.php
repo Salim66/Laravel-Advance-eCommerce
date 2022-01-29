@@ -19,11 +19,11 @@ class IndexController extends Controller
     public function index() {
         $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
         $featureds = Product::where('status', 1)->where('featured', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $hot_deals = Product::where('status', 1)->where('hot_deals', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $special_offer = Product::where('status', 1)->where('special_offer', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $hot_deals = Product::where('status', 1)->where('hot_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(8)->get();
+        $special_offer = Product::where('status', 1)->where('special_offer', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(8)->get();
         $best_seller = Product::where('status', 1)->where('best_seller', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $daily_sales = Product::where('status', 1)->where('daily_sales', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $special_deals = Product::where('status', 1)->where('special_deals', 1)->orderBy('id', 'DESC')->limit(8)->get();
+        $special_deals = Product::where('status', 1)->where('special_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(8)->get();
         $new_arrivals = Product::where('status', 1)->where('new_arrivals', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
 
@@ -46,7 +46,7 @@ class IndexController extends Controller
     }
 
     /**
-     * User profile 
+     * User profile
      */
     public function userProfile(){
         $id = Auth::user()->id;
@@ -124,5 +124,16 @@ class IndexController extends Controller
         $multiple_img = MultiImg::where('product_id', $product->id)->get();
         return view('frontend.product.product_details', compact('product', 'multiple_img'));
     }
+
+    /**
+     * Category Wise Products Search
+     */
+    public function cateogrywiseProducts($cat_id, $slug){
+        $products = Product::where('category_id', $cat_id)->where('status', 1)->orderBy('id', 'DESC')->get();
+        $category = Category::findOrFail($cat_id);
+        return view('frontend.product.cateogry_products', compact('products', 'category'));
+    }
+
+
 
 }

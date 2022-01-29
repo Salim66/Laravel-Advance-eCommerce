@@ -136,3 +136,5 @@ Route::post('/user/password/update', [IndexController::class, 'userPasswordUpdat
 Route::get('/arabic/language', [LanguageController::class, 'arabic'])->name('arabic.language');
 Route::get('/english/language', [LanguageController::class, 'english'])->name('english.language');
 Route::get('/product/detials/{id}/{slug}', [IndexController::class, 'productDetails'])->name('product.details');
+// Category Wise Product Search Routes
+Route::get('/category/products/{cat_id}/{slug}', [IndexController::class, 'cateogrywiseProducts']);
