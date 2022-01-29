@@ -283,7 +283,7 @@
 
                               @foreach($subcategories as $sub)
                               <li class="nav-item nav-item__border">
-                                  <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                  <a href="{{ url('/subcategory/products/'.$sub->id.'/'.$sub->subcategory_slug_en) }}" class="nav-link dropdown-toggle">
                                       @if(session()->get('language') == 'arabic') 
                                       {{ $sub->subcategory_name_ar }}
                                       @else 
@@ -299,7 +299,7 @@
 
                                   @foreach($subsubcategories as $subsub)
                                      <li class="nav-item nav-item__border">
-                                      <a href="login.html" class="nav-link">
+                                      <a href="{{ url('/subsubcategory/products/'.$subsub->id.'/'.$subsub->subsubcategory_slug_en) }}" class="nav-link">
                                           @if(session()->get('language') == 'arabic') 
                                           {{ $subsub->subsubcategory_name_ar }}
                                           @else 

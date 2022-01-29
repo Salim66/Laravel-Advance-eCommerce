@@ -138,3 +138,7 @@ Route::get('/english/language', [LanguageController::class, 'english'])->name('e
 Route::get('/product/detials/{id}/{slug}', [IndexController::class, 'productDetails'])->name('product.details');
 // Category Wise Product Search Routes
 Route::get('/category/products/{cat_id}/{slug}', [IndexController::class, 'cateogrywiseProducts']);
+// SubCategory Wise Product Search Routes
+Route::get('/subcategory/products/{subcat_id}/{slug}', [IndexController::class, 'subCateogrywiseProducts']);
+// Sub-SubCategory Wise Product Search Routes
+Route::get('/subsubcategory/products/{subsubcat_id}/{slug}', [IndexController::class, 'subSubCateogrywiseProducts']);

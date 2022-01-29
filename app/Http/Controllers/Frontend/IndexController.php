@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultiImg;
-use App\Models\Product;
+use App\Models\SubCategory;
+use Illuminate\Http\Request;
+use App\Models\SubSubCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -132,6 +134,24 @@ class IndexController extends Controller
         $products = Product::where('category_id', $cat_id)->where('status', 1)->orderBy('id', 'DESC')->get();
         $category = Category::findOrFail($cat_id);
         return view('frontend.product.cateogry_products', compact('products', 'category'));
+    }
+
+    /**
+     * SubCategory Wise Products Search
+     */
+    public function subCateogrywiseProducts($subcat_id, $slug){
+        $products = Product::where('subcategory_id', $subcat_id)->where('status', 1)->orderBy('id', 'DESC')->get();
+        $subcategory = SubCategory::findOrFail($subcat_id);
+        return view('frontend.product.subcateogry_products', compact('products', 'subcategory'));
+    }
+
+    /**
+     * Sub-SubCategory Wise Products Search
+     */
+    public function subSubCateogrywiseProducts($subsubcat_id, $slug){
+        $products = Product::where('subsubcategory_id', $subsubcat_id)->where('status', 1)->orderBy('id', 'DESC')->get();
+        $subsubcategory = SubSubCategory::findOrFail($subsubcat_id);
+        return view('frontend.product.subsubcateogry_products', compact('products', 'subsubcategory'));
     }
 
 
