@@ -301,7 +301,7 @@
  <section class="related-product-section pb-100">
     <div class="container">
        <div class="product-info-header product-info-header-two product-info-header-borderless">
-          <h2>Related Product</h2>
+          <h2>@if(session()->get('language') == 'arabic') المنتجات ذات الصلة  @else Related Product @endif</h2>
           <div class="carousel-control-arrows">
              <button class="product-control-left carousel-control-arrow">
              <i class="flaticon-back"></i>
@@ -312,12 +312,14 @@
           </div>
        </div>
        <div class="product-carousel owl-carousel">
+
+        @foreach($related_products as $product)
           <div class="item">
              <div class="product-card-two product-card-two-secondcolor">
                 <div class="product-card-thumb">
-                   <a href="single-shop.html">
-                   <img src="{{  URL::to('frontend/assets/images/products/product-16.png') }}" alt="product">
-                   </a>
+                    <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                        <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                    </a>
                    <ul class="product-card-action">
                       <li>
                          <a href="#">
@@ -337,173 +339,38 @@
                    </ul>
                 </div>
                 <div class="product-card-content">
-                   <h3><a href="single-shop.html">Wooden Light </a></h3>
-                   <p class="product-id">R24HER324</p>
-                   <div class="product-price">$120.0 <del>$150.0</del></div>
+                   <h3>
+                    <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                        @if(session()->get('language') == 'arabic')
+                        {{ $product->product_name_ar }}
+                        @else
+                        {{ $product->product_name_en }}
+                        @endif
+                    </a>
+                   </h3>
+                   <p class="product-id">{{ $product->product_code }}</p>
+                   @if($product->discount_price == NULL)
+                  <div class="product-price">${{ $product->selling_price }}</div>
+                  @else
+                  <div class="product-price">${{ $product->discount_price }} <del>${{ $product->selling_price }}</del></div>
+                  @endif
                 </div>
-                <div class="product-status product-status-purple">New</div>
+                @php
+                $amount = $product->selling_price - $product->discount_price;
+                $discount = round(($amount/$product->selling_price)*100);
+               @endphp
+                 
+               @if($product->discount_price == NULL)
+               <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+               @else
+               <div class="product-status">{{ $discount }}%</div>
+               @endif
              </div>
           </div>
-          <div class="item">
-             <div class="product-card-two product-card-two-secondcolor">
-                <div class="product-card-thumb">
-                   <a href="single-shop.html">
-                   <img src="{{  URL::to('frontend/') }}/assets/images/products/product-1.png" alt="product">
-                   </a>
-                   <ul class="product-card-action">
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-shopping-cart"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="quick-view-trigger">
-                         <i class="flaticon-visibility"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-like"></i>
-                         </a>
-                      </li>
-                   </ul>
-                </div>
-                <div class="product-card-content">
-                   <h3><a href="single-shop.html">Photo Shoot Lamp </a></h3>
-                   <p class="product-id">M43HG435</p>
-                   <div class="product-price">$250.0 <del>$370.0</del></div>
-                </div>
-                <div class="product-status product-status-thirdcolor">-15%</div>
-             </div>
-          </div>
-          <div class="item">
-             <div class="product-card-two product-card-two-secondcolor">
-                <div class="product-card-thumb">
-                   <a href="single-shop.html">
-                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-17.png" alt="product">
-                   </a>
-                   <ul class="product-card-action">
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-shopping-cart"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="quick-view-trigger">
-                         <i class="flaticon-visibility"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-like"></i>
-                         </a>
-                      </li>
-                   </ul>
-                </div>
-                <div class="product-card-content">
-                   <h3><a href="single-shop.html">Hanging Chair </a></h3>
-                   <p class="product-id">M43HG435</p>
-                   <div class="product-price">$280.0 <del>$290.0</del></div>
-                </div>
-                <div class="product-status product-status-purple">New</div>
-             </div>
-          </div>
-          <div class="item">
-             <div class="product-card-two product-card-two-secondcolor">
-                <div class="product-card-thumb">
-                   <a href="single-shop.html">
-                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-18.png" alt="product">
-                   </a>
-                   <ul class="product-card-action">
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-shopping-cart"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="quick-view-trigger">
-                         <i class="flaticon-visibility"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-like"></i>
-                         </a>
-                      </li>
-                   </ul>
-                </div>
-                <div class="product-card-content">
-                   <h3><a href="single-shop.html">Simple Dining Table</a></h3>
-                   <p class="product-id">R23HY45</p>
-                   <div class="product-price">$330.0 <del>$370.0</del></div>
-                </div>
-                <div class="product-status product-status-purple">Sold</div>
-             </div>
-          </div>
-          <div class="item">
-             <div class="product-card-two product-card-two-secondcolor">
-                <div class="product-card-thumb">
-                   <a href="single-shop.html">
-                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-6.png" alt="product">
-                   </a>
-                   <ul class="product-card-action">
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-shopping-cart"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="quick-view-trigger">
-                         <i class="flaticon-visibility"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-like"></i>
-                         </a>
-                      </li>
-                   </ul>
-                </div>
-                <div class="product-card-content">
-                   <h3><a href="single-shop.html">Mini High Table </a></h3>
-                   <p class="product-id">M43HG435</p>
-                   <div class="product-price">$120.0 <del>$150.0</del></div>
-                </div>
-                <div class="product-status product-status-purple">Sold</div>
-             </div>
-          </div>
-          <div class="item">
-             <div class="product-card-two product-card-two-secondcolor">
-                <div class="product-card-thumb">
-                   <a href="single-shop.html">
-                   <img src="{{ URL::to('frontend/') }}/assets/images/products/product-11.png" alt="product">
-                   </a>
-                   <ul class="product-card-action">
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-shopping-cart"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#" class="quick-view-trigger">
-                         <i class="flaticon-visibility"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
-                         <i class="flaticon-like"></i>
-                         </a>
-                      </li>
-                   </ul>
-                </div>
-                <div class="product-card-content">
-                   <h3><a href="single-shop.html">Affordable Chair </a></h3>
-                   <p class="product-id">N23GH345</p>
-                   <div class="product-price">$220.0 <del>$250.0</del></div>
-                </div>
-                <div class="product-status product-status-thirdcolor">New</div>
-             </div>
-          </div>
+        @endforeach
+
+
+
        </div>
     </div>
  </section>

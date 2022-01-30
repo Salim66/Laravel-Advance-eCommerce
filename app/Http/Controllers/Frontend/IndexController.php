@@ -136,8 +136,10 @@ class IndexController extends Controller
         $size_ar = $product->product_size_ar;
         $product_size_ar = explode(',', $size_ar);
 
+        $related_products = Product::where('status', 1)->where('category_id', $product->category_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
+
         $multiple_img = MultiImg::where('product_id', $product->id)->get();
-        return view('frontend.product.product_details', compact('product', 'multiple_img', 'product_color_en', 'product_color_ar', 'product_size_en', 'product_size_ar'));
+        return view('frontend.product.product_details', compact('product', 'multiple_img', 'product_color_en', 'product_color_ar', 'product_size_en', 'product_size_ar', 'related_products'));
     }
 
     /**
