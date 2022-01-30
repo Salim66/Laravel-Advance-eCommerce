@@ -66,13 +66,13 @@
              <div class="col-12 col-lg-6 pb-30">
                 <div class="product-details-item">
                    <div class="product-details-caption product-details-caption-secondcolor">
-                      <h3>
+                      
                         @if(session()->get('language') == 'arabic')
-                        {{ $product->product_name_ar }}
+                        <h3 class="pname_cart-ar">{{ $product->product_name_ar }}</h3>
                         @else
-                        {{ $product->product_name_en }}
+                        <h3 class="pname_cart-en">{{ $product->product_name_en }}</h3>
                         @endif
-                      </h3>
+
                       <p class="product-id">{{ $product->product_code }}</p>
                       {{-- <div class="review-star-group">
                          <ul class="review-star">
@@ -101,13 +101,16 @@
                       <div class="product-choice">
                          <div class="product-choice-item">
                             <label>@if(session()->get('language') == 'arabic') حدد الألوان @else Select Colors @endif</label>
-                            <select class="form-control product-color">
-                               <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
+    
                                @if(session()->get('language') == 'arabic')
+                               <select class="form-control product-color product-color-ar" name="color-ar">
+                                <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
                                 @foreach($product_color_ar as $color)
                                     <option value="{{ $color }}">{{ $color }}</option>
                                 @endforeach
                                @else    
+                               <select class="form-control product-color product-color-en" name="color-en">
+                                <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
                                 @foreach($product_color_en as $color)
                                     <option value="{{ $color }}">{{ $color }}</option>
                                 @endforeach
@@ -116,13 +119,16 @@
                          </div>
                          <div class="product-choice-item">
                             <label>@if(session()->get('language') == 'arabic') أختر الحجم @else Select Size @endif</label>
-                            <select class="form-control product-color">
-                               <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
+    
                                @if(session()->get('language') == 'arabic')
+                               <select class="form-control product-color product-size-ar" name="size-ar">
+                                <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
                                @foreach($product_size_ar as $size)
                                    <option value="{{ $size }}">{{ $size }}</option>
                                @endforeach
-                              @else    
+                              @else
+                              <select class="form-control product-color product-size-en" name="size-ar">
+                                <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
                                @foreach($product_size_en as $size)
                                    <option value="{{ $size }}">{{ $size }}</option>
                                @endforeach
@@ -133,14 +139,15 @@
                             <label>@if(session()->get('language') == 'arabic') حدد الكمية @else Select Quantity @endif</label>
                             <div class="cart-quantity">
                                <button class="qu-btn dec">-</button>
-                               <input type="text" class="qu-input" value="1">
+                               <input type="text" class="qu-input" id="qty"  value="1">
                                <button class="qu-btn inc">+</button>
                             </div>
                          </div>
                       </div>
+                      <input type="hidden" id="product_id" value="{{ $product->id }}">
                       <div class="product-action">
                          <div class="product-action-item">
-                            <a href="#" class="btn main-btn main-btn-secondary">Add To Cart</a>
+                            <a href="javascript:void(0)" class="btn main-btn main-btn-secondary" onclick="addToCart()">Add To Cart</a>
                          </div>
                          <div class="product-action-item">
                             <a href="#" class="btn main-btn main-btn-secondary main-btn-bgless main-btn-secondary-bgless">

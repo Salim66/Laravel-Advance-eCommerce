@@ -190,6 +190,7 @@
                          </select>
                          @endif
                       </div>
+
                       <div class="product-choice-item">
                         <label>@if(session()->get('language') == 'arabic') أختر الحجم @else Select Size @endif</label>
                         @if(session()->get('language') == 'arabic')
@@ -202,6 +203,7 @@
                          </select>
                          @endif
                       </div>
+
                       <div class="product-choice-item mt-3">
                         <label>@if(session()->get('language') == 'arabic') حدد الكمية @else Select Quantity @endif</label>
                         <div class="cart-quantity">
@@ -214,7 +216,7 @@
                    <input type="hidden" id="product_id">
                    <div class="product-action">
                       <div class="product-action-item">
-                         <a href="#" class="btn main-btn main-btn-radius" onclick="addToCart()">Add To Cart</a>
+                         <a href="javascript:void(0)" class="btn main-btn main-btn-radius" onclick="addToCart()">Add To Cart</a>
                       </div>
                    </div>
                 </div>
