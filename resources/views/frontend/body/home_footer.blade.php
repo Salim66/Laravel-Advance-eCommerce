@@ -206,14 +206,15 @@
                         <label>@if(session()->get('language') == 'arabic') حدد الكمية @else Select Quantity @endif</label>
                         <div class="cart-quantity">
                            <button class="qu-btn dec">-</button>
-                           <input type="text" class="qu-input" value="1">
+                           <input type="text" class="qu-input" id="qty" value="1">
                            <button class="qu-btn inc">+</button>
                         </div>
                       </div>
                    </div>
+                   <input type="hidden" id="product_id">
                    <div class="product-action">
                       <div class="product-action-item">
-                         <a href="#" class="btn main-btn main-btn-radius">Add To Cart</a>
+                         <a href="#" class="btn main-btn main-btn-radius" onclick="addToCart()">Add To Cart</a>
                       </div>
                    </div>
                 </div>
@@ -384,6 +385,9 @@
                 $('.pbrand_cart-en').text(data.product.brand.brand_name_en);
                 $('.pbrand_cart-ar').text(data.product.brand.brand_name_ar);
 
+                $('#product_id').val(id);
+                $('#qty').val(1);
+
                 $('.pstock-cart').empty; 
                 if(data.product.product_qty > 0){                    
                     $('.pstock-cart').html('<span id="available" class="badge badge-pill badge-success bg-success">Available</span>');
@@ -434,6 +438,32 @@
             }
         });
 
-    }
+    }// End Product add to cart modal
+
+    // Add to Cart function 
+    function addToCart(){
+        let product_name_en = $('.pname_cart-en').text();
+        let product_name_ar = $('.pname_cart-ar').text();
+        let product_code = $('.pcode_cart').text();
+        let color_en = $('.product-color-en option:selected').text();
+        let color_ar = $('.product-color-ar option:selected').text();
+        let size_en = $('.product-size-en option:selected').text();
+        let size_ar = $('.product-size-ar option:selected').text();
+        let id = $('#product_id').val();
+        let quantity = $('#qty').val();
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: {
+                product_name_en:product_name_en, product_name_ar:product_name_ar, product_code:product_code, color_en:color_en, color_ar:color_ar, size_en:size_en, size_ar:size_ar, quantity:quantity
+            },
+            url: "/cart/data/store/"+id,
+            success: function(data){
+                console.log(data);
+            }
+        });
+
+    }// End Add to Cart function 
 
 </script>
