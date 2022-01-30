@@ -54,44 +54,12 @@
                             <i class="flaticon-close"></i>
                          </div>
                          <div class="cart-modal-products">
-                            <div class="cart-modal-product">
-                               <div class="cart-product-info">
-                                  <a href="single-shop.html">
-                                     <div class="cart-product-thumb">
-                                        <img src="{{ asset('frontend/assets') }}/images/products/product-13.png" alt="product">
-                                     </div>
-                                     <div class="cart-product-details">
-                                        <h3>Stylish Chair</h3>
-                                        <p>Price: <span>$200.0</span></p>
-                                        <p>Qty: <span>2 pcs</span></p>
-                                     </div>
-                                  </a>
-                               </div>
-                               <div class="cart-product-remove">
-                                  <a href="#">
-                                  <i class="flaticon-delete"></i>
-                                  </a>
-                               </div>
+                            {{-- // Mini Cart Load --}}
+                            <div id="midiCart">
+
+
                             </div>
-                            <div class="cart-modal-product">
-                               <div class="cart-product-info">
-                                  <a href="single-shop.html">
-                                     <div class="cart-product-thumb">
-                                        <img src="{{ asset('frontend/assets') }}/images/products/product-15.png" alt="product">
-                                     </div>
-                                     <div class="cart-product-details">
-                                        <h3>Furnished Sofa</h3>
-                                        <p>Price: <span>$300.0</span></p>
-                                        <p>Qty: <span>1 pc</span></p>
-                                     </div>
-                                  </a>
-                               </div>
-                               <div class="cart-product-remove">
-                                  <a href="#">
-                                  <i class="flaticon-delete"></i>
-                                  </a>
-                               </div>
-                            </div>
+
                          </div>
                          <div class="cart-details">
                             <div class="cart-total-box">

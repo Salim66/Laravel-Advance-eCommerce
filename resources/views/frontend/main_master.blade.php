@@ -92,6 +92,52 @@
         }
         @endif
     </script>
+
+
+    <script type="text/javascript">
+        // Start Mini Add to Cart function
+        function miniCart(){
+            
+            $.ajax({
+                type: 'GET',
+                url: '/product/mini/cart',
+                dataType: 'json',
+                success: function(response){
+                    // console.log(response);
+                    let miniCart = "";
+
+                    $.each(response.carts, function(key,value){
+                        console.log(value);
+                        miniCart += `<div class="cart-modal-product">
+                                        <div class="cart-product-info">
+                                            <a href="single-shop.html">
+                                                <div class="cart-product-thumb">
+                                                    <img src="{{ asset('frontend/assets') }}/images/products/product-13.png" alt="product">
+                                                </div>
+                                                <div class="cart-product-details">
+                                                    <h3>Stylish Chair</h3>
+                                                    <p>Price: <span>$200.0</span></p>
+                                                    <p>Qty: <span>2 pcs</span></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="cart-product-remove">
+                                            <a href="#">
+                                            <i class="flaticon-delete"></i>
+                                            </a>
+                                        </div>
+                                    </div>`;
+                    });
+
+                    $('#midiCart').html(miniCart);
+
+                }
+            });
+        }
+        // End Mini Add to Cart function
+        miniCart();
+
+    </script>
    </body>
    <!-- Mirrored from templates.envytheme.com/outo/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Jan 2022 13:36:04 GMT -->
 </html>

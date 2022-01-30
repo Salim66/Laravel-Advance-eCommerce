@@ -493,20 +493,8 @@
         });
 
     }// End Add to Cart function 
-
-
-    // Start Mini Add to Cart function
-    function miniCart(){
-        $.ajax({
-            type: 'GET',
-            url: '/product/mini/cart',
-            dataType: 'json',
-            success: function(response){
-                console.log(response);
-            }
-        });
-    }
-    // End Mini Add to Cart function
-
+    
 
 </script>
+
+
