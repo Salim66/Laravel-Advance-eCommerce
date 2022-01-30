@@ -145,5 +145,7 @@ Route::get('/subcategory/products/{subcat_id}/{slug}', [IndexController::class, 
 Route::get('/subsubcategory/products/{subsubcat_id}/{slug}', [IndexController::class, 'subSubCateogrywiseProducts']);
 // Product add to cart modal
 Route::get('/product/add-to-cart/modal/{id}', [IndexController::class, 'productAddToCartModal']);
-//Add To Cart Routes
+//Add To Cart Route
 Route::post('/cart/data/store/{id}', [CartController::class, 'addToCart']);
+//Add To Mini Cart Route
+Route::get('/product/mini/cart', [CartController::class, 'addToMiniCart']);

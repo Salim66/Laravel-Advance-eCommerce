@@ -216,7 +216,7 @@
                    <input type="hidden" id="product_id">
                    <div class="product-action">
                       <div class="product-action-item">
-                         <a href="javascript:void(0)" class="btn main-btn main-btn-radius" onclick="addToCart()">Add To Cart</a>
+                         <button type="submit" class="btn main-btn main-btn-radius" onclick="addToCart()">Add To Cart</button>
                       </div>
                    </div>
                 </div>
@@ -493,5 +493,20 @@
         });
 
     }// End Add to Cart function 
+
+
+    // Start Mini Add to Cart function
+    function miniCart(){
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini/cart',
+            dataType: 'json',
+            success: function(response){
+                console.log(response);
+            }
+        });
+    }
+    // End Mini Add to Cart function
+
 
 </script>

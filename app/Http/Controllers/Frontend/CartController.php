@@ -24,13 +24,13 @@ class CartController extends Controller
         
         Cart::add([
             'id' => $id, 
-            'name' => $request->product_name_en,
+            'name' => $product->product_name_en,
             'qty' => $request->quantity, 
             'price' => $price, 
             'weight' => 1, 
             'options' => [
                 'image' => $product->product_thumbnail,
-                'name_ar' => $request->product_name_ar,
+                'name_ar' => $product->product_name_ar,
                 'color_en' => $request->color_en,
                 'color_ar' => $request->color_ar,
                 'size_en' => $request->size_en,
@@ -40,5 +40,25 @@ class CartController extends Controller
 
         return response()->json(['success' => 'Successfully Added On Your Cart']);
     }
+
+
+    /**
+     * Add to Mini Cart
+     */
+    public function addToMiniCart(){
+
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json([
+            'carts' => $carts,
+            'cartQty' => $cartQty,
+            'cartTotal' => $cartTotal
+        ]);
+
+    }
+
+
 
 }
