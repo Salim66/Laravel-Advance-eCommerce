@@ -156,39 +156,51 @@
                    <h3 class="pname_cart-en"></h3>
                    @endif
 
-                   <div>Product Price: <strong class="product-price_cart"></strong></div>
-                   <h6>Product Code: <strong class="pcode_cart"></strong></h6>
+                   <div>@if(session()->get('language') == 'arabic') سعر المنتج: @else Product Price: @endif<strong class="product-price_cart"></strong></div>
+                   <h6>@if(session()->get('language') == 'arabic') سعر المنتج: @else Product Code: @endif<strong class="pcode_cart"></strong></h6>
 
                    @if(session()->get('language') == 'arabic')
-                   <h6>Product Category: <strong class="pcat_cart-ar"></strong></h6>
+                   <h6>فئة المنتج: <strong class="pcat_cart-ar"></strong></h6>
                    @else    
                    <h6>Product Category: <strong class="pcat_cart-en"></strong></h6>
                    @endif
 
                    @if(session()->get('language') == 'arabic')
-                   <h6>Product Brand: <strong class="pbrand_cart-ar"></strong></h6>
+                   <h6>العلامة التجارية المنتج: <strong class="pbrand_cart-ar"></strong></h6>
                    @else 
                    <h6>Product Brand: <strong class="pbrand_cart-en"></strong></h6>
                    @endif 
                    
-                   <h6>Product Stock: <strong class="pstock_cart"></strong></h6>
-                   
+                   @if(session()->get('language') == 'arabic')
+                   <h6>مخزون المنتج: <strong class="pstock_cart"> </strong></h6>
+                   @else 
+                   <h6>Product Stock: <strong class="pstock_cart"> </strong></h6>
+                   @endif
+
                    <div class="product-choice">
                       <div class="product-choice-item">
                         <label>@if(session()->get('language') == 'arabic') حدد الألوان @else Select Colors @endif</label>
-                         <select class="form-control product-color">
-                            <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
-                            <option value="2">Blue</option>
-                            <option value="3">Green</option>
+                        @if(session()->get('language') == 'arabic')
+                         <select class="form-control product-color-ar" name="color-ar">
+
                          </select>
+                         @else   
+                         <select class="form-control product-color-en" name="color-en">
+
+                         </select>
+                         @endif
                       </div>
                       <div class="product-choice-item">
                         <label>@if(session()->get('language') == 'arabic') أختر الحجم @else Select Size @endif</label>
-                        <select class="form-control product-color">
-                           <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
-                            <option value="2">Blue</option>
-                            <option value="3">Green</option>
+                        @if(session()->get('language') == 'arabic')
+                         <select class="form-control product-size-ar" class="size-ar">
+                            
                          </select>
+                         @else     
+                         <select class="form-control product-size-en" class="size-en">
+                            
+                         </select>
+                         @endif
                       </div>
                       <div class="product-choice-item mt-3">
                         <label>@if(session()->get('language') == 'arabic') حدد الكمية @else Select Quantity @endif</label>
@@ -392,8 +404,27 @@
                             <img src="${data.product.product_thumbnail}" alt="product">
                         </div>`);
                 
-                
-                
+                $('.product-color-en').empty();
+                $.each(data.color_en, function(key,value){
+                    $('.product-color-en').append('<option value="'+value+'">'+value+'</option>');
+                });
+
+                $('.product-color-ar').empty();
+                $.each(data.color_ar, function(key,value){
+                    $('.product-color-ar').append('<option value="'+value+'">'+value+'</option>');
+                });
+
+                $('.product-size-en').empty();
+                $.each(data.size_en, function(key,value){
+                    $('.product-size-en').append('<option value="'+value+'">'+value+'</option>');
+                });
+
+                $('.product-size-ar').empty();
+                $.each(data.size_ar, function(key,value){
+                    $('.product-size-ar').append('<option value="'+value+'">'+value+'</option>');
+                });
+                        
+
             }
         });
 
