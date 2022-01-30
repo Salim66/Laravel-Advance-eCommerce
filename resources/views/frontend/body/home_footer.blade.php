@@ -174,7 +174,7 @@
                    @if(session()->get('language') == 'arabic')
                    <h6>مخزون المنتج: <strong class="pstock_cart"> </strong></h6>
                    @else 
-                   <h6>Product Stock: <strong class="pstock_cart"> </strong></h6>
+                   <h6>Product Stock: <strong class="pstock-cart"></strong></h6>
                    @endif
 
                    <div class="product-choice">
@@ -383,7 +383,13 @@
                 $('.pcat_cart-ar').text(data.product.category.category_name_ar);
                 $('.pbrand_cart-en').text(data.product.brand.brand_name_en);
                 $('.pbrand_cart-ar').text(data.product.brand.brand_name_ar);
-                $('.pstock_cart').text(data.product.product_qty);
+
+                $('.pstock-cart').empty; 
+                if(data.product.product_qty > 0){                    
+                    $('.pstock-cart').html('<span id="available" class="badge badge-pill badge-success bg-success">Available</span>');
+                }else {
+                    $('.pstock-cart').html('<span id="available" class="badge badge-pill badge-danger bg-danger">Stockout</span>');
+                }
 
                 if(data.product.discount_price == null){
                     $('.product-price_cart').html('$'+data.product.selling_price);
