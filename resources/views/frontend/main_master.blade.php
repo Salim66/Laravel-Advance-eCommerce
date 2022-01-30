@@ -65,6 +65,9 @@
       <script src="{{ asset('frontend/assets') }}/js/fontawesome.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
 
+      <!-- Sweetalert -->
+      <script src="{{ asset('frontend/assets') }}/js/sweetalert2@11.js"></script>
+
       <!-- Toastr JS -->
 	<script src="{{ asset('backend/js/toastr.min.js') }}"></script>
     <script type="text/javascript">
