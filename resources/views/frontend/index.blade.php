@@ -86,7 +86,7 @@ Elegant Furnitur QR
                       </a>
                       <ul class="product-card-action">
                          <li>
-                            <a href="#" class="quick-add-to-cart-trigger">
+                            <a href="#" class="quick-add-to-cart-trigger" id="{{ $product->id }}" onclick="productAddToCart(this.id)"> 
                             <i class="flaticon-shopping-cart"></i>
                             <span>Add Cart</span>
                             </a>

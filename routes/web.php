@@ -142,3 +142,5 @@ Route::get('/category/products/{cat_id}/{slug}', [IndexController::class, 'cateo
 Route::get('/subcategory/products/{subcat_id}/{slug}', [IndexController::class, 'subCateogrywiseProducts']);
 // Sub-SubCategory Wise Product Search Routes
 Route::get('/subsubcategory/products/{subsubcat_id}/{slug}', [IndexController::class, 'subSubCateogrywiseProducts']);
+// Product add to cart modal
+Route::get('/product/add-to-cart/modal/{id}', [IndexController::class, 'productAddToCartModal']);

@@ -331,3 +331,29 @@
        </div>
     </div>
 </div>
+
+
+{{-- Produc Add to Cart Script  --}}
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Product add to cart modal
+    function productAddToCart(id){
+        // alert(id);
+
+        $.ajax({
+            type: 'GET',
+            url: '/product/add-to-cart/modal/'+id,
+            dataType:'json',
+            success:function(data){
+                
+            }
+        });
+
+    }
+
+</script>

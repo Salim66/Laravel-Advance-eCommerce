@@ -169,6 +169,30 @@ class IndexController extends Controller
         return view('frontend.product.subsubcateogry_products', compact('products', 'subsubcategory'));
     }
 
+    /**
+     * Product Add-To-Cart Modal Ajax
+     */
+    public function productAddToCartModal($id){
+        $product = Product::findOrFail($id);
 
+        $color_en = $product->product_color_en;
+        $product_color_en = explode(',', $color_en);
+
+        $color_ar = $product->product_color_ar;
+        $product_color_ar = explode(',', $color_ar);
+
+        $size_en = $product->product_size_en;
+        $product_size_en = explode(',', $size_en);
+
+        $size_ar = $product->product_size_ar;
+        $product_size_ar = explode(',', $size_ar);
+
+        return response()->json([
+            'color_en' => $product_color_en,
+            'color_ar' => $product_color_ar,
+            'size_en' => $product_size_en,
+            'size_ar' => $product_size_ar,
+        ]);
+    }
 
 }
