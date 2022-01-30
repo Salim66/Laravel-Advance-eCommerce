@@ -140,41 +140,52 @@
        <div class="quick-view-body">
           <div class="row align-items-center">
              <div class="col-12 col-md-5 col-lg-6">
-                <div class="quick-view-product-carousel owl-carousel owl-theme default-carousel">
-                   <div class="item">
+                <div class="quick-view-product-carousel owl-carousel owl-theme default-carousel pimg-cart">
+                   {{-- <div class="item">
                       <img src="{{ asset('frontend/assets') }}/images/products/product-13.png" alt="product">
-                   </div>
-                   <div class="item">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-14.png" alt="product">
-                   </div>
-                   <div class="item">
-                      <img src="{{ asset('frontend/assets') }}/images/products/product-15.png" alt="product">
-                   </div>
+                   </div> --}}
                 </div>
              </div>
              <div class="col-12 col-md-7 col-lg-6">
                 <div class="quick-view-product-content">
-                   <div class="product-status">-20%</div>
-                   <h3>Stylish Chair</h3>
-                   <div class="product-price">$200.0 <del>$270.0</del></div>
-                   <h6>Product Code:</h6>
-                   <h6>Product Category:</h6>
-                   <h6>Product Brand:</h6>
-                   <h6>Product Stock:</h6>
+                   <div class="product-status product-status__cart"></div>
+
+                   @if(session()->get('language') == 'arabic')
+                   <h3 class="pname_cart-ar"></h3>
+                   @else  
+                   <h3 class="pname_cart-en"></h3>
+                   @endif
+
+                   <div>Product Price: <strong class="product-price_cart"></strong></div>
+                   <h6>Product Code: <strong class="pcode_cart"></strong></h6>
+
+                   @if(session()->get('language') == 'arabic')
+                   <h6>Product Category: <strong class="pcat_cart-ar"></strong></h6>
+                   @else    
+                   <h6>Product Category: <strong class="pcat_cart-en"></strong></h6>
+                   @endif
+
+                   @if(session()->get('language') == 'arabic')
+                   <h6>Product Brand: <strong class="pbrand_cart-ar"></strong></h6>
+                   @else 
+                   <h6>Product Brand: <strong class="pbrand_cart-en"></strong></h6>
+                   @endif 
+                   
+                   <h6>Product Stock: <strong class="pstock_cart"></strong></h6>
                    
                    <div class="product-choice">
                       <div class="product-choice-item">
-                         <label>Select Colors</label>
+                        <label>@if(session()->get('language') == 'arabic') حدد الألوان @else Select Colors @endif</label>
                          <select class="form-control product-color">
-                            <option value="1">Available colors</option>
+                            <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
                             <option value="2">Blue</option>
                             <option value="3">Green</option>
                          </select>
                       </div>
                       <div class="product-choice-item">
-                         <label>Select Size</label>
-                         <select class="form-control product-color">
-                            <option value="1">Available colors</option>
+                        <label>@if(session()->get('language') == 'arabic') أختر الحجم @else Select Size @endif</label>
+                        <select class="form-control product-color">
+                           <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
                             <option value="2">Blue</option>
                             <option value="3">Green</option>
                          </select>
@@ -350,6 +361,38 @@
             url: '/product/add-to-cart/modal/'+id,
             dataType:'json',
             success:function(data){
+                // console.log(data);
+                $('.pimg-cart').empty();
+
+                $('.pname_cart-en').text(data.product.product_name_en);
+                $('.pname_cart-ar').text(data.product.product_name_ar);
+                $('.pcode_cart').text(data.product.product_code);
+                $('.pcat_cart-en').text(data.product.category.category_name_en);
+                $('.pcat_cart-ar').text(data.product.category.category_name_ar);
+                $('.pbrand_cart-en').text(data.product.brand.brand_name_en);
+                $('.pbrand_cart-ar').text(data.product.brand.brand_name_ar);
+                $('.pstock_cart').text(data.product.product_qty);
+
+                if(data.product.discount_price == null){
+                    $('.product-price_cart').html('$'+data.product.selling_price);
+                    
+                }else {
+                    $('.product-price_cart').html(`$`+data.product.discount_price+` <del>$`+data.product.selling_price+`</del>`);
+                }
+
+                let amount = data.product.selling_price - data.product.discount_price;
+                let discount = Math.round((amount/data.product.selling_price) * 100);
+                if(data.product.discount_price == null){
+                    $('.product-status__cart').text('New');
+                }else {
+                    $('.product-status__cart').text(discount+'%');
+                }
+                $('.pimg-cart').html(`
+                        <div class="item">
+                            <img src="${data.product.product_thumbnail}" alt="product">
+                        </div>`);
+                
+                
                 
             }
         });

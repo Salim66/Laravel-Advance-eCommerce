@@ -173,7 +173,7 @@ class IndexController extends Controller
      * Product Add-To-Cart Modal Ajax
      */
     public function productAddToCartModal($id){
-        $product = Product::findOrFail($id);
+        $product = Product::with('category', 'brand')->findOrFail($id);
 
         $color_en = $product->product_color_en;
         $product_color_en = explode(',', $color_en);
@@ -187,11 +187,15 @@ class IndexController extends Controller
         $size_ar = $product->product_size_ar;
         $product_size_ar = explode(',', $size_ar);
 
+        $multiple_img = MultiImg::where('product_id', $product->id)->get();
+
         return response()->json([
+            'product' => $product,
             'color_en' => $product_color_en,
             'color_ar' => $product_color_ar,
             'size_en' => $product_size_en,
             'size_ar' => $product_size_ar,
+            'multiple_img' => $multiple_img,
         ]);
     }
 
