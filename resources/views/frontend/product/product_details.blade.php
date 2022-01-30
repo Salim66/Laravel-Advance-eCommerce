@@ -130,7 +130,7 @@
                             </select>
                          </div>
                          <div class="product-choice-item mt-3">
-                            <label>@if(session()->get('language') == 'arabic') حدد المبلغ @else Select Amount @endif</label>
+                            <label>@if(session()->get('language') == 'arabic') حدد الكمية @else Select Quantity @endif</label>
                             <div class="cart-quantity">
                                <button class="qu-btn dec">-</button>
                                <input type="text" class="qu-input" value="1">

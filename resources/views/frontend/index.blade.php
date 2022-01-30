@@ -86,7 +86,7 @@ Elegant Furnitur QR
                       </a>
                       <ul class="product-card-action">
                          <li>
-                            <a href="#">
+                            <a href="#" class="quick-add-to-cart-trigger">
                             <i class="flaticon-shopping-cart"></i>
                             <span>Add Cart</span>
                             </a>

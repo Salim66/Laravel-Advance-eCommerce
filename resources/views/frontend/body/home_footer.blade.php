@@ -130,6 +130,78 @@
        </div>
     </div>
 </footer>
+
+<!-- Start Quick Add To Cart Product -->
+<div class="quick-add-to-cart-wrapper">
+    <div class="quick-view-modal">
+       <div class="close-btn quick-add-to-cart-close">
+          <i class="flaticon-close"></i>
+       </div>
+       <div class="quick-view-body">
+          <div class="row align-items-center">
+             <div class="col-12 col-md-5 col-lg-6">
+                <div class="quick-view-product-carousel owl-carousel owl-theme default-carousel">
+                   <div class="item">
+                      <img src="{{ asset('frontend/assets') }}/images/products/product-13.png" alt="product">
+                   </div>
+                   <div class="item">
+                      <img src="{{ asset('frontend/assets') }}/images/products/product-14.png" alt="product">
+                   </div>
+                   <div class="item">
+                      <img src="{{ asset('frontend/assets') }}/images/products/product-15.png" alt="product">
+                   </div>
+                </div>
+             </div>
+             <div class="col-12 col-md-7 col-lg-6">
+                <div class="quick-view-product-content">
+                   <div class="product-status">-20%</div>
+                   <h3>Stylish Chair</h3>
+                   <div class="product-price">$200.0 <del>$270.0</del></div>
+                   <h6>Product Code:</h6>
+                   <h6>Product Category:</h6>
+                   <h6>Product Brand:</h6>
+                   <h6>Product Stock:</h6>
+                   
+                   <div class="product-choice">
+                      <div class="product-choice-item">
+                         <label>Select Colors</label>
+                         <select class="form-control product-color">
+                            <option value="1">Available colors</option>
+                            <option value="2">Blue</option>
+                            <option value="3">Green</option>
+                         </select>
+                      </div>
+                      <div class="product-choice-item">
+                         <label>Select Size</label>
+                         <select class="form-control product-color">
+                            <option value="1">Available colors</option>
+                            <option value="2">Blue</option>
+                            <option value="3">Green</option>
+                         </select>
+                      </div>
+                      <div class="product-choice-item mt-3">
+                        <label>@if(session()->get('language') == 'arabic') حدد الكمية @else Select Quantity @endif</label>
+                        <div class="cart-quantity">
+                           <button class="qu-btn dec">-</button>
+                           <input type="text" class="qu-input" value="1">
+                           <button class="qu-btn inc">+</button>
+                        </div>
+                      </div>
+                   </div>
+                   <div class="product-action">
+                      <div class="product-action-item">
+                         <a href="#" class="btn main-btn main-btn-radius">Add To Cart</a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+</div>
+<!-- End Quick Add To Cart Product -->
+
+<!-- Start Quick View Product -->
 <div class="quick-view-wrapper">
     <div class="quick-view-modal">
        <div class="close-btn quick-view-close">
@@ -207,6 +279,8 @@
        </div>
     </div>
 </div>
+<!-- End Quick View Product -->
+
 
 @php
     $product = App\Models\Product::where('status', 1)->where('special_offer', 1)->latest()->first();
