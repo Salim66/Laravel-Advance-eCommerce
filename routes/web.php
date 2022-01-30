@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Models\Product;
 
@@ -144,3 +145,5 @@ Route::get('/subcategory/products/{subcat_id}/{slug}', [IndexController::class, 
 Route::get('/subsubcategory/products/{subsubcat_id}/{slug}', [IndexController::class, 'subSubCateogrywiseProducts']);
 // Product add to cart modal
 Route::get('/product/add-to-cart/modal/{id}', [IndexController::class, 'productAddToCartModal']);
+//Add To Cart Routes
+Route::post('/cart/data/store/{id}', [CartController::class, 'addToCart']);

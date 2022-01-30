@@ -4,7 +4,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="description" content="Outo">
-      <meta name="csrf-token" content="csrf_token">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <meta name="keywords" content="HTML,CSS,JavaScript">
       <meta name="author" content="EnvyTheme">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

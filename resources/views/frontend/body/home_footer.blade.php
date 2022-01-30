@@ -134,7 +134,7 @@
 <!-- Start Quick Add To Cart Product -->
 <div class="quick-add-to-cart-wrapper">
     <div class="quick-view-modal">
-       <div class="close-btn quick-add-to-cart-close">
+       <div class="close-btn quick-add-to-cart-close" id="closeCartModal">
           <i class="flaticon-close"></i>
        </div>
        <div class="quick-view-body">
@@ -360,10 +360,10 @@
 {{-- Produc Add to Cart Script  --}}
 <script type="text/javascript">
     $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
         }
-    });
+    })
 
     // Product add to cart modal
     function productAddToCart(id){
@@ -453,13 +453,17 @@
         let quantity = $('#qty').val();
 
         $.ajax({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            },
             type: "POST",
-            dataType: "json",
+            dataType:'json',
             data: {
                 product_name_en:product_name_en, product_name_ar:product_name_ar, product_code:product_code, color_en:color_en, color_ar:color_ar, size_en:size_en, size_ar:size_ar, quantity:quantity
             },
             url: "/cart/data/store/"+id,
             success: function(data){
+                $('#closeCartModal').click();
                 console.log(data);
             }
         });
