@@ -23,7 +23,7 @@
                 <div class="topbar-action">
                    <div class="topbar-action-item">
                        @auth
-                      <a href="login.html">
+                      <a href="{{ route('dashboard') }}">
                          <i class="flaticon-user"></i>
 
                          <span>@if(session()->get('language') == 'arabic') ملف تعريفي للمستخدم @else User Profile @endif</span>
