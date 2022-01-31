@@ -47,7 +47,7 @@
                       <a href="#" class="cartbtn">
                       <i class="flaticon-shopping-cart"></i>
                       <span>@if(session()->get('language') == 'arabic') عربة التسوق @else Cart @endif</span>
-                      <span class="topbar-action-counter">02</span>
+                      <span class="topbar-action-counter" id="cart_qty"></span>
                       </a>
                       <div class="cart-modal">
                          <div class="cart-close-btn close-btn">
@@ -65,18 +65,9 @@
                             <div class="cart-total-box">
                                <div class="cart-total-item">
                                   <h4>Subtotal</h4>
-                                  <p>$500.0</p>
-                               </div>
-                               <div class="cart-total-item">
-                                  <h4>Vat <span>(2%)</span></h4>
-                                  <p>$40.0</p>
-                               </div>
-                               <div class="cart-total-item">
-                                  <h4>Total</h4>
-                                  <p>$540.0</p>
+                                  <p>$<span id="cart_sub_totla"></span></p>
                                </div>
                             </div>
-                            <a href="cart.html" class="btn main-btn full-width">Add To Cart</a>
                             <a href="checkout.html" class="btn main-btn full-width main-btn-bgless">Checkout</a>
                          </div>
                       </div>

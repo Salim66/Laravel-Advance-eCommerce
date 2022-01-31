@@ -465,6 +465,7 @@
             },
             url: "/cart/data/store/"+id,
             success: function(data){
+                miniCart();
                 $('#closeCartModal').click();
                 // console.log(data);
 

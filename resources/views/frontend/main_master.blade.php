@@ -104,6 +104,10 @@
                 dataType: 'json',
                 success: function(response){
                     // console.log(response);
+
+                    $('#cart_qty').text(response.cartQty);
+                    $('#cart_sub_totla').text(response.cartTotal);
+
                     let miniCart = "";
 
                     $.each(response.carts, function(key,value){
@@ -112,12 +116,26 @@
                                         <div class="cart-product-info">
                                             <a href="single-shop.html">
                                                 <div class="cart-product-thumb">
-                                                    <img src="{{ asset('frontend/assets') }}/images/products/product-13.png" alt="product">
+                                                    <img src="/${value.options.image}" alt="product">
                                                 </div>
                                                 <div class="cart-product-details">
-                                                    <h3>Stylish Chair</h3>
-                                                    <p>Price: <span>$200.0</span></p>
-                                                    <p>Qty: <span>2 pcs</span></p>
+                                                    <h3>
+                                                        ${
+                                                            (() => {
+                                                                if(value.options.size_ar == null) {
+                                                                    return value.name;
+
+                                                                } else {
+                                                                    return value.options.name_ar;
+
+                                                                }
+
+                                                            })()
+
+                                                        }    
+                                                    </h3>
+                                                    <p>Price: <span>$${value.price}</span></p>
+                                                    <p>Qty: <span>${value.qty} pcs</span></p>
                                                 </div>
                                             </a>
                                         </div>
