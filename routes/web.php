@@ -149,3 +149,5 @@ Route::get('/product/add-to-cart/modal/{id}', [IndexController::class, 'productA
 Route::post('/cart/data/store/{id}', [CartController::class, 'addToCart']);
 //Add To Mini Cart Route
 Route::get('/product/mini/cart', [CartController::class, 'addToMiniCart']);
+//Remove Mini Cart Route
+Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'removeProductMiniCart']);

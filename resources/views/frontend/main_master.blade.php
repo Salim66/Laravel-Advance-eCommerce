@@ -140,9 +140,9 @@
                                             </a>
                                         </div>
                                         <div class="cart-product-remove">
-                                            <a href="#">
+                                            <button type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)">
                                             <i class="flaticon-delete"></i>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>`;
                     });
@@ -154,6 +154,44 @@
         }
         // End Mini Add to Cart function
         miniCart();
+
+
+        // Start Mini Cart Remove
+        function miniCartRemove(rowId){
+            
+            $.ajax({
+                type:"GET",
+                url:"/minicart/product-remove/"+rowId,
+                dataType:"json",
+                success:function(data){
+                    miniCart();
+
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                        })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success
+                        })
+                    }else{
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
+                    // End Message 
+
+                }
+            });
+
+        }
+        // End Mini Cart Remove
 
     </script>
    </body>
