@@ -498,4 +498,23 @@
 
 </script>
 
+<script type="text/javascript">
+    
+    // Start Add to Whishlist function
+    function productAddToWishlist(product_id){
+        
+        $.ajax({
+            type:"POST",
+            url:"/add-to-wishlist/"+product_id,
+            dataType:"json",
+            success:function(data) {
+                console.log(data);
+            }
+        });
+
+    }
+    // End Add to Whishlist function
+
+</script>
+
 
