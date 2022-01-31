@@ -147,6 +147,7 @@
             dataType: 'json',
             url: "/add-to-wishlist/"+product_id,
             success:function(data) {
+                wishlist();
                 
                 // Start Message 
                 const Toast = Swal.mixin({
@@ -280,14 +281,15 @@
 
         $.ajax({
             type: 'GET',
-            url: '/get-wishlist-product',
+            url: '/user/get-wishlist-product',
             dataType: 'json',
             success: function(response){
                 // console.log(response);
+                $('#wishlist_count').text(response.count);
 
                 let rows = "";
 
-                $.each(response, function(key,value){
+                $.each(response.wishlist, function(key,value){
                     // console.log(value);
                     rows += `<tr>
                                 <td>
@@ -326,7 +328,7 @@
         
         $.ajax({
             type:"GET",
-            url:"/wishlist-remove/"+id,
+            url:"/user/wishlist-remove/"+id,
             dataType:"json",
             success:function(data){
                 wishlist();

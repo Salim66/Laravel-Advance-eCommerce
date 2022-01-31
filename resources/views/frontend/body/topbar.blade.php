@@ -40,7 +40,7 @@
                       <a href="{{ route('wishlist') }}">
                       <i class="flaticon-like"></i>
                       <span>@if(session()->get('language') == 'arabic') قائمة الرغبات @else Wishlist @endif</span>
-                      <span class="topbar-action-counter">05</span>
+                      <span class="topbar-action-counter" id="wishlist_count"></span>
                       </a>
                    </div>
                    <div class="topbar-action-item cart-option-dropdown">

@@ -154,9 +154,17 @@ Route::get('/product/mini/cart', [CartController::class, 'addToMiniCart']);
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'removeProductMiniCart']);
 //Add To Wishlist Route
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'productAddToWishlist']);
-//Wishlist Page Route
-Route::get('/wishlist', [WishListController::class, 'wishlist'])->name('wishlist');
-//Get Wishlist Route
-Route::get('/get-wishlist-product', [WishListController::class, 'getWishlistProduct']);
-//Remove Wishlist Route
-Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
+
+// Protecd Our Page Without Login
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function(){
+
+    //Wishlist Page Route
+    Route::get('/wishlist', [WishListController::class, 'wishlist'])->name('wishlist');
+    //Get Wishlist Route
+    Route::get('/get-wishlist-product', [WishListController::class, 'getWishlistProduct']);
+    //Remove Wishlist Route
+    Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
+    
+});
+
+
