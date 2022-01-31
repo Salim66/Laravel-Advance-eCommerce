@@ -37,7 +37,7 @@
 
                    </div>
                    <div class="topbar-action-item">
-                      <a href="wishlist.html">
+                      <a href="{{ route('wishlist') }}">
                       <i class="flaticon-like"></i>
                       <span>@if(session()->get('language') == 'arabic') قائمة الرغبات @else Wishlist @endif</span>
                       <span class="topbar-action-counter">05</span>

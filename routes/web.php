@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\User\WishListController;
 use App\Models\Product;
 
 /*
@@ -153,3 +154,5 @@ Route::get('/product/mini/cart', [CartController::class, 'addToMiniCart']);
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'removeProductMiniCart']);
 //Add To Wishlist Route
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'productAddToWishlist']);
+//Get Wishlist Route
+Route::get('/wishlist', [WishListController::class, 'wishlist'])->name('wishlist');
