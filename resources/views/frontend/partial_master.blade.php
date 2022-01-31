@@ -86,5 +86,8 @@
         }
         @endif
     </script>
+
+    <script type="text/javascript" src="{{ asset('frontend/assets') }}/js/custom/custom.js"></script>
+    
    </body>
 </html>

@@ -35,74 +35,31 @@ Wishlist Page
 <section class="cart-section pt-100 pb-70">
     <div class="container">
        <div class="product-info-header product-info-header-three product-info-header-borderless">
-          <h2>Wishlist</h2>
-          <a href="shops-grid.html" class="btn main-btn main-btn-secondary m-0">Back To Shop</a>
+          <h2>@if(session()->get('language') == 'arabic') قائمة الرغبات @else Wishlist @endif</h2>
+          <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary m-0">Back To Shop</a>
        </div>
        <div class="cart-table">
           <table>
              <thead>
                 <tr>
-                   <th>Product Thumb</th>
-                   <th>Product Name</th>
-                   <th>Price</th>
-                   <th>Quantity</th>
-                   <th>Add Cart</th>
-                   <th>Remove</th>
+                   <th> @if(session()->get('language') == 'arabic') إبهام المنتج  @else Product Thumb @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') اسم المنتج @else Product Name @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') السعر @else Price @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') إضافة عربة @else Add Cart @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') إزالة @else Remove @endif </th>
                 </tr>
              </thead>
-             <tbody>
-                <tr>
-                   <td>
-                      <div class="product-table-thumb">
-                         <img src="assets/images/products/product-14.png" alt="product">
-                      </div>
-                   </td>
-                   <td>Comfortable Bed for sale</td>
-                   <td class="color-secondary">$1100.0</td>
-                   <td>
-                      <div class="cart-quantity">
-                         <button class="qu-btn dec">-</button>
-                         <input type="text" class="qu-input" value="2">
-                         <button class="qu-btn inc">+</button>
-                      </div>
-                   </td>
-                   <td>
-                      <a href="#" class="btn main-btn main-btn-secondary">Add To Cart</a>
-                   </td>
-                   <td class="cancel">
-                      <a href="#"><i class="flaticon-delete"></i></a>
-                   </td>
-                </tr>
-                <tr>
-                   <td>
-                      <div class="product-table-thumb">
-                         <img src="assets/images/products/product-2.png" alt="product">
-                      </div>
-                   </td>
-                   <td>Stylish Chair</td>
-                   <td class="color-secondary">$300.0</td>
-                   <td>
-                      <div class="cart-quantity">
-                         <button class="qu-btn dec">-</button>
-                         <input type="text" class="qu-input" value="1">
-                         <button class="qu-btn inc">+</button>
-                      </div>
-                   </td>
-                   <td>
-                      <a href="#" class="btn main-btn main-btn-secondary">Add To Cart</a>
-                   </td>
-                   <td class="cancel">
-                      <a href="#"><i class="flaticon-delete"></i></a>
-                   </td>
-                </tr>
+             <tbody id="wishlist">
+                
+
              </tbody>
           </table>
        </div>
        <div class="row justify-content-between mt-30">
           <div class="col-sm-6 col-md-7 col-lg-6 pb-30">
              <div class="section-button-group">
-                <a href="wishlist.html" class="btn main-btn main-btn-secondary">Update List</a>
-                <a href="cart.html" class="btn main-btn main-btn-secondary coupon-btn">View Cart</a>
+                <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary"> @if(session()->get('language') == 'arabic') قائمة التحديث  @else Update List @endif </a>
+                <a href="cart.html" class="btn main-btn main-btn-secondary coupon-btn">@if(session()->get('language') == 'arabic') عرض عربة التسوق @else View Cart @endif</a>
              </div>
           </div>
        </div>

@@ -147,7 +147,7 @@
                       <input type="hidden" id="product_id" value="{{ $product->id }}">
                       <div class="product-action">
                          <div class="product-action-item">
-                            <button type="submit" class="btn main-btn main-btn-secondary" onclick="addToCart()">Add To Cart</button>
+                            <button type="submit" class="btn main-btn main-btn-secondary" onclick="addToCart()">@if(session()->get('language') == 'arabic') أضف إلى السلة @else Add To Cart @endif</button>
                          </div>
                          <div class="product-action-item">
                             <a href="#" class="btn main-btn main-btn-secondary main-btn-bgless main-btn-secondary-bgless">
