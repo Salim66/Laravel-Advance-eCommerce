@@ -500,15 +500,40 @@
 
 <script type="text/javascript">
     
-    // Start Add to Whishlist function
-    function productAddToWishlist(product_id){
+     // Start Add to Whishlist function
+     function productAddToWishlist(product_id){
         
         $.ajax({
-            type:"POST",
-            url:"/add-to-wishlist/"+product_id,
-            dataType:"json",
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            dataType: 'json',
+            url: "/add-to-wishlist/"+product_id,
             success:function(data) {
-                console.log(data);
+                
+                // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'bottom-right',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+
             }
         });
 
