@@ -307,7 +307,7 @@
                                     <a href="/product/detials/${value.product_id}/${value.product.product_slug_en}" class="btn main-btn main-btn-secondary">Add To Cart</a>
                                 </td>
                                 <td class="cancel">
-                                    <a href="#"><i class="flaticon-delete"></i></a>
+                                    <button type="button" id="${value.id}" onclick="removeWishlist(this.id)"><i class="flaticon-delete"></i></button>
                                 </td>
                             </tr>`;
                 });
@@ -319,3 +319,42 @@
     }
     // End Get Wishlist Data function
     wishlist();
+
+
+    // Start Wishlist Remove
+    function removeWishlist(id){
+        
+        $.ajax({
+            type:"GET",
+            url:"/wishlist-remove/"+id,
+            dataType:"json",
+            success:function(data){
+                wishlist();
+
+                // Start Message 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-right',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+
+            }
+        });
+
+    }
+    // End Wishlist Remove
