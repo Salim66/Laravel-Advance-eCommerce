@@ -431,9 +431,9 @@
                                 </td>
                                 <td>
                                     <div class="cart-quantity">
-                                        <button class="qu-btn dec">-</button>
+                                        <button class="qu-btn dec"  id="${value.rowId}" onclick="cartDecrease(this.id)">-</button>
                                         <input type="text" class="qu-input" value="${value.qty}">
-                                        <button class="qu-btn inc">+</button>
+                                        <button class="qu-btn inc" id="${value.rowId}" onclick="cartIncrease(this.id)">+</button>
                                     </div>
                                 </td>
                                 <td class="color-secondary">$${value.subtotal}</td>
@@ -491,3 +491,20 @@
 
     }
     // End Cart Remove
+
+
+    //---------- Start Cart Increase ----------//
+    function cartIncrease(rowId){
+        
+        $.ajax({
+            type:"GET",
+            url:"/cart-increase/"+rowId,
+            dataType:"json",
+            success:function(data){
+                cart();
+                miniCart();
+            }
+        });
+
+    }
+    //---------- End Cart Increase ----------//

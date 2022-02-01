@@ -176,5 +176,7 @@ Route::get('/my-cart', [CartPageController::class, 'myCartPage'])->name('my-cart
 Route::get('/user/get-mycart-product', [CartPageController::class, 'getMyCartProduct']);
 //Remove Cart Route
 Route::get('/user/cart-remove/{rowId}', [CartPageController::class, 'removeCartProduct']);
+// Cart Increase Route
+Route::get('/cart-increase/{rowId}', [CartPageController::class, 'cartIncrease']);
 
 
