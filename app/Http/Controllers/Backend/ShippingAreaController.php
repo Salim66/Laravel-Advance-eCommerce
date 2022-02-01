@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
+use App\Models\ShipState;
+use App\Models\ShipDistrict;
 use App\Models\ShipDivision;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ShipDistrict;
 
 class ShippingAreaController extends Controller
 {
@@ -96,7 +97,7 @@ class ShippingAreaController extends Controller
      * District Page View
      */
     public function districtView(){
-        $divisions = ShipDivision::orderBy('id', 'DESC')->get();
+        $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
         $districts = ShipDistrict::with('division')->orderBy('id', 'DESC')->get();
         return view('backend.ship.district.view_district', compact('districts','divisions'));
     }
@@ -132,7 +133,7 @@ class ShippingAreaController extends Controller
      * District Edit Page
      */
     public function districtEdit($id){
-        $divisions = ShipDivision::orderBy('id', 'DESC')->get();
+        $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
         $data = ShipDistrict::findOrFail($id);
         return view('backend.ship.district.edit_district', compact('data', 'divisions'));
     }
@@ -175,4 +176,104 @@ class ShippingAreaController extends Controller
 
     }
     /////////////////////// End District Method //////////////////////
+
+
+
+
+    /////////////////////// Start State Method //////////////////////
+    /**
+     * State Page View
+     */
+    public function stateView(){
+        $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
+        $state = ShipState::with('division', 'district')->orderBy('id', 'DESC')->get();
+        return view('backend.ship.state.view_state', compact('state','divisions'));
+    }
+
+
+    /**
+     * Get District by ajax request
+     */
+    public function getDistrictAjax($division_id){
+        $data = ShipDistrict::where('division_id', $division_id)->orderBy('district_name', 'ASC')->get();
+        return json_encode($data);
+    }
+
+
+    /**
+     * State Store
+     */
+    public function stateStore(Request $request){
+
+        // Validation
+        $request->validate([
+            'division_id' => 'required',
+            'state_name' => 'required',
+        ]);
+
+        ShipState::create([
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
+            'state_name' => $request->state_name,
+            'created_at'    => Carbon::now()
+        ]);
+
+        $notification = [
+            'message' => 'State Added Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+
+    }
+
+    /**
+     * State Edit Page
+     */
+    public function stateEdit($id){
+        $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
+        $districts = ShipDistrict::orderBy('district_name', 'ASC')->get();
+        $data = ShipState::findOrFail($id);
+        return view('backend.ship.state.edit_state', compact('data', 'divisions', 'districts'));
+    }
+
+    /**
+     * State Update
+     */
+    public function stateUpdate(Request $request){
+
+        $state_id = $request->id;
+
+        ShipState::findOrFail($state_id)->update([
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
+            'state_name' => $request->state_name,
+            'created_at'    => Carbon::now()
+        ]);
+
+        $notification = [
+            'message' => 'State Updated Successfully',
+            'alert-type' => 'info'
+        ];
+
+        return redirect()->route('manage.state')->with($notification);
+
+    }
+
+    /**
+     * State Delete
+     */
+    public function stateDelete($id){
+
+        ShipState::findOrFail($id)->delete();
+
+        $notification = [
+            'message' => 'State Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+
+    }
+    /////////////////////// End State Method //////////////////////
 }

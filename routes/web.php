@@ -141,6 +141,15 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/district/edit/{id}', [ShippingAreaController::class, 'districtEdit'])->name('district.edit');
         Route::post('/district/update', [ShippingAreaController::class, 'districtUpdate'])->name('district.update');
         Route::get('/district/delete/{id}', [ShippingAreaController::class, 'districtDelete'])->name('district.delete');
+
+
+        /// State
+        Route::get('/state/view', [ShippingAreaController::class, 'stateView'])->name('manage.state');
+        Route::post('/state/store', [ShippingAreaController::class, 'stateStore'])->name('state.store');
+        Route::get('/state/edit/{id}', [ShippingAreaController::class, 'stateEdit'])->name('state.edit');
+        Route::post('/state/update', [ShippingAreaController::class, 'stateUpdate'])->name('state.update');
+        Route::get('/state/delete/{id}', [ShippingAreaController::class, 'stateDelete'])->name('state.delete');
+        Route::get('/district/ajax/{id}', [ShippingAreaController::class, 'getDistrictAjax']);
     });
 
 });
