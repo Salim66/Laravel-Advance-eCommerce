@@ -431,7 +431,12 @@
                                 </td>
                                 <td>
                                     <div class="cart-quantity">
-                                        <button class="qu-btn dec"  id="${value.rowId}" onclick="cartDecrease(this.id)">-</button>
+                                    ${
+                                    value.qty > 1 ?
+                                        `<button class="qu-btn dec" id="${value.rowId}" onclick="cartDecrease(this.id)">-</button>`
+                                            : 
+                                        `<button class="qu-btn dec" disabled>-</button>`
+                                    }
                                         <input type="text" class="qu-input" value="${value.qty}">
                                         <button class="qu-btn inc" id="${value.rowId}" onclick="cartIncrease(this.id)">+</button>
                                     </div>
@@ -508,3 +513,20 @@
 
     }
     //---------- End Cart Increase ----------//
+
+
+    //---------- Start Cart Decrease ----------//
+    function cartDecrease(rowId){
+        
+        $.ajax({
+            type:"GET",
+            url:"/cart-decrease/"+rowId,
+            dataType:"json",
+            success:function(data){
+                cart();
+                miniCart();
+            }
+        });
+
+    }
+    //---------- End Cart Decrease ----------//
