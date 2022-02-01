@@ -47,6 +47,8 @@ Wishlist Page
                    <th> @if(session()->get('language') == 'arabic') إبهام المنتج  @else Product Thumb @endif </th>
                    <th>@if(session()->get('language') == 'arabic') اسم المنتج @else Product Name @endif </th>
                    <th>@if(session()->get('language') == 'arabic') السعر @else Price @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') السعر @else Color @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') السعر @else Size @endif </th>
                    <th>@if(session()->get('language') == 'arabic') كمية @else Quantity @endif </th>
                    <th>@if(session()->get('language') == 'arabic') مجموع @else Total @endif </th>
                    <th>@if(session()->get('language') == 'arabic') إزالة @else Remove @endif </th>

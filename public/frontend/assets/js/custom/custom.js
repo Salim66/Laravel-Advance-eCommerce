@@ -105,6 +105,7 @@
             url: "/cart/data/store/"+id,
             success: function(data){
                 miniCart();
+                cart();
                 $('#closeCartModal').click();
                 // console.log(data);
 
@@ -400,6 +401,34 @@
                                     } 
                                 </td>
                                 <td class="color-secondary">$${value.price}</td>
+                                <td class="color-secondary">
+                                    ${
+                                        (() => {
+                                            if(value.options.color_ar == null) {
+                                                return value.options.color_en;
+
+                                            } else {
+                                                return value.options.color_ar;
+                                            }
+
+                                        })()
+
+                                    } 
+                                </td>
+                                <td class="color-secondary">
+                                    ${
+                                        (() => {
+                                            if(value.options.size_ar == null) {
+                                                return value.options.size_en;
+
+                                            } else {
+                                                return value.options.size_ar;
+                                            }
+
+                                        })()
+
+                                    } 
+                                </td>
                                 <td>
                                     <div class="cart-quantity">
                                         <button class="qu-btn dec">-</button>
@@ -407,7 +436,7 @@
                                         <button class="qu-btn inc">+</button>
                                     </div>
                                 </td>
-                                <td class="color-secondary">$2200.0</td>
+                                <td class="color-secondary">$${value.subtotal}</td>
                                 <td class="cancel">
                                     <a href="#"><i class="flaticon-close"></i></a>
                                 </td>
