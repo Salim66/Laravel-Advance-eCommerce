@@ -43,45 +43,43 @@ class ShippingAreaController extends Controller
     }
 
     /**
-     * Coupon Edit Page
+     * Division Edit Page
      */
-    public function couponEdit($id){
-        $data = Coupon::findOrFail($id);
-        return view('backend.coupon.coupon_edit', compact('data'));
+    public function divisionEdit($id){
+        $data = ShipDivision::findOrFail($id);
+        return view('backend.ship.division.edit_division', compact('data'));
     }
 
     /**
-     * Coupon Update
+     * Division Update
      */
-    public function couponUpdate(Request $request){
+    public function divisionUpdate(Request $request){
 
-        $coupon_id = $request->id;
+        $division_id = $request->id;
 
-        Coupon::findOrFail($coupon_id)->update([
-            'coupon_name' => strtoupper($request->coupon_name),
-            'coupon_discount' => $request->coupon_discount,
-            'coupon_validity' => $request->coupon_validity,
+        ShipDivision::findOrFail($division_id)->update([
+            'division_name' => $request->division_name,
             'created_at'    => Carbon::now()
         ]);
 
         $notification = [
-            'message' => 'Coupon Updated Successfully',
+            'message' => 'Division Updated Successfully',
             'alert-type' => 'info'
         ];
 
-        return redirect()->route('manage.coupon')->with($notification);
+        return redirect()->route('manage.division')->with($notification);
 
     }
 
     /**
-     * Coupon Delete
+     * Division Delete
      */
-    public function couponDelete($id){
+    public function divisionDelete($id){
 
-        Coupon::findOrFail($id)->delete();
+        ShipDivision::findOrFail($id)->delete();
 
         $notification = [
-            'message' => 'Coupon Deleted Successfully',
+            'message' => 'Division Deleted Successfully',
             'alert-type' => 'success'
         ];
 

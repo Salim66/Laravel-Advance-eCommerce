@@ -28,8 +28,8 @@
                         <tr>
                             <td>{{ $data->division_name }}</td>
                             <td width="40%">
-                                <a title="Edit Data" href="{{ route('coupon.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                <a title="Delete Data" href="{{ route('coupon.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a title="Edit Data" href="{{ route('division.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                <a title="Delete Data" href="{{ route('division.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
