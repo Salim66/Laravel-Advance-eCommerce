@@ -117,7 +117,7 @@ Route::middleware(['auth:admin'])->group(function(){
     // Admin All Coupon Routes
     Route::prefix('coupons')->group(function(){
         Route::get('/view', [CouponController::class, 'couponView'])->name('manage.coupon');
-        Route::post('/store', [SliderController::class, 'sliderStore'])->name('slider.store');
+        Route::post('/store', [CouponController::class, 'couponStore'])->name('coupon.store');
         Route::get('/edit/{id}', [SliderController::class, 'sliderEdit'])->name('slider.edit');
         Route::post('/update', [SliderController::class, 'sliderUpdate'])->name('slider.update');
         Route::get('/delete/{id}', [SliderController::class, 'sliderDelete'])->name('slider.delete');

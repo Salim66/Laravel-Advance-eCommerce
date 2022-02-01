@@ -30,16 +30,16 @@
                         @foreach($coupons as $data)
                         <tr>
                             <td>{{ $data->coupon_name }}</td>
-                            <td>{{ $data->coupon_discount }}</td>
-                            <td>{{ $data->coupon_validity }}</td>
+                            <td>{{ $data->coupon_discount }}%</td>
+                            <td width="25%">{{ Carbon\Carbon::parse($data->coupon_validity)->format('D, d F Y') }}</td>
                             <td>
-                                @if($data->status == 1)
-                                <span class="badge badge-pill badge-success">Active</span>
+                                @if($data->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <span class="badge badge-pill badge-success">Valid</span>
                                 @else
-                                <span class="badge badge-pill badge-danger">Inactive</span>
+                                <span class="badge badge-pill badge-danger">Invalid</span>
                                 @endif
                             </td>
-                            <td width="30%">
+                            <td width="25%">
                                 <a title="Edit Data" href="{{ route('category.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                                 <a title="Delete Data" href="{{ route('category.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
@@ -66,7 +66,7 @@
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                        <form action="{{ route('category.store') }}" method="POST">
+                        <form action="{{ route('coupon.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <h5>Coupon Name <span class="text-danger">*</span></h5>
@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <h5>Coupon Validity Date <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="date" name="coupon_validity" class="form-control">
+                                    <input type="date" name="coupon_validity" class="form-control" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                     @error('coupon_validity')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
