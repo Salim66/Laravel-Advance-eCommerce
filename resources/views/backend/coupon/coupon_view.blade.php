@@ -40,8 +40,8 @@
                                 @endif
                             </td>
                             <td width="25%">
-                                <a title="Edit Data" href="{{ route('category.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                <a title="Delete Data" href="{{ route('category.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a title="Edit Data" href="{{ route('coupon.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                <a title="Delete Data" href="{{ route('coupon.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
