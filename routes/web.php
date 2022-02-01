@@ -166,13 +166,15 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     //Remove Wishlist Route
     Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
 
-    //My Cart Page Route
-    Route::get('/my-cart', [CartPageController::class, 'myCartPage'])->name('my-cart');
-    //Get Cart Route
-    Route::get('/get-mycart-product', [CartPageController::class, 'getMyCartProduct']);
-    //Remove Cart Route
-    Route::get('/cart-remove/{rowId}', [CartPageController::class, 'removeCartProduct']);
-
 });
+
+
+// Cart Page All Routes
+//My Cart Page Route
+Route::get('/my-cart', [CartPageController::class, 'myCartPage'])->name('my-cart');
+//Get Cart Route
+Route::get('/user/get-mycart-product', [CartPageController::class, 'getMyCartProduct']);
+//Remove Cart Route
+Route::get('/user/cart-remove/{rowId}', [CartPageController::class, 'removeCartProduct']);
 
 
