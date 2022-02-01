@@ -36,7 +36,7 @@ Wishlist Page
     <div class="container">
        <div class="product-info-header product-info-header-three product-info-header-borderless">
           <h2>@if(session()->get('language') == 'arabic') قائمة الرغبات @else Wishlist @endif</h2>
-          <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary m-0">Back To Shop</a>
+          <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary m-0">@if(session()->get('language') == 'arabic') العودة للتسوق @else Back To Shop @endif</a>
        </div>
        <div class="cart-table">
           <table>

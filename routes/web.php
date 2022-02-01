@@ -170,8 +170,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/my-cart', [CartPageController::class, 'myCartPage'])->name('my-cart');
     //Get Cart Route
     Route::get('/get-mycart-product', [CartPageController::class, 'getMyCartProduct']);
-    //Remove Wishlist Route
-    Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
+    //Remove Cart Route
+    Route::get('/cart-remove/{rowId}', [CartPageController::class, 'removeCartProduct']);
 
 });
 

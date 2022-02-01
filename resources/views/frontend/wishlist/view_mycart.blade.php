@@ -38,7 +38,7 @@ Wishlist Page
     <div class="container">
        <div class="product-info-header product-info-header-three product-info-header-borderless">
           <h2>@if(session()->get('language') == 'arabic') أضف إلى السلة @else Add To Cart @endif</h2>
-          <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary m-0">Back To Shop</a>
+          <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary m-0">@if(session()->get('language') == 'arabic') العودة للتسوق @else Back To Shop @endif</a>
        </div>
        <div class="cart-table">
           <table>
@@ -47,8 +47,8 @@ Wishlist Page
                    <th> @if(session()->get('language') == 'arabic') إبهام المنتج  @else Product Thumb @endif </th>
                    <th>@if(session()->get('language') == 'arabic') اسم المنتج @else Product Name @endif </th>
                    <th>@if(session()->get('language') == 'arabic') السعر @else Price @endif </th>
-                   <th>@if(session()->get('language') == 'arabic') السعر @else Color @endif </th>
-                   <th>@if(session()->get('language') == 'arabic') السعر @else Size @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') اللون @else Color @endif </th>
+                   <th>@if(session()->get('language') == 'arabic') بحجم @else Size @endif </th>
                    <th>@if(session()->get('language') == 'arabic') كمية @else Quantity @endif </th>
                    <th>@if(session()->get('language') == 'arabic') مجموع @else Total @endif </th>
                    <th>@if(session()->get('language') == 'arabic') إزالة @else Remove @endif </th>

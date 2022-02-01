@@ -31,4 +31,15 @@ class CartPageController extends Controller
         ]);
 
     }
+
+    /**
+     * Revove Product From Cart
+     */
+    public function removeCartProduct($rowId){
+
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Successfully Remove From Cart']);
+
+    }
+    
 }

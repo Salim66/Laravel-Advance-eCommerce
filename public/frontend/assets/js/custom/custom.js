@@ -401,7 +401,7 @@
                                     } 
                                 </td>
                                 <td class="color-secondary">$${value.price}</td>
-                                <td class="color-secondary">
+                                <td>
                                     ${
                                         (() => {
                                             if(value.options.color_ar == null) {
@@ -415,7 +415,7 @@
 
                                     } 
                                 </td>
-                                <td class="color-secondary">
+                                <td>
                                     ${
                                         (() => {
                                             if(value.options.size_ar == null) {
@@ -438,7 +438,7 @@
                                 </td>
                                 <td class="color-secondary">$${value.subtotal}</td>
                                 <td class="cancel">
-                                    <a href="#"><i class="flaticon-close"></i></a>
+                                    <a href="javascript:void(0)" id="${value.rowId}" onclick="removeCart(this.id)"><i class="flaticon-close"></i></a>
                                 </td>
                             </tr>
                             `;
@@ -458,10 +458,11 @@
         
         $.ajax({
             type:"GET",
-            url:"/user/wishlist-remove/"+id,
+            url:"/user/cart-remove/"+id,
             dataType:"json",
             success:function(data){
-                wishlist();
+                cart();
+                miniCart();
 
                 // Start Message 
                 const Toast = Swal.mixin({
