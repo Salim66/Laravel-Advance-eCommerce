@@ -43,6 +43,13 @@
                       <span class="topbar-action-counter" id="wishlist_count"></span>
                       </a>
                    </div>
+                   <div class="topbar-action-item">
+                      <a href="{{ route('my-cart') }}">
+                      <i class="flaticon-shopping-cart"></i>
+                      <span>@if(session()->get('language') == 'arabic') عربتي @else My Cart @endif</span>
+                      <span class="topbar-action-counter" id="cart_count"></span>
+                      </a>
+                   </div>
                    <div class="topbar-action-item cart-option-dropdown">
                       <a href="#" class="cartbtn">
                       <i class="flaticon-shopping-cart"></i>

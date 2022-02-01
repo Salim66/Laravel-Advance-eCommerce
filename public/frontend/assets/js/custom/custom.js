@@ -148,7 +148,7 @@
             url: "/add-to-wishlist/"+product_id,
             success:function(data) {
                 wishlist();
-                
+
                 // Start Message 
                 const Toast = Swal.mixin({
                       toast: true,
@@ -360,3 +360,104 @@
 
     }
     // End Wishlist Remove
+
+
+
+     // Start Get MyCart Data function
+     function cart(){
+
+        $.ajax({
+            type: 'GET',
+            url: '/user/get-mycart-product',
+            dataType: 'json',
+            success: function(response){
+                // console.log(response);
+                $('#cart_count').text(response.cartQty);
+
+                let rows = "";
+
+                $.each(response.carts, function(key,value){
+                    // console.log(value);
+                    rows += `                           
+                            <tr>
+                                <td>
+                                    <div class="product-table-thumb">
+                                        <img src="/${value.options.image}" alt="product">
+                                    </div>
+                                </td>
+                                <td>
+                                    ${
+                                        (() => {
+                                            if(value.options.size_ar == null) {
+                                                return value.name;
+
+                                            } else {
+                                                return value.options.name_ar;
+                                            }
+
+                                        })()
+
+                                    } 
+                                </td>
+                                <td class="color-secondary">$${value.price}</td>
+                                <td>
+                                    <div class="cart-quantity">
+                                        <button class="qu-btn dec">-</button>
+                                        <input type="text" class="qu-input" value="${value.qty}">
+                                        <button class="qu-btn inc">+</button>
+                                    </div>
+                                </td>
+                                <td class="color-secondary">$2200.0</td>
+                                <td class="cancel">
+                                    <a href="#"><i class="flaticon-close"></i></a>
+                                </td>
+                            </tr>
+                            `;
+                });
+
+                $('#mycart').html(rows);
+
+            }
+        });
+    }
+    // End Get My Cart Data function
+    cart();
+
+
+    // Start Cart Remove
+    function removeCart(id){
+        
+        $.ajax({
+            type:"GET",
+            url:"/user/wishlist-remove/"+id,
+            dataType:"json",
+            success:function(data){
+                wishlist();
+
+                // Start Message 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-right',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+
+            }
+        });
+
+    }
+    // End Cart Remove

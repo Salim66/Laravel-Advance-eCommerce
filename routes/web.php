@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\WishListController;
 use App\Models\Product;
 
@@ -164,7 +165,14 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/get-wishlist-product', [WishListController::class, 'getWishlistProduct']);
     //Remove Wishlist Route
     Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
-    
+
+    //My Cart Page Route
+    Route::get('/my-cart', [CartPageController::class, 'myCartPage'])->name('my-cart');
+    //Get Cart Route
+    Route::get('/get-mycart-product', [CartPageController::class, 'getMyCartProduct']);
+    //Remove Wishlist Route
+    Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
+
 });
 
 
