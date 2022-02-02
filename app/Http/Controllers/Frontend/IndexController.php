@@ -7,9 +7,12 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\SubCategory;
+use App\Models\ReturnPolicy;
 use Illuminate\Http\Request;
+use App\Models\PrivacyPolicy;
 use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Terms;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -195,6 +198,50 @@ class IndexController extends Controller
             'size_ar' => $product_size_ar,
             'multiple_img' => $multiple_img,
         ]);
+    }
+
+
+    /**
+     * Privacy Policy Page
+     */
+    public function privacyPolicyPage(){
+
+        $privacy = PrivacyPolicy::latest()->first();
+        return view('frontend.privacy-policy.privacy-policy', compact('privacy'));
+
+    }
+
+
+    /**
+     * Return Policy Page
+     */
+    public function returnPolicyPage(){
+
+        $return = ReturnPolicy::latest()->first();
+        return view('frontend.return-policy.return-policy', compact('return'));
+
+    }
+
+
+    /**
+     * Tersm & Conditions Page
+     */
+    public function termsConditionsPage(){
+
+        $terms = Terms::latest()->first();
+        return view('frontend.terms.terms', compact('terms'));
+
+    }
+
+
+    /**
+     * Contact Us Page
+     */
+    public function contactUsPage(){
+
+        // $terms = Terms::latest()->first();
+        return view('frontend.contact-us.contact-us');
+
     }
 
 }

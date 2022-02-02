@@ -22,16 +22,16 @@
                    </div>
                    <ul class="footer-details footer-list">
                       <li>
-                         <a href="contact.html">Contact Us</a>
+                         <a href="{{ route('contact.us.page') }}">Contact Us</a>
                       </li>
                       <li>
-                        <a href="privacy-policy.html">Privacy & Policy</a>
+                        <a href="{{ route('privacy.policy.page') }}">Privacy & Policy</a>
                       </li>
                       <li>
-                        <a href="blogs-grid.html">Return Policy</a>
+                        <a href="{{ route('return.policy.page') }}">Return & Policy</a>
                       </li>
                       <li>
-                         <a href="terms-conditions.html">Terms & Conditions</a>
+                         <a href="{{ route('terms.conditions.page') }}">Terms & Conditions</a>
                       </li>                      
                    </ul>
                 </div>

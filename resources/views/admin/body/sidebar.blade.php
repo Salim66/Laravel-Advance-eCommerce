@@ -126,7 +126,22 @@
             <ul class="treeview-menu">
               <li class="{{ ($route == 'manage.logo')? 'active' : '' }}"><a href="{{ route('manage.logo') }}"><i class="ti-more"></i>Logo</a></li>
               <li class="{{ ($route == 'manage.favicon')? 'active' : '' }}"><a href="{{ route('manage.favicon') }}"><i class="ti-more"></i>Favicon</a></li>
-              <li class="{{ ($route == 'manage.state')? 'active' : '' }}"><a href="{{ route('manage.state') }}"><i class="ti-more"></i>Ship State</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview {{ ($prefix == '/pages')? 'active' : '' }}">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Pages</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'manage.privacy-policy')? 'active' : '' }}"><a href="{{ route('manage.privacy-policy') }}"><i class="ti-more"></i>Privacy Policy</a></li>
+              <li class="{{ ($route == 'manage.return-policy')? 'active' : '' }}"><a href="{{ route('manage.return-policy') }}"><i class="ti-more"></i>Return Policy</a></li>
+              <li class="{{ ($route == 'manage.terms')? 'active' : '' }}"><a href="{{ route('manage.terms') }}"><i class="ti-more"></i>Terms & Conditions</a></li>
             </ul>
         </li>
 

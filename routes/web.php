@@ -11,10 +11,13 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FaviconController;
 use App\Http\Controllers\Backend\LogoController;
+use App\Http\Controllers\Backend\PrivacyPolicyController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReturnPolicyController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\User\CartPageController;
@@ -172,6 +175,34 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/favicon/delete/{id}', [FaviconController::class, 'faviconDelete'])->name('favicon.delete');
     });
 
+
+    // Admin All Pages Routes
+    Route::prefix('pages')->group(function(){
+        //Privacy Policy All Route
+        Route::get('/privacy-policy/view', [PrivacyPolicyController::class, 'privacyPolicyView'])->name('manage.privacy-policy');
+        Route::post('/privacy-policy/store', [PrivacyPolicyController::class, 'privacyPolicyStore'])->name('privacy-policy.store');
+        Route::get('/privacy-policy/edit/{id}', [PrivacyPolicyController::class, 'privacyPolicyEdit'])->name('privacy-policy.edit');
+        Route::post('/privacy-policy/update', [PrivacyPolicyController::class, 'privacyPolicyUpdate'])->name('privacy-policy.update');
+        Route::get('/privacy-policy/delete/{id}', [PrivacyPolicyController::class, 'privacyPolicyDelete'])->name('privacy-policy.delete');
+
+
+        //Return Policy All Route
+        Route::get('/return-policy/view', [ReturnPolicyController::class, 'returnPolicyView'])->name('manage.return-policy');
+        Route::post('/return-policy/store', [ReturnPolicyController::class, 'returnPolicyStore'])->name('return-policy.store');
+        Route::get('/return-policy/edit/{id}', [ReturnPolicyController::class, 'returnPolicyEdit'])->name('return-policy.edit');
+        Route::post('/return-policy/update', [ReturnPolicyController::class, 'returnPolicyUpdate'])->name('return-policy.update');
+        Route::get('/return-policy/delete/{id}', [ReturnPolicyController::class, 'returnPolicyDelete'])->name('return-policy.delete');
+
+
+        //Terms & Conditions All Route
+        Route::get('/terms/view', [TermsController::class, 'termsView'])->name('manage.terms');
+        Route::post('/terms/store', [TermsController::class, 'termsStore'])->name('terms.store');
+        Route::get('/terms/edit/{id}', [TermsController::class, 'termsEdit'])->name('terms.edit');
+        Route::post('/terms/update', [TermsController::class, 'termsUpdate'])->name('terms.update');
+        Route::get('/terms/delete/{id}', [TermsController::class, 'termsDelete'])->name('terms.delete');
+       
+    });
+
 });
 
 
@@ -240,5 +271,14 @@ Route::get('/user/cart-remove/{rowId}', [CartPageController::class, 'removeCartP
 Route::get('/cart-increase/{rowId}', [CartPageController::class, 'cartIncrease']);
 // Cart Decrease Route
 Route::get('/cart-decrease/{rowId}', [CartPageController::class, 'cartDecrease']);
+
+// Privacy Policy Page Route
+Route::get('/privacy-policy', [IndexController::class, 'privacyPolicyPage'])->name('privacy.policy.page');
+// Return Policy Page Route
+Route::get('/return-policy', [IndexController::class, 'returnPolicyPage'])->name('return.policy.page');
+// Terms & Conditions Page Route
+Route::get('/terms-conditions', [IndexController::class, 'termsConditionsPage'])->name('terms.conditions.page');
+// Contact Us Page Route
+Route::get('/contact-us', [IndexController::class, 'contactUsPage'])->name('contact.us.page');
 
 
