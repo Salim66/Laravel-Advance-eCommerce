@@ -4,11 +4,14 @@
           <div class="row">
              <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="footer-content-item">
+                    @php
+                        $logo = App\Models\Logo::latest()->first();
+                    @endphp
                    <div class="footer-logo">
-                      <a href="index.html"><img src="{{ asset('frontend/assets') }}/images/logo.png" alt="logo"></a>
+                      <a href="{{ url('/') }}"><img src="{{ asset($logo->logo) }}" alt="logo"></a>
                    </div>
                    <div class="footer-details">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      <p>@if(session()->get('language') == 'arabic') {{ $logo->footer_descp_ar }} @else {{ $logo->footer_descp_en }} @endif</p>
                    </div>
                 </div>
              </div>

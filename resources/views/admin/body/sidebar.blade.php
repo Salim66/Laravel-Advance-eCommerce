@@ -125,7 +125,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ ($route == 'manage.logo')? 'active' : '' }}"><a href="{{ route('manage.logo') }}"><i class="ti-more"></i>Logo</a></li>
-              <li class="{{ ($route == 'manage.district')? 'active' : '' }}"><a href="{{ route('manage.district') }}"><i class="ti-more"></i>Ship District</a></li>
+              <li class="{{ ($route == 'manage.favicon')? 'active' : '' }}"><a href="{{ route('manage.favicon') }}"><i class="ti-more"></i>Favicon</a></li>
               <li class="{{ ($route == 'manage.state')? 'active' : '' }}"><a href="{{ route('manage.state') }}"><i class="ti-more"></i>Ship State</a></li>
             </ul>
         </li>

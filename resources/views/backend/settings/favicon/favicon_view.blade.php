@@ -11,7 +11,7 @@
 
          <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Logo List</h3>
+              <h3 class="box-title">Favicon List</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -19,21 +19,19 @@
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Logo</th>
-                            <th>Footer Description English</th>
+                            <th>Favicon</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($logos as $data)
+                        @foreach($favicons as $data)
                         <tr>
-                            <td width="30%">
-                                <img class="brand__img-table" src="{{ URL::to('/') }}/{{ $data->logo }}" alt="">
+                            <td>
+                                <img class="brand__img-table" src="{{ URL::to('/') }}/{{ $data->favicon }}" alt="">
                             </td>
-                            <td>{{ $data->footer_descp_en }}</td>
-                            <td width="30%">
-                                <a title="Edit Data" href="{{ route('logo.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                <a title="Delete Data" href="{{ route('logo.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td>
+                                <a title="Edit Data" href="{{ route('favicon.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                <a title="Delete Data" href="{{ route('favicon.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -48,37 +46,25 @@
 
         <!-- /.col -->
 
-        <!-- Add Logo Page  -->
+        <!-- Add Favicon Page  -->
         <div class="col-4">
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Add Logo</h3>
+                 <h3 class="box-title">Add Favicon</h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                        <form action="{{ route('logo.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('favicon.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <h5>Logo <span class="text-danger">*</span></h5>
+                                <h5>Favicon <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="file" name="logo" class="form-control">
-                                    @error('logo')
+                                    <input type="file" name="favicon" class="form-control">
+                                    @error('favicon')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h5>Footer Description English <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <textarea name="footer_descp_en" id="textarea" class="form-control" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h5>Footer Description Arabic <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <textarea name="footer_descp_ar" id="textarea" class="form-control" required></textarea>
                                 </div>
                             </div>
                            <div class="text-xs-right">

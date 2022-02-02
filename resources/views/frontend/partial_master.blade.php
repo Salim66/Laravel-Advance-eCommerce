@@ -9,7 +9,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
       <title>@yield('title') - Furniture Shop</title>
-      <link rel="icon" href="{{ asset('frontend/assets') }}/images/favicon.png" type="image/png" sizes="16x16">
+      @php
+          $favicon = App\Models\Favicon::latest()->first();
+      @endphp
+      <link rel="icon" href="{{ asset($favicon->favicon) }}" type="image/png" sizes="16x16">
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/bootstrap.min.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/animate.min.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/owl.carousel.min.css" type="text/css" media="all" />

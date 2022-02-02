@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogosTable extends Migration
+class CreateFaviconsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateLogosTable extends Migration
      */
     public function up()
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('favicons', function (Blueprint $table) {
             $table->id();
-            $table->string('logo');
-            $table->text('footer_descp_en');
-            $table->text('footer_descp_ar');
+            $table->string('favicon');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateLogosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('favicons');
     }
 }

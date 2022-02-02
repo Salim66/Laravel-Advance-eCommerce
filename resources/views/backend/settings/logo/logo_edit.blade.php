@@ -7,7 +7,7 @@
       <div class="row">
 
         <!-- Edit Logo Page  -->
-        <div class="col-4">
+        <div class="col-8">
 
             <div class="box">
                <div class="box-header with-border">
@@ -29,6 +29,18 @@
                                     @error('logo')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <h5>Footer Description English <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <textarea name="footer_descp_en" id="textarea" class="form-control" required>{{ $data->footer_descp_en }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5>Footer Description Arabic <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <textarea name="footer_descp_ar" id="textarea" class="form-control" required>{{ $data->footer_descp_ar }}</textarea>
+                                    </div>
                                 </div>
                             </div>
                            <div class="text-xs-right">

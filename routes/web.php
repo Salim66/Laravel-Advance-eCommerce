@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\FaviconController;
 use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
@@ -164,11 +165,11 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/logo/delete/{id}', [LogoController::class, 'logoDelete'])->name('logo.delete');
        
         //Favicon All Route
-        Route::get('/favicon/view', [LogoController::class, 'faviconView'])->name('manage.favicon');
-        Route::post('/favicon/store', [LogoController::class, 'faviconStore'])->name('favicon.store');
-        Route::get('/favicon/edit/{id}', [LogoController::class, 'faviconEdit'])->name('favicon.edit');
-        Route::post('/favicon/update', [LogoController::class, 'faviconUpdate'])->name('favicon.update');
-        Route::get('/favicon/delete/{id}', [LogoController::class, 'faviconDelete'])->name('favicon.delete');
+        Route::get('/favicon/view', [FaviconController::class, 'faviconView'])->name('manage.favicon');
+        Route::post('/favicon/store', [FaviconController::class, 'faviconStore'])->name('favicon.store');
+        Route::get('/favicon/edit/{id}', [FaviconController::class, 'faviconEdit'])->name('favicon.edit');
+        Route::post('/favicon/update', [FaviconController::class, 'faviconUpdate'])->name('favicon.update');
+        Route::get('/favicon/delete/{id}', [FaviconController::class, 'faviconDelete'])->name('favicon.delete');
     });
 
 });

@@ -33,7 +33,9 @@ class LogoController extends Controller
         $save_url = 'upload/logo/'.$name_gen;
 
         Logo::create([
-            'logo'   => $save_url
+            'logo'   => $save_url,
+            'footer_descp_en'   => $request->footer_descp_en,
+            'footer_descp_ar'   => $request->footer_descp_ar,
         ]);
 
         $notification = [
@@ -75,7 +77,9 @@ class LogoController extends Controller
         }
 
         Logo::findOrFail($logo_id)->update([
-            'logo'   => $save_url
+            'logo'   => $save_url,
+            'footer_descp_en'   => $request->footer_descp_en,
+            'footer_descp_ar'   => $request->footer_descp_ar,
         ]);
 
         $notification = [
