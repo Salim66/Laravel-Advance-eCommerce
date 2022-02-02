@@ -25,9 +25,9 @@
                         <div class="row"> <!-- start 1st row -->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Brand Select <span class="text-danger">*</span></h5>
+                                    <h5>Brand Select <span class="text-danger"></span></h5>
                                     <div class="controls">
-                                        <select name="brand_id" id="select" class="form-control" required>
+                                        <select name="brand_id" id="select" class="form-control">
                                             <option value="" selected disabled>Select Brand</option>
                                             @foreach($brands as $brand)
                                             <option value="{{ $brand->id }}">{{ $brand->brand_name_en }}</option>
@@ -199,7 +199,7 @@
                         <div class="row"> <!-- start 6th row -->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product Discount Price <span class="text-danger">*</span></h5>
+                                    <h5>Product Discount Price <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <input type="text" name="discount_price" class="form-control">
                                         @error('discount_price')
@@ -272,6 +272,25 @@
                             </div>
                         </div> <!-- end 8th row -->
 
+                        <div class="row"> <!-- start 8th row -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Specifications English <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <textarea name="specifications_en" id="editor3" class="form-control" placeholder="Long Description English"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Specifications Arabic <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <textarea name="specifications_ar" id="editor4" class="form-control" placeholder="وصف طويل عربي"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end 8th row -->
+
                         <hr>
 
                     </div>
@@ -281,49 +300,9 @@
                             <div class="form-group">
                                 <div class="controls">
                                     <fieldset>
-                                        <input type="checkbox" name="hot_deals" id="checkbox_1" value="1">
-                                        <label for="checkbox_1">Hot Deals</label>
+                                        <input type="checkbox" name="best_selles" id="checkbox_5" value="1">
+                                        <label for="checkbox_5">Best Selles</label>
                                     </fieldset>
-                                    <fieldset>
-                                        <input type="checkbox" name="featured" id="checkbox_2" value="1">
-                                        <label for="checkbox_2">Featured</label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="controls">
-                                    <fieldset>
-                                        <input type="checkbox" name="special_offer" id="checkbox_3" value="1">
-                                        <label for="checkbox_3">Special Offer</label>
-                                    </fieldset>
-                                    <fieldset>
-                                        <input type="checkbox" name="special_deals" id="checkbox_4" value="1">
-                                        <label for="checkbox_4">Special Deals</label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="controls">
-                                    <fieldset>
-                                        <input type="checkbox" name="best_seller" id="checkbox_5" value="1">
-                                        <label for="checkbox_5">Best Seller</label>
-                                    </fieldset>
-                                    <fieldset>
-                                        <input type="checkbox" name="daily_sales" id="checkbox_6" value="1">
-                                        <label for="checkbox_6">Daily Sales</label>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="controls">
                                     <fieldset>
                                         <input type="checkbox" name="new_arrivals" id="checkbox_7" value="1">
                                         <label for="checkbox_7">New Arrivals</label>

@@ -19,15 +19,13 @@ class IndexController extends Controller
      * Home page load
      */
     public function index() {
-        $products = Product::where('status', 1)->orderBy('id', 'DESC')->get();
-        $featureds = Product::where('status', 1)->where('featured', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $hot_deals = Product::where('status', 1)->where('hot_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(8)->get();
-        $special_offer = Product::where('status', 1)->where('special_offer', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(8)->get();
-        $best_seller = Product::where('status', 1)->where('best_seller', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $daily_sales = Product::where('status', 1)->where('daily_sales', 1)->orderBy('id', 'DESC')->limit(8)->get();
-        $special_deals = Product::where('status', 1)->where('special_deals', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->limit(8)->get();
+        $products = Product::where('status', 1)->orderBy('id', 'DESC')->limit(12)->get();
+        $best_selles = Product::where('status', 1)->where('best_selles', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $new_arrivals = Product::where('status', 1)->where('new_arrivals', 1)->orderBy('id', 'DESC')->limit(8)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
+        $offer_products = Product::where('status', 1)->where('discount_price', '!=', NULL)->orderBy('id', 'DESC')->get();
+
+
 
         $category_skip_0 = Category::skip(0)->first();
         $product_category_skip_0 = Product::where('status', 1)->where('category_id', $category_skip_0->id)->limit(8)->get();
@@ -36,7 +34,7 @@ class IndexController extends Controller
         $category_skip_2 = Category::skip(2)->first();
         $product_category_skip_2 = Product::where('status', 1)->where('category_id', $category_skip_2->id)->limit(8)->get();
 
-        return view('frontend.index', compact('categories', 'products', 'featureds', 'hot_deals', 'special_offer', 'best_seller', 'daily_sales', 'new_arrivals', 'special_deals', 'category_skip_0', 'product_category_skip_0', 'category_skip_1', 'product_category_skip_1', 'category_skip_2', 'product_category_skip_2' ));
+        return view('frontend.index', compact('categories', 'products', 'best_selles', 'new_arrivals', 'category_skip_0', 'product_category_skip_0', 'category_skip_1', 'product_category_skip_1', 'category_skip_2', 'product_category_skip_2', 'offer_products' ));
     }
 
     /**

@@ -35,13 +35,10 @@ class CreateProductsTable extends Migration
             $table->text('short_descp_ar');
             $table->longText('long_descp_en');
             $table->longText('long_descp_ar');
+            $table->longText('specifications_en');
+            $table->longText('specifications_ar');
             $table->string('product_thumbnail');
-            $table->integer('hot_deals')->nullable();
-            $table->integer('featured')->nullable();
-            $table->integer('special_offer')->nullable();
-            $table->integer('special_deals')->nullable();
-            $table->integer('best_seller')->nullable();
-            $table->integer('daily_sales')->nullable();
+            $table->integer('best_selles')->nullable();
             $table->integer('new_arrivals')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();

@@ -43,13 +43,6 @@
                       <span class="topbar-action-counter" id="wishlist_count"></span>
                       </a>
                    </div>
-                   <div class="topbar-action-item">
-                      <a href="{{ route('my-cart') }}">
-                      <i class="flaticon-shopping-cart"></i>
-                      <span>@if(session()->get('language') == 'arabic') عربتي @else My Cart @endif</span>
-                      <span class="topbar-action-counter" id="cart_count"></span>
-                      </a>
-                   </div>
                    <div class="topbar-action-item cart-option-dropdown">
                       <a href="#" class="cartbtn">
                       <i class="flaticon-shopping-cart"></i>
@@ -71,11 +64,11 @@
                          <div class="cart-details">
                             <div class="cart-total-box">
                                <div class="cart-total-item">
-                                  <h4>Subtotal</h4>
+                                  <h4>@if(session()->get('language') == 'arabic') المجموع الفرعي @else Subtotal @endif </h4>
                                   <p>$<span id="cart_sub_totla"></span></p>
                                </div>
                             </div>
-                            <a href="checkout.html" class="btn main-btn full-width main-btn-bgless">Checkout</a>
+                            <a href="{{ route('my-cart') }}" class="btn main-btn full-width main-btn-bgless">@if(session()->get('language') == 'arabic') الدفع @else Checkout @endif </a>
                          </div>
                       </div>
                    </div>

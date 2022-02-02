@@ -109,22 +109,23 @@
                 $('#closeCartModal').click();
                 // console.log(data);
 
-                 // Start Message 
-                 const Toast = Swal.mixin({
-                      toast: true,
-                      position: 'top-end',
-                      icon: 'success',
-                      showConfirmButton: false,
-                      timer: 3000
+                  // Start Message 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-right',
+                    showConfirmButton: false,
+                    timer: 3000
                     })
                 if ($.isEmptyObject(data.error)) {
                     Toast.fire({
                         type: 'success',
+                        icon: 'success',
                         title: data.success
                     })
                 }else{
                     Toast.fire({
                         type: 'error',
+                        icon: 'error',
                         title: data.error
                     })
                 }
@@ -249,22 +250,23 @@
             success:function(data){
                 miniCart();
 
-                // Start Message 
-                const Toast = Swal.mixin({
+                 // Start Message 
+                 const Toast = Swal.mixin({
                     toast: true,
-                    position: 'top-end',
-                    icon: 'success',
+                    position: 'bottom-right',
                     showConfirmButton: false,
                     timer: 3000
                     })
                 if ($.isEmptyObject(data.error)) {
                     Toast.fire({
                         type: 'success',
+                        icon: 'success',
                         title: data.success
                     })
                 }else{
                     Toast.fire({
                         type: 'error',
+                        icon: 'error',
                         title: data.error
                     })
                 }

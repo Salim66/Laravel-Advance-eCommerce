@@ -2,34 +2,17 @@
     <div class="footer-upper pt-100 pb-70 position-relative">
        <div class="container">
           <div class="row">
-             <div class="col-sm-12 col-md-6 col-lg-3">
+             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="footer-content-item">
                    <div class="footer-logo">
                       <a href="index.html"><img src="{{ asset('frontend/assets') }}/images/logo.png" alt="logo"></a>
                    </div>
                    <div class="footer-details">
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                      <ul class="footer-payment-list">
-                         <li>
-                            <a href="https://www.americanexpress.com/">
-                            <img src="{{ asset('frontend/assets') }}/images/american-express-sign.png" alt="payment">
-                            </a>
-                         </li>
-                         <li>
-                            <a href="https://en.wikipedia.org/wiki/Cirrus_(interbank_network)">
-                            <img src="{{ asset('frontend/assets') }}/images/cirrus.png" alt="payment">
-                            </a>
-                         </li>
-                         <li>
-                            <a href="https://www.mastercard.us/en-us.html">
-                            <img src="{{ asset('frontend/assets') }}/images/mastercard.png" alt="payment">
-                            </a>
-                         </li>
-                      </ul>
                    </div>
                 </div>
              </div>
-             <div class="col-sm-6 col-md-6 col-lg-3">
+             <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
                 <div class="footer-content-list footer-content-item desk-pad-left-70">
                    <div class="footer-content-title">
                       <h3>About Us</h3>
@@ -39,67 +22,17 @@
                          <a href="contact.html">Contact Us</a>
                       </li>
                       <li>
+                        <a href="privacy-policy.html">Privacy & Policy</a>
+                      </li>
+                      <li>
+                        <a href="blogs-grid.html">Return Policy</a>
+                      </li>
+                      <li>
                          <a href="terms-conditions.html">Terms & Conditions</a>
-                      </li>
-                      <li>
-                         <a href="privacy-policy.html">Privacy & Policy</a>
-                      </li>
-                      <li>
-                         <a href="blogs-grid.html">Latest Blogs</a>
-                      </li>
-                      <li>
-                         <a href="shops-grid.html">Our Latest Shops</a>
-                      </li>
+                      </li>                      
                    </ul>
                 </div>
-             </div>
-             <div class="col-sm-6 col-md-6 col-lg-3">
-                <div class="footer-content-list footer-content-item desk-pad-left-70">
-                   <div class="footer-content-title">
-                      <h3>Quick Links</h3>
-                   </div>
-                   <ul class="footer-details footer-list">
-                      <li>
-                         <a href="faqs.html">FAQ</a>
-                      </li>
-                      <li>
-                         <a href="order-tracking.html">Order Tracking</a>
-                      </li>
-                      <li>
-                         <a href="login.html">Authentication</a>
-                      </li>
-                      <li>
-                         <a href="cart.html">My Cart</a>
-                      </li>
-                      <li>
-                         <a href="wishlist.html">My Wishlist</a>
-                      </li>
-                   </ul>
-                </div>
-             </div>
-             <div class="col-sm-6 col-md-6 col-lg-3">
-                <div class="footer-content-list footer-content-item desk-pad-left-70">
-                   <div class="footer-content-title">
-                      <h3>Useful Links</h3>
-                   </div>
-                   <ul class="footer-details footer-list">
-                      <li>
-                         <a href="shops-grid.html">New Arrivals</a>
-                      </li>
-                      <li>
-                         <a href="about-us.html">About Us</a>
-                      </li>
-                      <li>
-                         <a href="404.html">404 Error Page</a>
-                      </li>
-                      <li>
-                         <a href="coming-soon-page.html">Coming Soon Page</a>
-                      </li>
-                      <li>
-                         <a href="search-page.html">Search Page</a>
-                      </li>
-                   </ul>
-                </div>
+             </div>             
              </div>
           </div>
        </div>
@@ -108,7 +41,7 @@
        <div class="footer-lower">
           <div class="footer-lower-item">
              <div class="footer-copyright-text">
-                <p>Copyright ©2022 Outo. Designed & Developed By <a href="https://techdynobd.com/" target="_blank">Techdyno BD</a></p>
+                <p>Copyright ©2022 Elegant Furnitur QR. Designed & Developed By <a href="https://techdynobd.com/" target="_blank">Techdyno BD</a></p>
              </div>
           </div>
           <div class="footer-lower-item">
@@ -308,55 +241,6 @@
 <!-- End Quick View Product -->
 
 
-@php
-    $product = App\Models\Product::where('status', 1)->where('special_offer', 1)->latest()->first();
-@endphp
-
-<div class="newsletter-popup-wrapepr">
-    <div class="newsletter-modal">
-       <div class="close-btn newsletter-modal-close">
-          <i class="flaticon-close"></i>
-       </div>
-       <div class="row align-items-center">
-          <div class="col-md-6 pb-30">
-             <div class="newsletter-item">
-                <div class="section-title section-title-left text-md-start">
-                    @php
-                    $amount = $product->selling_price - $product->discount_price;
-                    $discount = round(($amount/$product->selling_price)*100);
-                    @endphp
-                   <small>Get {{ $discount }}% offer in first buy.</small>
-                   <h2>
-                    @if(session()->get('language') == 'arabic')
-                    {{ $product->product_name_ar }}
-                    @else
-                    {{ $product->product_name_en }}
-                    @endif
-                   </h2>
-                   <p>
-                    @if(session()->get('language') == 'arabic')
-                    {{ $product->short_descp_ar }}
-                    @else
-                    {{ $product->short_descp_en }}
-                    @endif
-                   </p>
-                </div>
-                <form class="newsletter-form">
-                   <div class="form-group form-group-radius">
-                      <input type="text" placeholder="Enter email" class="form-control form-control-background" id="email" name="EMAIL" required>
-                      <button class="btn main-btn main-btn-radius" type="submit">Subscribe Now</button>
-                   </div>
-                </form>
-             </div>
-          </div>
-          <div class="col-md-6 pb-30 d-none d-md-block">
-             <div class="newsletter-item text-center">
-                <img src="{{ URL::to($product->product_thumbnail) }}" alt="newsletter">
-             </div>
-          </div>
-       </div>
-    </div>
-</div>
 
 
 

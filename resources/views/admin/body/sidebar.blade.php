@@ -13,7 +13,7 @@
 				 <a href="{{ route('dashboard') }}">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
-						  <img src="{{ URL::to('/backend/') }}/images/logo-dark.png" alt="">
+						  <img class="backend_logo" src="{{ URL::to('/backend/') }}/images/favicon.png" alt="">
 						  <h3><b>Elegant Furnitur QR</h3>
 					 </div>
 				</a>
@@ -109,6 +109,22 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ ($route == 'manage.division')? 'active' : '' }}"><a href="{{ route('manage.division') }}"><i class="ti-more"></i>Ship Division</a></li>
+              <li class="{{ ($route == 'manage.district')? 'active' : '' }}"><a href="{{ route('manage.district') }}"><i class="ti-more"></i>Ship District</a></li>
+              <li class="{{ ($route == 'manage.state')? 'active' : '' }}"><a href="{{ route('manage.state') }}"><i class="ti-more"></i>Ship State</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview {{ ($prefix == '/settings')? 'active' : '' }}">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Settings</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'manage.logo')? 'active' : '' }}"><a href="{{ route('manage.logo') }}"><i class="ti-more"></i>Logo</a></li>
               <li class="{{ ($route == 'manage.district')? 'active' : '' }}"><a href="{{ route('manage.district') }}"><i class="ti-more"></i>Ship District</a></li>
               <li class="{{ ($route == 'manage.state')? 'active' : '' }}"><a href="{{ route('manage.state') }}"><i class="ti-more"></i>Ship State</a></li>
             </ul>

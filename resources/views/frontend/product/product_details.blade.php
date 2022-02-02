@@ -31,7 +31,7 @@
     </div>
  </header>
  
-
+<!--- Start Product Details -->
 <section class="product-details-section pt-100 pb-100">
     <div class="container">
        <div class="product-details-content">
@@ -46,7 +46,7 @@
                             <div class="product-gallery-trigger">
                                <a href="{{ URL::to($img->photo_name) }}" title="Stylish Chair"><i class="flaticon-full-screen"></i></a>
                             </div>
-                            <img src="{{ URL::to($img->photo_name) }}" alt="product">
+                            <img class="product_details-img" src="{{ URL::to($img->photo_name) }}" alt="product">
                          </div>
                         @endforeach
                       
@@ -176,10 +176,10 @@
                 </div>
              </div>
           </div>
-          <div class="product-details-tab">
+          <div class="product-details-tab mt-5">
              <ul class="product-tab-list">
-                <li class="active" data-product-tab="1">Description</li>
-                <li data-product-tab="2">Reviews</li>
+                <li class="active" data-product-tab="1">@if(session()->get('language') == 'arabic') وصف @else Description @endif </li>
+                <li data-product-tab="2">@if(session()->get('language') == 'arabic') تحديد @else Specifications @endif </li>
              </ul>
              <div class="product-tab-information">
                 <div class="product-tab-information-item active" data-product-details-tab="1">
@@ -301,11 +301,11 @@
           </div>
        </div>
     </div>
- </section>
+</section>
+<!--- End Product Details -->
 
-
-
- <section class="related-product-section pb-100">
+<!--- Start Related Product -->
+<section class="related-product-section pb-100">
     <div class="container">
        <div class="product-info-header product-info-header-two product-info-header-borderless">
           <h2>@if(session()->get('language') == 'arabic') المنتجات ذات الصلة  @else Related Product @endif</h2>
@@ -380,5 +380,7 @@
 
        </div>
     </div>
- </section>
+</section>
+<!-- End Related Product -->
+
 @endsection

@@ -58,14 +58,6 @@
                             <td>{{ $product->product_qty }} pcs</td>
                         </tr>
                         <tr>
-                            <td>Product Tags English</td>
-                            <td>{{ $product->product_tags_en }}</td>
-                        </tr>
-                        <tr>
-                            <td>Product Tags Arabic</td>
-                            <td>{{ $product->product_tags_ar }}</td>
-                        </tr>
-                        <tr>
                             <td>Product Size English</td>
                             <td>{{ $product->product_size_en }}</td>
                         </tr>
@@ -103,66 +95,24 @@
                         </tr>
                         <tr>
                             <td>Long Description English</td>
-                            <td>{{ $product->long_descp_en }}</td>
+                            <td>{!! $product->long_descp_en !!}</td>
                         </tr>
                         <tr>
                             <td>Long Description Arabic</td>
-                            <td>{{ $product->long_descp_ar }}</td>
+                            <td>{!! $product->long_descp_ar !!}</td>
                         </tr>
                         <tr>
-                            <td>Hot Deals</td>
-                            <td>
-                                @if($product->hot_deals == 1)
-                                true
-                                @else
-                                false
-                                @endif
-                            </td>
+                            <td>Specifictions English</td>
+                            <td>{!! $product->specifications_en !!}/td>
                         </tr>
                         <tr>
-                            <td>Featured</td>
-                            <td>
-                                @if($product->featured == 1)
-                                true
-                                @else
-                                false
-                                @endif
-                            </td>
+                            <td>Specifictions Arabic</td>
+                            <td>{!! $product->specifications_ar !!}</td>
                         </tr>
                         <tr>
-                            <td>Sepcial Offer</td>
-                            <td>
-                                @if($product->special_offer == 1)
-                                true
-                                @else
-                                false
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Special Deals</td>
-                            <td>
-                                @if($product->special_deals == 1)
-                                true
-                                @else
-                                false
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Best Seller</td>
+                            <td>Best Selles</td>
                             <td>
                                 @if($product->best_seller == 1)
-                                true
-                                @else
-                                false
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Daily Sales</td>
-                            <td>
-                                @if($product->daily_sales == 1)
                                 true
                                 @else
                                 false
