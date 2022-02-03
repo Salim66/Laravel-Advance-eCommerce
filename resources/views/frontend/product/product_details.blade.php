@@ -329,17 +329,12 @@
                     </a>
                    <ul class="product-card-action">
                       <li>
-                         <a href="#">
+                         <a href="javascript:void(0)" class="quick-add-to-cart-trigger" id="{{ $product->id }}" onclick="productAddToCart(this.id)">
                          <i class="flaticon-shopping-cart"></i>
                          </a>
                       </li>
                       <li>
-                         <a href="#" class="quick-view-trigger">
-                         <i class="flaticon-visibility"></i>
-                         </a>
-                      </li>
-                      <li>
-                         <a href="#">
+                         <a href="javascript:void(0)" id="{{ $product->id }}" onclick="productAddToWishlist(this.id)">
                          <i class="flaticon-like"></i>
                          </a>
                       </li>

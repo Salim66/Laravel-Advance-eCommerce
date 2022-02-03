@@ -59,7 +59,7 @@ Wishlist Page
           <div class="col-sm-6 col-md-7 col-lg-6 pb-30">
              <div class="section-button-group">
                 <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary"> @if(session()->get('language') == 'arabic') قائمة التحديث  @else Update List @endif </a>
-                <a href="cart.html" class="btn main-btn main-btn-secondary coupon-btn">@if(session()->get('language') == 'arabic') عرض عربة التسوق @else View Cart @endif</a>
+                <a href="{{ route('my-cart') }}" class="btn main-btn main-btn-secondary coupon-btn">@if(session()->get('language') == 'arabic') عرض عربة التسوق @else View Cart @endif</a>
              </div>
           </div>
        </div>

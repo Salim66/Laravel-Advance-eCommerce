@@ -52,7 +52,7 @@
                 }
                 $('.pimg-cart').html(`
                         <div class="item">
-                            <img src="${data.product.product_thumbnail}" alt="product">
+                            <img src="/${data.product.product_thumbnail}" alt="product">
                         </div>`);
                 
                 $('.product-color-en').empty();
