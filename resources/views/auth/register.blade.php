@@ -95,7 +95,7 @@
                 <button type="submit" class="btn main-btn main-btn-secondary full-width">Register Now</button>
              </form>
 
-             <div class="authentication-divider">
+             {{-- <div class="authentication-divider">
                 <span>OR</span>
              </div>
              <ul class="social-list social-list-btn">
@@ -109,7 +109,7 @@
                    <i class="flaticon-google-plus-logo"></i>
                    </a>
                 </li>
-             </ul>
+             </ul> --}}
           </div>
        </div>
     </div>

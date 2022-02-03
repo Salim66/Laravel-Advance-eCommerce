@@ -195,7 +195,7 @@
                 let miniCart = "";
 
                 $.each(response.carts, function(key,value){
-                    console.log(value);
+                    // console.log(value);
                     miniCart += `<div class="cart-modal-product">
                                     <div class="cart-product-info">
                                         <a href="single-shop.html">

@@ -31,28 +31,29 @@ Contact Us Page
     </div>
 </header>
 
+@php
+    $contact = App\Models\ContactInfo::latest()->first();
+@endphp
+
 <div class="contact-info-section pt-100 pb-70 box-width-870">
     <div class="container">
        <div class="row">
           <div class="col-sm-6 col-lg-4 pb-30">
              <div class="contact-card">
                 <h3>Address</h3>
-                <p>3227 Millbrook Road, UK</p>
-                <p>4532 Millbrook Road, UK</p>
+                <p>{{ $contact->address }}</p>
              </div>
           </div>
           <div class="col-sm-6 col-lg-4 pb-30">
              <div class="contact-card">
                 <h3>Call Number</h3>
-                <p><a href="tel:+1-456-7890-3524">+1 456 7890 3524</a></p>
-                <p><a href="tel:+1-322-7498-1256">+1 322 7498 1256</a></p>
+                <p><a href="tel:{{ $contact->cell_number }}">{{ $contact->cell_number }}</a></p>
              </div>
           </div>
           <div class="col-sm-6 col-lg-4 pb-30 offset-lg-0 offset-sm-3">
              <div class="contact-card">
-                <h3>Contact Info</h3>
-                <p><a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#5a323f3636350533343c351a352f2e353d28352f2a74393537"><span class="__cf_email__" data-cfemail="f29a979e9e9dad9b9c949db29d87869d95809d8782dc919d9f">[email&#160;protected]</span></a></p>
-                <p><a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#85ede0e9e9eadaecebe3eac5eaf0f1eae4e2e0ebe6fcabe6eae8"><span class="__cf_email__" data-cfemail="127a777e7e7d4d7b7c747d527d67667d7375777c716b3c717d7f">[email&#160;protected]</span></a></p>
+                <h3>Contact Email</h3>
+                <p>{{ $contact->email_address }}</p>
              </div>
           </div>
        </div>
@@ -61,7 +62,7 @@ Contact Us Page
 <div class="map-section pb-100">
     <div class="container">
        <div class="contact-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sbd!4v1615369385967!5m2!1sen!2sbd"></iframe>
+          <iframe src="{{ $contact->google_address_map_link }}"></iframe>
        </div>
     </div>
 </div>
@@ -76,7 +77,8 @@ Contact Us Page
                 <div class="sub-section-title">
                    <h2 class="sub-section-title-heading">Message</h2>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form action="{{ route('contact-us.store') }}" method="POST">
+                    @csrf
                    <div class="row">
                       <div class="col-sm-6">
                          <div class="form-group mb-20">
@@ -113,7 +115,7 @@ Contact Us Page
                       </div>
                       <div class="col-12">
                          <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                            <input type="checkbox" id="contact1">
+                            <input type="checkbox" id="contact1" name="agree">
                             <label for="contact1">I have read all <a href="terms-condition.html">terms & condition</a> & <a href="privacy-policy.html">privacy policy</a>.</label>
                          </div>
                       </div>

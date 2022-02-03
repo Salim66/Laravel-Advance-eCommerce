@@ -126,6 +126,7 @@
             <ul class="treeview-menu">
               <li class="{{ ($route == 'manage.logo')? 'active' : '' }}"><a href="{{ route('manage.logo') }}"><i class="ti-more"></i>Logo</a></li>
               <li class="{{ ($route == 'manage.favicon')? 'active' : '' }}"><a href="{{ route('manage.favicon') }}"><i class="ti-more"></i>Favicon</a></li>
+              <li class="{{ ($route == 'manage.contact-info')? 'active' : '' }}"><a href="{{ route('manage.contact-info') }}"><i class="ti-more"></i>Contact Info</a></li>
             </ul>
         </li>
 
@@ -142,6 +143,19 @@
               <li class="{{ ($route == 'manage.privacy-policy')? 'active' : '' }}"><a href="{{ route('manage.privacy-policy') }}"><i class="ti-more"></i>Privacy Policy</a></li>
               <li class="{{ ($route == 'manage.return-policy')? 'active' : '' }}"><a href="{{ route('manage.return-policy') }}"><i class="ti-more"></i>Return Policy</a></li>
               <li class="{{ ($route == 'manage.terms')? 'active' : '' }}"><a href="{{ route('manage.terms') }}"><i class="ti-more"></i>Terms & Conditions</a></li>
+            </ul>
+        </li>
+        
+        <li class="treeview {{ ($prefix == '/contacts')? 'active' : '' }}">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Contact Us</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'manage.contact-us')? 'active' : '' }}"><a href="{{ route('manage.contact-us') }}"><i class="ti-more"></i>All Contacts</a></li>
             </ul>
         </li>
 

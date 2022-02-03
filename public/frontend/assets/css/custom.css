@@ -129,7 +129,7 @@ i {
 
 .product_details-img {
     width: 100% !important;
-    height: 300px !important;
+    height: 400px !important;
 }
 
 @media only screen and (max-width: 767px){
@@ -137,4 +137,23 @@ i {
         top: 0;
         right: 0;
     }
+    
+    .footer-logo img {
+         max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin-left: auto !important;;
+        margin-right: auto !important;
+    }
+    
+    .footer-details {
+        text-align: justify !important;
+    }
+    
+    .justify-content-end {
+        justify-content: center!important;
+        text-align: justify !important;
+    }
+    
 }
+

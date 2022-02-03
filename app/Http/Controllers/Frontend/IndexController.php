@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
 use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
 use App\Models\Terms;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -242,6 +243,44 @@ class IndexController extends Controller
         // $terms = Terms::latest()->first();
         return view('frontend.contact-us.contact-us');
 
+    }
+
+    /**
+     * Contact Us Store
+     */
+    public function contactUsStore(Request $request){
+         
+        // Validation
+         $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+
+        $agree = false;
+        if($request->agree){
+            $agree = true;
+        }else {
+            $agree = false;
+        }
+
+        ContactUs::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'agree' => $agree,
+        ]);
+
+        $notification = [
+            'message' => 'Your Message Successfully Send ):',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
     }
 
 }

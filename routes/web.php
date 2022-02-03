@@ -8,6 +8,8 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactInfoController;
+use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FaviconController;
 use App\Http\Controllers\Backend\LogoController;
@@ -173,6 +175,13 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/favicon/edit/{id}', [FaviconController::class, 'faviconEdit'])->name('favicon.edit');
         Route::post('/favicon/update', [FaviconController::class, 'faviconUpdate'])->name('favicon.update');
         Route::get('/favicon/delete/{id}', [FaviconController::class, 'faviconDelete'])->name('favicon.delete');
+       
+        //Contact Info All Route
+        Route::get('/contact-info/view', [ContactInfoController::class, 'contactInfoView'])->name('manage.contact-info');
+        Route::post('/contact-info/store', [ContactInfoController::class, 'contactInfoStore'])->name('contact-info.store');
+        Route::get('/contact-info/edit/{id}', [ContactInfoController::class, 'contactInfoEdit'])->name('contact-info.edit');
+        Route::post('/contact-info/update', [ContactInfoController::class, 'contactInfoUpdate'])->name('contact-info.update');
+        Route::get('/contact-info/delete/{id}', [ContactInfoController::class, 'contactInfoDelete'])->name('contact-info.delete');
     });
 
 
@@ -201,6 +210,13 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::post('/terms/update', [TermsController::class, 'termsUpdate'])->name('terms.update');
         Route::get('/terms/delete/{id}', [TermsController::class, 'termsDelete'])->name('terms.delete');
        
+    });
+
+
+    // Admin All Contact Us Routes
+    Route::prefix('contacts')->group(function(){
+        Route::get('/view', [ContactUsController::class, 'contactUsView'])->name('manage.contact-us');
+        Route::get('/delete/{id}', [ContactUsController::class, 'contactUsDelete'])->name('contact-us.delete');
     });
 
 });
@@ -280,5 +296,9 @@ Route::get('/return-policy', [IndexController::class, 'returnPolicyPage'])->name
 Route::get('/terms-conditions', [IndexController::class, 'termsConditionsPage'])->name('terms.conditions.page');
 // Contact Us Page Route
 Route::get('/contact-us', [IndexController::class, 'contactUsPage'])->name('contact.us.page');
+// Contact Us Store Route
+Route::post('/contact-us/store', [IndexController::class, 'contactUsStore'])->name('contact-us.store');
+
+
 
 
