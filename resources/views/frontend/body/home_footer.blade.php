@@ -47,20 +47,16 @@
                 <p>Copyright ©2022 Elegant Furnitur QR. Designed & Developed By <a href="https://techdynobd.com/" target="_blank">Techdyno BD</a></p>
              </div>
           </div>
+          @php
+              $socials = App\Models\SocialMedia::get();
+          @endphp
           <div class="footer-lower-item">
              <ul class="social-list">
+                @foreach($socials as $data)
                 <li>
-                   <a href="https://www.facebook.com/" target="_blank"><i class="flaticon-facebook"></i></a>
+                   <a href="{{ $data->social_link }}" target="_blank"><i class="{{ $data->social_name }}"></i></a>
                 </li>
-                <li>
-                   <a href="https://www.instagram.com/" target="_blank"><i class="flaticon-instagram"></i></a>
-                </li>
-                <li>
-                   <a href="https://twitter.com/" target="_blank"><i class="flaticon-twitter"></i></a>
-                </li>
-                <li>
-                   <a href="https://www.pinterest.com/" target="_blank"><i class="flaticon-pinterest"></i></a>
-                </li>
+                @endforeach
              </ul>
           </div>
        </div>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Frontend\CartController;
@@ -182,6 +183,13 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/contact-info/edit/{id}', [ContactInfoController::class, 'contactInfoEdit'])->name('contact-info.edit');
         Route::post('/contact-info/update', [ContactInfoController::class, 'contactInfoUpdate'])->name('contact-info.update');
         Route::get('/contact-info/delete/{id}', [ContactInfoController::class, 'contactInfoDelete'])->name('contact-info.delete');
+       
+        //Social Media All Route
+        Route::get('/social/view', [SocialMediaController::class, 'socialView'])->name('manage.social');
+        Route::post('/social/store', [SocialMediaController::class, 'socialStore'])->name('social.store');
+        Route::get('/social/edit/{id}', [SocialMediaController::class, 'socialEdit'])->name('social.edit');
+        Route::post('/social/update', [SocialMediaController::class, 'socialUpdate'])->name('social.update');
+        Route::get('/social/delete/{id}', [SocialMediaController::class, 'socialDelete'])->name('social.delete');
     });
 
 
