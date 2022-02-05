@@ -508,6 +508,7 @@
             url:"/cart-increase/"+rowId,
             dataType:"json",
             success:function(data){
+                couponCalculation();
                 cart();
                 miniCart();
             }
@@ -525,6 +526,7 @@
             url:"/cart-decrease/"+rowId,
             dataType:"json",
             success:function(data){
+                couponCalculation();
                 cart();
                 miniCart();
             }
