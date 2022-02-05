@@ -471,6 +471,10 @@
                 cart();
                 miniCart();
 
+                couponCalculation();
+                $('.coupon-btn').show();
+                $('#coupon_name').val('');
+
                 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,

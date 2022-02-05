@@ -39,6 +39,10 @@ class CartPageController extends Controller
      */
     public function removeCartProduct($rowId){
 
+        if(Session::has('coupon')){
+            Session::forget('coupon');
+        }
+
         Cart::remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Cart']);
 
