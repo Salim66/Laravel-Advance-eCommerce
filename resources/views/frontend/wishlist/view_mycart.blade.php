@@ -64,7 +64,13 @@ My Cart Page
           <div class="col-sm-6 col-md-7 col-lg-6 pb-30">
              <div class="section-button-group">
                 <a href="{{ url('/') }}" class="btn main-btn main-btn-secondary"> @if(session()->get('language') == 'arabic') قائمة التحديث  @else Update List @endif </a>
+
+                <!-- If Coupon Applied then not show coupon button -->
+                @if(Session::has('coupon'))
+
+                @else
                 <a href="javascript:void(0)" class="btn main-btn main-btn-secondary coupon-btn">@if(session()->get('language') == 'arabic') أضف عرض @else Add Coupon @endif</a>
+                @endif
              </div>
           </div>
           <div class="col-sm-6 col-md-5 col-lg-4 pb-30">
@@ -72,14 +78,10 @@ My Cart Page
                <h3 class="sub-section-title-heading">Total Cart</h3>
             </div>
             <div class="cart-details">
-               <div class="cart-total-box cart-total-box-secondcolor">
+               <div class="cart-total-box cart-total-box-secondcolor" id="coupon_calculation">
                   <div class="cart-total-item">
                      <h4>Subtotal</h4>
                      <p>$500.0</p>
-                  </div>
-                  <div class="cart-total-item">
-                     <h4>Vat <span>(2%)</span></h4>
-                     <p>$40.0</p>
                   </div>
                   <div class="cart-total-item">
                      <h4>Total</h4>

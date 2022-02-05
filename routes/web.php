@@ -309,6 +309,8 @@ Route::post('/contact-us/store', [IndexController::class, 'contactUsStore'])->na
 
 // Apply Coupon Route
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
+// Coupon Calculation Route
+Route::get('/coupon-calculation', [CartController::class, 'couponCalculation']);
 
 
 

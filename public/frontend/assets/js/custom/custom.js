@@ -543,6 +543,8 @@
             data: {coupon_name:coupon_name},
             url: "/apply-coupon",
             success: function(data){
+                // console.log(data);
+                $(".coupon-popup-wrapepr").removeClass("active");
 
                  // Start Message
                  const Toast = Swal.mixin({
@@ -570,3 +572,16 @@
         });
     }
     //---------- End Apply Coupon ----------//
+
+    //======== Start Coupon Calculation ========//
+    function couponCalculation(){
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '/coupon-calculation',
+            success: function(data){
+
+            }
+        });
+    }
+    //======== End Coupon Calculation ========//
