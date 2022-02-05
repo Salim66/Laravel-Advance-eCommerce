@@ -576,12 +576,44 @@
     //======== Start Coupon Calculation ========//
     function couponCalculation(){
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             dataType: 'json',
             url: '/coupon-calculation',
             success: function(data){
-
+                if(data.total){
+                    $('#coupon_calculation').html(`
+                        <div class="cart-total-item">
+                            <h4>Subtotal</h4>
+                            <p>$${data.total}</p>
+                        </div>
+                        <div class="cart-total-item">
+                            <h4>Total</h4>
+                            <p>$${data.total}</p>
+                        </div>
+                    `);
+                }else {
+                    $('#coupon_calculation').html(`
+                        <div class="cart-total-item">
+                            <h4>Subtotal</h4>
+                            <p>$${data.subtotal}</p>
+                        </div>
+                        <div class="cart-total-item">
+                            <h4>Coupon</h4>
+                            <p>${data.coupon_name}</p>
+                            <Button type="submit"><i class="flaticon-close"></i></Button>
+                        </div>
+                        <div class="cart-total-item">
+                            <h4>Discount Amount</h4>
+                            <p>$${data.coupon_amount}</p>
+                        </div>
+                        <div class="cart-total-item">
+                            <h4>Total</h4>
+                            <p>$${data.total_amount}</p>
+                        </div>
+                    `);
+                }
             }
         });
     }
+    couponCalculation();
     //======== End Coupon Calculation ========//

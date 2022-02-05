@@ -79,14 +79,7 @@ My Cart Page
             </div>
             <div class="cart-details">
                <div class="cart-total-box cart-total-box-secondcolor" id="coupon_calculation">
-                  <div class="cart-total-item">
-                     <h4>Subtotal</h4>
-                     <p>$500.0</p>
-                  </div>
-                  <div class="cart-total-item">
-                     <h4>Total</h4>
-                     <p>$540.0</p>
-                  </div>
+
                </div>
                <div class="text-end">
                   <a href="checkout.html" class="btn main-btn main-btn-secondary">Checkout</a>
