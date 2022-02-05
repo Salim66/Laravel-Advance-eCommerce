@@ -70,73 +70,38 @@ Checkout Page
                             </div>
                          </div>
                          <div class="col-sm-12">
-                            <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                               <input type="checkbox" id="check1">
-                               <label for="check1">Get alert of product updates & offers</label>
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
                             <div class="form-group mb-20">
-                               <label>First Name</label>
-                               <input type="email" name="name" class="form-control form-control-background-white" required placeholder="First name*">
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                            <div class="form-group mb-20">
-                               <label>Last Name</label>
-                               <input type="email" name="name" class="form-control form-control-background-white" required placeholder="Last name*">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Your Country</label>
-                               <select name="country" class="form-control form-control-background-white">
-                                  <option value="1">Your country*</option>
-                                  <option value="2">USA</option>
-                                  <option value="3">UK</option>
-                                  <option value="4">Germany</option>
+                               <label>@if(session()->get('language') == 'arabic') اختيار القسم @else Division Select @endif</label>
+                               <select name="division_id" class="form-control form-control-background-white">
+                                  <option selected disabled>-Select-</option>
+                                @foreach($divisions as $division)
+                                  <option value="{{ $division->id }}">{{ $division->division_name }}</option>
+                                @endforeach
                                </select>
                             </div>
                          </div>
                          <div class="col-sm-12">
                             <div class="form-group mb-20">
-                               <label>Company Name</label>
-                               <input type="text" name="company-name" class="form-control form-control-background-white" placeholder="Company name">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Address</label>
-                               <input type="text" name="company-name" class="form-control form-control-background-white" placeholder="Address">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Town/City</label>
-                               <select name="country" class="form-control form-control-background-white">
-                                  <option value="1">Town/City*</option>
-                                  <option value="2">USA</option>
-                                  <option value="3">UK</option>
-                                  <option value="4">Germany</option>
+                               <label>@if(session()->get('language') == 'arabic') تحديد المنطقة @else District Select @endif</label>
+                               <select name="district_id" class="form-control form-control-background-white">
+                                  <option selected disabled>-Select-</option>
+
                                </select>
                             </div>
                          </div>
-                         <div class="col-sm-12 col-lg-6">
-                            <div class="form-group mb-20">
-                               <label>State / Country</label>
-                               <input type="text" name="state-country" class="form-control  form-control-background-white" required placeholder="State / Country*">
-                            </div>
-                         </div>
                          <div class="col-sm-12">
-                            <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                               <input type="checkbox" id="check2">
-                               <label for="check2" class="weight-600">Ship to a different address?</label>
+                            <div class="form-group mb-20">
+                               <label>@if(session()->get('language') == 'arabic') تحديد الدولة @else State Select @endif</label>
+                               <select name="state_id" class="form-control form-control-background-white">
+                                  <option selected disabled>-Select-</option>
+
+                               </select>
                             </div>
                          </div>
                          <div class="col-sm-12">
                             <div class="form-group m-0">
-                               <label>Order Notes</label>
-                               <textarea name="order" class="form-control  form-control-background-white" rows="10" placeholder="Order notes*"></textarea>
+                               <label>@if(session()->get('language') == 'arabic') ترتيب ملاحظات @else Order Notes @endif</label>
+                               <textarea name="notes" class="form-control  form-control-background-white" rows="10" placeholder="Order notes*"></textarea>
                             </div>
                          </div>
                       </div>
