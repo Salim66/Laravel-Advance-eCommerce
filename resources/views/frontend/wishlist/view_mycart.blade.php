@@ -75,14 +75,14 @@ My Cart Page
           </div>
           <div class="col-sm-6 col-md-5 col-lg-4 pb-30">
             <div class="sub-section-title">
-               <h3 class="sub-section-title-heading">Total Cart</h3>
+               <h3 class="sub-section-title-heading"> @if(session()->get('language') == 'arabic') مجموع العربة @else Total Cart @endif  </h3>
             </div>
             <div class="cart-details">
                <div class="cart-total-box cart-total-box-secondcolor" id="coupon_calculation">
 
                </div>
                <div class="text-end">
-                  <a href="checkout.html" class="btn main-btn main-btn-secondary">Checkout</a>
+                  <a href="{{ route('checkout') }}" class="btn main-btn main-btn-secondary">@if(session()->get('language') == 'arabic') الدفع @else Checkout @endif  </a>
                </div>
             </div>
           </div>

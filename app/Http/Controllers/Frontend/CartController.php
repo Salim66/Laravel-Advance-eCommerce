@@ -178,5 +178,46 @@ class CartController extends Controller
     }
 
 
+    /**
+     * Checkout Page
+     */
+    public function checkoutCreate(){
+
+        if(Auth::check()){
+
+            if(Cart::total() > 0){
+
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
+
+                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal'));
+
+            }else {
+
+                $notification = [
+                    'message' => 'Shopping At List One Product',
+                    'alert-type' => 'error'
+                ];
+
+                return redirect()->to('/')->with($notification);
+
+            }
+
+
+        }else {
+
+            $notification = [
+                'message' => 'At First Login Your Account',
+                'alert-type' => 'error'
+            ];
+
+            return redirect()->route('login')->with($notification);
+
+        }
+
+    }
+
+
 
 }

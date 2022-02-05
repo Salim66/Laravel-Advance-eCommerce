@@ -313,6 +313,8 @@ Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
 Route::get('/coupon-calculation', [CartController::class, 'couponCalculation']);
 // Coupon Remove Route
 Route::get('/coupon-remove', [CartController::class, 'couponRemove']);
+// Checkout Page Route
+Route::get('/checkout', [CartController::class, 'checkoutCreate'])->name('checkout');
 
 
 
