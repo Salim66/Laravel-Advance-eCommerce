@@ -106,7 +106,7 @@ My Cart Page
                 <div class="section-title section-title-left section-title-secondary text-md-start">
                    <h2>@if(session()->get('language') == 'arabic') أضف قسيمتك هنا @else Add Your Coupon Here @endif</h2>
                 </div>
-                <form class="newsletter-form">
+                <form class="newsletter-form" method="post">
                    <div class="form-group">
                       <input type="text" id="coupon_name" placeholder="@if(session()->get('language') == 'arabic') أدخل قسيمتك @else Enter your coupon @endif" class="form-control form-control-background" required>
                       <button class="btn main-btn main-btn-secondary" onclick="applyCoupon()" type="submit">@if(session()->get('language') == 'arabic') تطبيق القسيمة @else Apply Coupon @endif</button>

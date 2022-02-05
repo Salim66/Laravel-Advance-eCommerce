@@ -541,8 +541,30 @@
             type: 'POST',
             dataType: 'json',
             data: {coupon_name:coupon_name},
-            url: "{{ url('/apply-coupon') }}",
+            url: "/apply-coupon",
             success: function(data){
+
+                 // Start Message
+                 const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-right',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
 
             }
         });
