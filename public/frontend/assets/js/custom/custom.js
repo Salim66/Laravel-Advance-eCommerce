@@ -545,6 +545,8 @@
             success: function(data){
                 // console.log(data);
                 $(".coupon-popup-wrapepr").removeClass("active");
+                couponCalculation();
+                $('.coupon-btn').hide();
 
                  // Start Message
                  const Toast = Swal.mixin({
@@ -600,7 +602,7 @@
                         <div class="cart-total-item">
                             <h4>Coupon</h4>
                             <p>${data.coupon_name}</p>
-                            <Button type="submit"><i class="flaticon-close"></i></Button>
+                            <Button type="submit" onclick="couponRemove()"><i class="flaticon-close"></i></Button>
                         </div>
                         <div class="cart-total-item">
                             <h4>Discount Amount</h4>
@@ -617,3 +619,41 @@
     }
     couponCalculation();
     //======== End Coupon Calculation ========//
+
+    //======== Start Coupon Remove ========//
+    function couponRemove(){
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '/coupon-remove',
+            success: function(data){
+                couponCalculation();
+                $('.coupon-btn').show();
+                $('#coupon_name').val('');
+
+                 // Start Message
+                 const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-right',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
+
+            }
+        });
+    }
+    //======== End Coupon Remove ========//

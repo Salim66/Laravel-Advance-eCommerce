@@ -311,6 +311,8 @@ Route::post('/contact-us/store', [IndexController::class, 'contactUsStore'])->na
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
 // Coupon Calculation Route
 Route::get('/coupon-calculation', [CartController::class, 'couponCalculation']);
+// Coupon Remove Route
+Route::get('/coupon-remove', [CartController::class, 'couponRemove']);
 
 
 
