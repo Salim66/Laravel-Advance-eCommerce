@@ -38,7 +38,112 @@ Checkout Page
        </div>
        <div class="row">
           <div class="col-lg-7 pb-30">
-             <div class="checkout-box desk-pad-right-30">
+            <div class="checkout-box desk-pad-right-30">
+                <div class="sub-section-title">
+                   <h3 class="sub-section-title-heading">@if(session()->get('language') == 'arabic') تفاصيل الشحن @else Shipping Details @endif </h3>
+                </div>
+                <div class="checkout-form">
+                   <form>
+                      <div class="row">
+                         <div class="col-sm-6">
+                            <div class="form-group mb-20">
+                               <label>@if(session()->get('language') == 'arabic') اسم @else Name @endif </label>
+                               <input type="text" name="name" class="form-control form-control-background-white" required placeholder="Name*" value="{{ Auth::user()->name }}">
+                            </div>
+                         </div>
+                         <div class="col-sm-6">
+                            <div class="form-group mb-20">
+                               <label>@if(session()->get('language') == 'arabic') بريد الالكتروني @else Email @endif </label>
+                               <input type="text" name="email" class="form-control form-control-background-white" required placeholder="Email address*" value="{{ Auth::user()->email }}">
+                            </div>
+                         </div>
+                         <div class="col-sm-6">
+                            <div class="form-group mb-20">
+                               <label>@if(session()->get('language') == 'arabic') هاتف @else Phone @endif </label>
+                               <input type="number" name="phone" class="form-control form-control-background-white" required placeholder="Phone number*" value="{{ Auth::user()->phone }}">
+                            </div>
+                         </div>
+                         <div class="col-sm-12 col-lg-6">
+                            <div class="form-group mb-20">
+                               <label>Postcode</label>
+                               <input type="text" name="post_code" class="form-control  form-control-background-white" required placeholder="Postcode*">
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="input-checkbox input-checkbox-secondcolor mb-20">
+                               <input type="checkbox" id="check1">
+                               <label for="check1">Get alert of product updates & offers</label>
+                            </div>
+                         </div>
+                         <div class="col-sm-6">
+                            <div class="form-group mb-20">
+                               <label>First Name</label>
+                               <input type="email" name="name" class="form-control form-control-background-white" required placeholder="First name*">
+                            </div>
+                         </div>
+                         <div class="col-sm-6">
+                            <div class="form-group mb-20">
+                               <label>Last Name</label>
+                               <input type="email" name="name" class="form-control form-control-background-white" required placeholder="Last name*">
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="form-group mb-20">
+                               <label>Your Country</label>
+                               <select name="country" class="form-control form-control-background-white">
+                                  <option value="1">Your country*</option>
+                                  <option value="2">USA</option>
+                                  <option value="3">UK</option>
+                                  <option value="4">Germany</option>
+                               </select>
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="form-group mb-20">
+                               <label>Company Name</label>
+                               <input type="text" name="company-name" class="form-control form-control-background-white" placeholder="Company name">
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="form-group mb-20">
+                               <label>Address</label>
+                               <input type="text" name="company-name" class="form-control form-control-background-white" placeholder="Address">
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="form-group mb-20">
+                               <label>Town/City</label>
+                               <select name="country" class="form-control form-control-background-white">
+                                  <option value="1">Town/City*</option>
+                                  <option value="2">USA</option>
+                                  <option value="3">UK</option>
+                                  <option value="4">Germany</option>
+                               </select>
+                            </div>
+                         </div>
+                         <div class="col-sm-12 col-lg-6">
+                            <div class="form-group mb-20">
+                               <label>State / Country</label>
+                               <input type="text" name="state-country" class="form-control  form-control-background-white" required placeholder="State / Country*">
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="input-checkbox input-checkbox-secondcolor mb-20">
+                               <input type="checkbox" id="check2">
+                               <label for="check2" class="weight-600">Ship to a different address?</label>
+                            </div>
+                         </div>
+                         <div class="col-sm-12">
+                            <div class="form-group m-0">
+                               <label>Order Notes</label>
+                               <textarea name="order" class="form-control  form-control-background-white" rows="10" placeholder="Order notes*"></textarea>
+                            </div>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+             {{-- <div class="checkout-box desk-pad-right-30">
                 <div class="sub-section-title">
                    <h3 class="sub-section-title-heading">Billing Details</h3>
                 </div>
@@ -136,18 +241,18 @@ Checkout Page
                       </div>
                    </form>
                 </div>
-             </div>
+             </div> --}}
           </div>
           <div class="col-lg-5 pb-30">
              <div class="checkout-item">
                 <div class="sub-section-title">
-                   <h3 class="sub-section-title-heading">Order Summary</h3>
+                   <h3 class="sub-section-title-heading">@if(session()->get('language') == 'arabic') ملخص الطلب @else Order Summary @endif </h3>
                 </div>
                 <div class="cart-details">
                    <div class="cart-total-box cart-total-box-secondcolor mb-30">
                       <div class="cart-total-item">
-                         <h4 class="checkout-total-title">Product Name</h4>
-                         <p class="checkout-total-title">Total</p>
+                         <h4 class="checkout-total-title">@if(session()->get('language') == 'arabic') اسم المنتج @else Product Name @endif </h4>
+                         <p class="checkout-total-title">@if(session()->get('language') == 'arabic') مجموع @else Total @endif</p>
                       </div>
 
                       @foreach ($carts as $data)
@@ -193,14 +298,33 @@ Checkout Page
 
                    </div>
                    <div class="cart-total-box cart-total-box-secondcolor mb-30">
-                      <div class="cart-total-item">
-                         <h4>@if(session()->get('language') == 'arabic') المجموع الفرعي @else Subtotal @endif  </h4>
-                         <p>${{ $cartTotal }}</p>
-                      </div>
-                      <div class="cart-total-item">
-                         <h4>@if(session()->get('language') == 'arabic') مجموع @else Total @endif </h4>
-                         <p>${{ $cartTotal }}</p>
-                      </div>
+                       @if(Session::has('coupon'))
+                       <div class="cart-total-item">
+                            <h4>@if(session()->get('language') == 'arabic') المجموع الفرعي @else Subtotal @endif  </h4>
+                            <p>${{ $cartTotal }}</p>
+                        </div>
+                       <div class="cart-total-item">
+                            <h4>@if(session()->get('language') == 'arabic') اسم القسيمة @else Coupon Name @endif  </h4>
+                            <p>{{ session()->get('coupon')['coupon_name'] }} ({{ session()->get('coupon')['coupon_discount'] }}%)</p>
+                        </div>
+                       <div class="cart-total-item">
+                            <h4>@if(session()->get('language') == 'arabic') خصم القسيمة @else Coupon Discount @endif  </h4>
+                            <p>${{ session()->get('coupon')['coupon_amount'] }}</p>
+                        </div>
+                        <div class="cart-total-item">
+                            <h4>@if(session()->get('language') == 'arabic') مجموع @else Total @endif </h4>
+                            <p>${{ session()->get('coupon')['total_amount'] }}</p>
+                        </div>
+                       @else
+                        <div class="cart-total-item">
+                            <h4>@if(session()->get('language') == 'arabic') المجموع الفرعي @else Subtotal @endif  </h4>
+                            <p>${{ $cartTotal }}</p>
+                        </div>
+                        <div class="cart-total-item">
+                            <h4>@if(session()->get('language') == 'arabic') مجموع @else Total @endif </h4>
+                            <p>${{ $cartTotal }}</p>
+                        </div>
+                      @endif
                    </div>
                 </div>
                 <div class="checkout-box checkout-payment-area">
