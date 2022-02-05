@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\User\CartPageController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\WishListController;
 use App\Models\Product;
 
@@ -315,6 +316,10 @@ Route::get('/coupon-calculation', [CartController::class, 'couponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'couponRemove']);
 // Checkout Page Route
 Route::get('/checkout', [CartController::class, 'checkoutCreate'])->name('checkout');
+// Get District By Ajax Route
+Route::get('/get-division/ajax/{division_id}', [CheckoutController::class, 'getDivisionByAjax']);
+// Get State By Ajax Route
+Route::get('/get-state/ajax/{district_id}', [CheckoutController::class, 'getStateByAjax']);
 
 
 

@@ -26,7 +26,8 @@
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/style.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/responsive.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{ asset('frontend/assets') }}/css/custom.css" type="text/css" media="all" />
-   </head>
+      <script src="{{ asset('frontend/assets') }}/js/jquery-3.6.0.min.js"></script>
+    </head>
    <body>
       <div class="preloader">
          <div class="preloader-wrapper">
@@ -49,7 +50,7 @@
            <i class="flaticon-up-arrow"></i>
         </div>
      </div>
-      <script src="{{ asset('frontend/assets') }}/js/jquery-3.6.0.min.js"></script>
+
       <script src="{{ asset('frontend/assets') }}/js/bootstrap.bundle.min.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/jquery-ui.js"></script>
       <script src="{{ asset('frontend/assets') }}/js/jquery.magnific-popup.min.js"></script>
@@ -91,6 +92,6 @@
     </script>
 
     <script type="text/javascript" src="{{ asset('frontend/assets') }}/js/custom/custom.js"></script>
-    
+
    </body>
 </html>
