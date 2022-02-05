@@ -29,8 +29,8 @@
                 $('#product_id').val(id);
                 $('#qty').val(1);
 
-                $('.pstock-cart').empty; 
-                if(data.product.product_qty > 0){                    
+                $('.pstock-cart').empty;
+                if(data.product.product_qty > 0){
                     $('.pstock-cart').html('<span id="available" class="badge badge-pill badge-success bg-success">Available</span>');
                 }else {
                     $('.pstock-cart').html('<span id="available" class="badge badge-pill badge-danger bg-danger">Stockout</span>');
@@ -38,7 +38,7 @@
 
                 if(data.product.discount_price == null){
                     $('.product-price_cart').html('$'+data.product.selling_price);
-                    
+
                 }else {
                     $('.product-price_cart').html(`$`+data.product.discount_price+` <del>$`+data.product.selling_price+`</del>`);
                 }
@@ -54,7 +54,7 @@
                         <div class="item">
                             <img src="/${data.product.product_thumbnail}" alt="product">
                         </div>`);
-                
+
                 $('.product-color-en').empty();
                 $.each(data.color_en, function(key,value){
                     $('.product-color-en').append('<option value="'+value+'">'+value+'</option>');
@@ -74,14 +74,14 @@
                 $.each(data.size_ar, function(key,value){
                     $('.product-size-ar').append('<option value="'+value+'">'+value+'</option>');
                 });
-                        
+
 
             }
         });
 
     }// End Product add to cart modal
 
-    // Add to Cart function 
+    // Add to Cart function
     function addToCart(){
         let product_name_en = $('.pname_cart-en').text();
         let product_name_ar = $('.pname_cart-ar').text();
@@ -109,7 +109,7 @@
                 $('#closeCartModal').click();
                 // console.log(data);
 
-                  // Start Message 
+                  // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-right',
@@ -129,18 +129,18 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
 
             }
         });
 
-    }// End Add to Cart function 
-    
+    }// End Add to Cart function
 
-    
+
+
      // Start Add to Whishlist function
      function productAddToWishlist(product_id){
-        
+
         $.ajax({
             headers:{
                 'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
@@ -151,7 +151,7 @@
             success:function(data) {
                 wishlist();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                       toast: true,
                       position: 'bottom-right',
@@ -171,7 +171,7 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
 
             }
         });
@@ -181,7 +181,7 @@
 
     // Start Mini Add to Cart function
     function miniCart(){
-                
+
         $.ajax({
             type: 'GET',
             url: '/product/mini/cart',
@@ -216,7 +216,7 @@
 
                                                         })()
 
-                                                    }    
+                                                    }
                                                 </h3>
                                                 <p>Price: <span>$${value.price}</span></p>
                                                 <p>Qty: <span>${value.qty} pcs</span></p>
@@ -242,7 +242,7 @@
 
     // Start Mini Cart Remove
     function miniCartRemove(rowId){
-        
+
         $.ajax({
             type:"GET",
             url:"/minicart/product-remove/"+rowId,
@@ -250,7 +250,7 @@
             success:function(data){
                 miniCart();
 
-                 // Start Message 
+                 // Start Message
                  const Toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-right',
@@ -270,7 +270,7 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
 
             }
         });
@@ -328,7 +328,7 @@
 
     // Start Wishlist Remove
     function removeWishlist(id){
-        
+
         $.ajax({
             type:"GET",
             url:"/user/wishlist-remove/"+id,
@@ -336,7 +336,7 @@
             success:function(data){
                 wishlist();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-right',
@@ -356,7 +356,7 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
 
             }
         });
@@ -381,7 +381,7 @@
 
                 $.each(response.carts, function(key,value){
                     // console.log(value);
-                    rows += `                           
+                    rows += `
                             <tr>
                                 <td>
                                     <div class="product-table-thumb">
@@ -400,7 +400,7 @@
 
                                         })()
 
-                                    } 
+                                    }
                                 </td>
                                 <td class="color-secondary">$${value.price}</td>
                                 <td>
@@ -415,7 +415,7 @@
 
                                         })()
 
-                                    } 
+                                    }
                                 </td>
                                 <td>
                                     ${
@@ -429,14 +429,14 @@
 
                                         })()
 
-                                    } 
+                                    }
                                 </td>
                                 <td>
                                     <div class="cart-quantity">
                                     ${
                                     value.qty > 1 ?
                                         `<button class="qu-btn dec" id="${value.rowId}" onclick="cartDecrease(this.id)">-</button>`
-                                            : 
+                                            :
                                         `<button class="qu-btn dec" disabled>-</button>`
                                     }
                                         <input type="text" class="qu-input" value="${value.qty}">
@@ -462,7 +462,7 @@
 
     // Start Cart Remove
     function removeCart(id){
-        
+
         $.ajax({
             type:"GET",
             url:"/user/cart-remove/"+id,
@@ -471,7 +471,7 @@
                 cart();
                 miniCart();
 
-                // Start Message 
+                // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'bottom-right',
@@ -491,7 +491,7 @@
                         title: data.error
                     })
                 }
-                // End Message 
+                // End Message
 
             }
         });
@@ -502,7 +502,7 @@
 
     //---------- Start Cart Increase ----------//
     function cartIncrease(rowId){
-        
+
         $.ajax({
             type:"GET",
             url:"/cart-increase/"+rowId,
@@ -519,7 +519,7 @@
 
     //---------- Start Cart Decrease ----------//
     function cartDecrease(rowId){
-        
+
         $.ajax({
             type:"GET",
             url:"/cart-decrease/"+rowId,
@@ -532,3 +532,19 @@
 
     }
     //---------- End Cart Decrease ----------//
+
+
+    //---------- Start Apply Coupon ----------//
+    function applyCoupon(){
+        let coupon_name = $('#coupon_name').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {coupon_name:coupon_name},
+            url: "{{ url('/apply-coupon') }}",
+            success: function(data){
+
+            }
+        });
+    }
+    //---------- End Apply Coupon ----------//

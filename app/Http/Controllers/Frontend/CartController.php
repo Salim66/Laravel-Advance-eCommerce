@@ -24,13 +24,13 @@ class CartController extends Controller
         }else {
             $price = $product->discount_price;
         }
-        
+
         Cart::add([
-            'id' => $id, 
+            'id' => $id,
             'name' => $product->product_name_en,
-            'qty' => $request->quantity, 
-            'price' => $price, 
-            'weight' => 1, 
+            'qty' => $request->quantity,
+            'price' => $price,
+            'weight' => 1,
             'options' => [
                 'image' => $product->product_thumbnail,
                 'name_ar' => $product->product_name_ar,
@@ -88,21 +88,29 @@ class CartController extends Controller
                     'product_id' => $product_id,
                     'created_at' => Carbon::now(),
                 ]);
-    
-                return response()->json(['success' => 'Successfully Added On Your Wishlist']); 
+
+                return response()->json(['success' => 'Successfully Added On Your Wishlist']);
 
             }else {
 
                 return response()->json(['error' => 'This Product has Already On Your Wishlist']);
 
             }
-            
+
 
         }else {
 
-            return response()->json(['error' => 'At First Login Your Account']); 
+            return response()->json(['error' => 'At First Login Your Account']);
 
         }
+
+    }
+
+
+    /**
+     * Apply Coupon
+     */
+    public function applyCoupon(Request $request){
 
     }
 

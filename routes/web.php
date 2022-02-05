@@ -169,21 +169,21 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/logo/edit/{id}', [LogoController::class, 'logoEdit'])->name('logo.edit');
         Route::post('/logo/update', [LogoController::class, 'logoUpdate'])->name('logo.update');
         Route::get('/logo/delete/{id}', [LogoController::class, 'logoDelete'])->name('logo.delete');
-       
+
         //Favicon All Route
         Route::get('/favicon/view', [FaviconController::class, 'faviconView'])->name('manage.favicon');
         Route::post('/favicon/store', [FaviconController::class, 'faviconStore'])->name('favicon.store');
         Route::get('/favicon/edit/{id}', [FaviconController::class, 'faviconEdit'])->name('favicon.edit');
         Route::post('/favicon/update', [FaviconController::class, 'faviconUpdate'])->name('favicon.update');
         Route::get('/favicon/delete/{id}', [FaviconController::class, 'faviconDelete'])->name('favicon.delete');
-       
+
         //Contact Info All Route
         Route::get('/contact-info/view', [ContactInfoController::class, 'contactInfoView'])->name('manage.contact-info');
         Route::post('/contact-info/store', [ContactInfoController::class, 'contactInfoStore'])->name('contact-info.store');
         Route::get('/contact-info/edit/{id}', [ContactInfoController::class, 'contactInfoEdit'])->name('contact-info.edit');
         Route::post('/contact-info/update', [ContactInfoController::class, 'contactInfoUpdate'])->name('contact-info.update');
         Route::get('/contact-info/delete/{id}', [ContactInfoController::class, 'contactInfoDelete'])->name('contact-info.delete');
-       
+
         //Social Media All Route
         Route::get('/social/view', [SocialMediaController::class, 'socialView'])->name('manage.social');
         Route::post('/social/store', [SocialMediaController::class, 'socialStore'])->name('social.store');
@@ -217,7 +217,7 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/terms/edit/{id}', [TermsController::class, 'termsEdit'])->name('terms.edit');
         Route::post('/terms/update', [TermsController::class, 'termsUpdate'])->name('terms.update');
         Route::get('/terms/delete/{id}', [TermsController::class, 'termsDelete'])->name('terms.delete');
-       
+
     });
 
 
@@ -306,6 +306,9 @@ Route::get('/terms-conditions', [IndexController::class, 'termsConditionsPage'])
 Route::get('/contact-us', [IndexController::class, 'contactUsPage'])->name('contact.us.page');
 // Contact Us Store Route
 Route::post('/contact-us/store', [IndexController::class, 'contactUsStore'])->name('contact-us.store');
+
+// Apply Coupon Route
+Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
 
 
 
