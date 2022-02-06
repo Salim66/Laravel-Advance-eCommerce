@@ -35,7 +35,7 @@ Payment Page
        <div class="row d-flex justify-content-center">
           <div class="col-lg-5 pb-30">
              <div class="checkout-item">
-                <div class="sub-section-title">
+                <div class="sub-section-title text-center">
                    <h3 class="sub-section-title-heading">@if(session()->get('language') == 'arabic') مبلغ الشحن الخاص بك @else Your Shipping Amount @endif </h3>
                 </div>
                 <div class="cart-details">
@@ -70,24 +70,25 @@ Payment Page
                    </div>
                 </div>
                 <div class="checkout-box checkout-payment-area">
-                   <div class="sub-section-title">
-                      <h3 class="sub-section-title-heading">What's Payment Method</h3>
-                   </div>
                    <div class="checkout-payment-form">
-                         <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                            <input type="radio" id="check3" name="payment_method" value="Cash">
-                            <label for="check3">Cash</label>
-                         </div>
-                         <div class="sub-section-title">
-                            <h3 class="sub-section-title-heading">Payment</h3>
-                         </div>
+                        <form action="{{ route('cash.order') }}" method="post" id="payment-form">
+                         @csrf
+                            <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+                            <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+                            <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+                            <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+                            <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+                            <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+                            <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                            <input type="hidden" name="notes" value="{{ $data['notes'] }}">
                          <div class="row">
                             <div class="col-12">
                                <button class="btn main-btn main-btn-secondary full-width" type="submit">
-                               Make Payment
+                               Submit Payment
                                </button>
                             </div>
                          </div>
+                        </form>
                    </div>
                 </div>
             </form>
