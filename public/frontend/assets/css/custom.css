@@ -132,7 +132,8 @@ i {
     height: 400px !important;
 }
 
-.table_header {
+.table_header,
+.shipping_details {
     background: #f8f8f8;
 }
 
