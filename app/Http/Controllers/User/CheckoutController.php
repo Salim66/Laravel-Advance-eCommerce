@@ -35,6 +35,20 @@ class CheckoutController extends Controller
      * Checkout Store
      */
     public function checkoutStore(Request $request){
+        // return $request->all();
+        $data = [];
+        $data['shipping_name']  = $request->name;
+        $data['shipping_email']  = $request->email;
+        $data['shipping_phone']  = $request->phone;
+        $data['post_code']  = $request->post_code;
+        $data['division_id']  = $request->division_id;
+        $data['district_id']  = $request->district_id;
+        $data['state_id']  = $request->state_id;
+        $data['notes']  = $request->notes;
+
+        if($request->payment_method == 'Cash'){
+            return view('frontend.payment.cash_view', compact('data'));
+        }
 
     }
 

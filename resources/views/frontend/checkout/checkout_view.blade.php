@@ -200,7 +200,7 @@ Checkout Page
                    </div>
                    <div class="checkout-payment-form">
                          <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                            <input type="radio" id="check3" name="cash">
+                            <input type="radio" id="check3" name="payment_method" value="Cash">
                             <label for="check3">Cash</label>
                          </div>
                          <div class="sub-section-title">
