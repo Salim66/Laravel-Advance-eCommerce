@@ -132,12 +132,56 @@ i {
     height: 400px !important;
 }
 
+.table_header {
+    background: #f8f8f8;
+}
+
+.pending {
+    background: #800080;
+}
+
+.confirm {
+    background: #0000FF;
+}
+
+.processing {
+    background: #FFA500;
+}
+
+.picked {
+    background: #808000;
+}
+
+.shipped {
+    background: #808080;
+}
+
+.delivered {
+    background: #008000;
+}
+
+.return-request {
+    background: red;
+}
+
+.cancel {
+    background: #FF0000;
+}
+
+.invoice {
+    color: white;
+}
+
+.download {
+    margin-top: 5px;
+}
+
 @media only screen and (max-width: 767px){
     .quick-add-to-cart-close {
         top: 0;
         right: 0;
     }
-    
+
     .footer-logo img {
          max-width: 100% !important;
         height: auto !important;
@@ -145,15 +189,15 @@ i {
         margin-left: auto !important;;
         margin-right: auto !important;
     }
-    
+
     .footer-details {
         text-align: justify !important;
     }
-    
+
     .justify-content-end {
         justify-content: center!important;
         text-align: justify !important;
     }
-    
+
 }
 

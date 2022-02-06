@@ -5,40 +5,114 @@
     <div class="container user-container">
         <div class="row">
             @include('frontend.common.user_sidebar')
-            <div class="col-md-2"></div>
-            {{-- <div class="col-md-6 my-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="text-center"><span class="text-danger">Hi.....</span><strong>{{ Auth::user()->name }}</strong> Update Your Profile</h3>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+            <div class="col-md-1"></div>
+            <div class="col-md-9 my-4">
 
-                            <div class="form-group mb-20">
-                                <label for="">Name</label>
-                                <input type="text" name="name" class="form-control bg-input" value="{{ $data->name }}">
-                            </div>
-                            <div class="form-group mb-20">
-                                <label for="">Email</label>
-                                <input type="email" name="email" class="form-control bg-input" value="{{ $data->email }}">
-                            </div>
-                            <div class="form-group mb-20">
-                                <label for="">Phone</label>
-                                <input type="text" name="phone" class="form-control bg-input" value="{{ $data->phone }}">
-                            </div>
-                            <div class="form-group mb-20">
-                                <label for="">User Image</label>
-                                <input type="file" name="profile_photo_path" class="form-control bg-input">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-danger" value="Update">
-                            </div>
+                <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
 
-                        </form>
-                    </div>
-                </div>
-            </div> --}}
+                        <tr class="table_header">
+                          <td class="col-md-1" width="30%">
+                            <label for=""> Date</label>
+                          </td>
+
+                          <td class="col-md-3">
+                            <label for=""> Total</label>
+                          </td>
+
+                          <td class="col-md-3">
+                            <label for=""> Payment</label>
+                          </td>
+
+
+                          <td class="col-md-2">
+                            <label for=""> Invoice</label>
+                          </td>
+
+                           <td class="col-md-2">
+                            <label for=""> Order</label>
+                          </td>
+
+                           <td class="col-md-1">
+                            <label for=""> Action </label>
+                          </td>
+
+                        </tr>
+
+
+                        @foreach($orders as $order)
+                 <tr>
+                          <td class="col-md-1" width="30%">
+                            <label for=""> {{ $order->order_date }}</label>
+                          </td>
+
+                          <td class="col-md-3">
+                            <label for=""> ${{ $order->amount }}</label>
+                          </td>
+
+
+                           <td class="col-md-3">
+                            <label for=""> {{ $order->payment_method }}</label>
+                          </td>
+
+                          <td class="col-md-2">
+                            <label for=""> {{ $order->invoice_no }}</label>
+                          </td>
+
+                   <td class="col-md-2">
+                    <label for="">
+
+                        @if($order->status == 'pending')
+                            <span class="badge badge-pill badge-warning pending"> Pending </span>
+                        @elseif($order->status == 'confirm')
+                            <span class="badge badge-pill badge-warning confirm"> Confirm </span>
+
+                        @elseif($order->status == 'processing')
+                            <span class="badge badge-pill badge-warning processing"> Processing </span>
+
+                        @elseif($order->status == 'picked')
+                            <span class="badge badge-pill badge-warning picked"> Picked </span>
+
+                        @elseif($order->status == 'shipped')
+                            <span class="badge badge-pill badge-warning shipped"> Shipped </span>
+
+                        @elseif($order->status == 'delivered')
+                            <span class="badge badge-pill badge-warning delivered"> Delivered </span>
+
+                                @if($order->return_order == 1)
+                                <span class="badge badge-pill badge-warning return-request">Return Requested </span>
+
+                                @endif
+
+                        @else
+                                <span class="badge badge-pill badge-warning cancel"> Cancel </span>
+
+                        @endif
+                      </label>
+                  </td>
+
+                   <td class="col-md-1">
+                    <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
+
+                     <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger download"><i class="fa fa-download invoice"></i> Invoice </a>
+
+                  </td>
+
+                        </tr>
+                        @endforeach
+
+
+
+
+
+                      </tbody>
+
+                    </table>
+
+                  </div>
+
+            </div>
         </div>
     </div>
 </div>
