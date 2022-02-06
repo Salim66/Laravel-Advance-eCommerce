@@ -181,6 +181,13 @@ i {
     background: #418DB9;
 }
 
+.color_return {
+    background: #f4f4f4;
+}
+.color_return:hover {
+    background: #f4f4f4;
+}
+
 @media only screen and (max-width: 767px){
     .quick-add-to-cart-close {
         top: 0;
