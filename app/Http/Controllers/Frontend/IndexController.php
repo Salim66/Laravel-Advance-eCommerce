@@ -75,7 +75,7 @@ class IndexController extends Controller
             if(file_exists('upload/user_images/'.$data->profile_photo_path) && !empty($data->profile_photo_path)){
                 unlink('upload/user_images/'.$data->profile_photo_path);
             }
-            $data['profile_photo_path'] = $filename;
+            $data['profile_photo_path'] = 'upload/user_images/'.$filename;
         }
         $data->save();
 
@@ -249,7 +249,7 @@ class IndexController extends Controller
      * Contact Us Store
      */
     public function contactUsStore(Request $request){
-         
+
         // Validation
          $request->validate([
             'name' => 'required',

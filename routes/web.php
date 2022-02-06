@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AllUserController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
@@ -282,6 +283,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/get-wishlist-product', [WishListController::class, 'getWishlistProduct']);
     //Remove Wishlist Route
     Route::get('/wishlist-remove/{id}', [WishListController::class, 'removeWishlistProduct']);
+    // Case Order Route
+    Route::post('/case-order', [CashController::class, 'cashOrder'])->name('cash.order');
+    // My Order Route
+    Route::get('/my-order', [AllUserController::class, 'myOrder'])->name('my.order');
 
 });
 
@@ -323,8 +328,7 @@ Route::get('/get-division/ajax/{division_id}', [CheckoutController::class, 'getD
 Route::get('/get-state/ajax/{district_id}', [CheckoutController::class, 'getStateByAjax']);
 // Checkout Store Route
 Route::post('/checkout-store', [CheckoutController::class, 'checkoutStore'])->name('checkout.store');
-// Case Order Route
-Route::post('/case-order', [CashController::class, 'cashOrder'])->name('cash.order');
+
 
 
 

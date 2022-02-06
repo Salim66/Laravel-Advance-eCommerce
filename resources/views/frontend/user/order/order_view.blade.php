@@ -6,7 +6,7 @@
         <div class="row">
             @include('frontend.common.user_sidebar')
             <div class="col-md-2"></div>
-            <div class="col-md-6 my-4">
+            {{-- <div class="col-md-6 my-4">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="text-center"><span class="text-danger">Hi.....</span><strong>{{ Auth::user()->name }}</strong> Update Your Profile</h3>
@@ -38,7 +38,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
