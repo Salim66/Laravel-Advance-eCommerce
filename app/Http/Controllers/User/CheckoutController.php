@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\ShipDistrict;
 use App\Models\ShipState;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -45,9 +46,10 @@ class CheckoutController extends Controller
         $data['district_id']  = $request->district_id;
         $data['state_id']  = $request->state_id;
         $data['notes']  = $request->notes;
+        $cartTotal = Cart::total();
 
         if($request->payment_method == 'Cash'){
-            return view('frontend.payment.cash_view', compact('data'));
+            return view('frontend.payment.cash_view', compact('data', 'cartTotal'));
         }
 
     }
