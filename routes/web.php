@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\FaviconController;
 use App\Http\Controllers\Backend\LogoController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PrivacyPolicyController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
@@ -228,6 +229,12 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::prefix('contacts')->group(function(){
         Route::get('/view', [ContactUsController::class, 'contactUsView'])->name('manage.contact-us');
         Route::get('/delete/{id}', [ContactUsController::class, 'contactUsDelete'])->name('contact-us.delete');
+    });
+
+
+    // Admin Orders Routes
+    Route::prefix('orders')->group(function(){
+        Route::get('/pending-orders', [OrderController::class, 'pendingOrders'])->name('pending.orders');
     });
 
 });
