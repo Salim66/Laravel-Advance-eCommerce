@@ -287,6 +287,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::post('/case-order', [CashController::class, 'cashOrder'])->name('cash.order');
     // My Order Route
     Route::get('/my-order', [AllUserController::class, 'myOrder'])->name('my.order');
+    // Order Details Route
+    Route::get('/order_details/{order_id}', [AllUserController::class, 'orderDetails']);
 
 });
 
