@@ -38,7 +38,8 @@
                             <td width="25%">
                                 <a title="Order Details" href="{{ route('pending.order.detials', $data->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
 
-                                <a title="Delete Data" href="{{ route('coupon.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a target="_blank" href="{{ route('invoice.download',$data->id) }}" class="btn btn-danger" title="Invoice Download">
+                                    <i class="fa fa-download"></i></a>
                             </td>
                         </tr>
                         @endforeach

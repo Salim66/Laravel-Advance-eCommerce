@@ -37,8 +37,6 @@
                             <td><span class="badge badge-pill badge-success">{{ $data->status }}</span></td>
                             <td width="25%">
                                 <a title="Order Details" href="{{ route('pending.order.detials', $data->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-
-                                <a title="Delete Data" href="{{ route('coupon.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
