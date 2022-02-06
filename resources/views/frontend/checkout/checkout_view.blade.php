@@ -43,7 +43,8 @@ Checkout Page
                    <h3 class="sub-section-title-heading">@if(session()->get('language') == 'arabic') تفاصيل الشحن @else Shipping Details @endif </h3>
                 </div>
                 <div class="checkout-form">
-                   <form>
+                   <form action="{{ route('checkout.store') }}" method="POST">
+                    @csrf
                       <div class="row">
                          <div class="col-sm-6">
                             <div class="form-group mb-20">
@@ -105,108 +106,9 @@ Checkout Page
                             </div>
                          </div>
                       </div>
-                   </form>
+
                 </div>
              </div>
-             {{-- <div class="checkout-box desk-pad-right-30">
-                <div class="sub-section-title">
-                   <h3 class="sub-section-title-heading">Billing Details</h3>
-                </div>
-                <div class="checkout-form">
-                   <form>
-                      <div class="row">
-                         <div class="col-sm-6">
-                            <div class="form-group mb-20">
-                               <label>Email</label>
-                               <input type="text" name="email" class="form-control form-control-background-white" required placeholder="Email address*">
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                            <div class="form-group mb-20">
-                               <label>Phone</label>
-                               <input type="text" name="phone" class="form-control form-control-background-white" required placeholder="Phone number*">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                               <input type="checkbox" id="check1">
-                               <label for="check1">Get alert of product updates & offers</label>
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                            <div class="form-group mb-20">
-                               <label>First Name</label>
-                               <input type="email" name="name" class="form-control form-control-background-white" required placeholder="First name*">
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                            <div class="form-group mb-20">
-                               <label>Last Name</label>
-                               <input type="email" name="name" class="form-control form-control-background-white" required placeholder="Last name*">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Your Country</label>
-                               <select name="country" class="form-control form-control-background-white">
-                                  <option value="1">Your country*</option>
-                                  <option value="2">USA</option>
-                                  <option value="3">UK</option>
-                                  <option value="4">Germany</option>
-                               </select>
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Company Name</label>
-                               <input type="text" name="company-name" class="form-control form-control-background-white" placeholder="Company name">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Address</label>
-                               <input type="text" name="company-name" class="form-control form-control-background-white" placeholder="Address">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group mb-20">
-                               <label>Town/City</label>
-                               <select name="country" class="form-control form-control-background-white">
-                                  <option value="1">Town/City*</option>
-                                  <option value="2">USA</option>
-                                  <option value="3">UK</option>
-                                  <option value="4">Germany</option>
-                               </select>
-                            </div>
-                         </div>
-                         <div class="col-sm-12 col-lg-6">
-                            <div class="form-group mb-20">
-                               <label>State / Country</label>
-                               <input type="text" name="state-country" class="form-control  form-control-background-white" required placeholder="State / Country*">
-                            </div>
-                         </div>
-                         <div class="col-sm-12 col-lg-6">
-                            <div class="form-group mb-20">
-                               <label>Postcode / Zip</label>
-                               <input type="email" name="postcode-zip" class="form-control  form-control-background-white" required placeholder="Postcode / Zip*">
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                               <input type="checkbox" id="check2">
-                               <label for="check2" class="weight-600">Ship to a different address?</label>
-                            </div>
-                         </div>
-                         <div class="col-sm-12">
-                            <div class="form-group m-0">
-                               <label>Order Notes</label>
-                               <textarea name="order" class="form-control  form-control-background-white" rows="10" placeholder="Order notes*"></textarea>
-                            </div>
-                         </div>
-                      </div>
-                   </form>
-                </div>
-             </div> --}}
           </div>
           <div class="col-lg-5 pb-30">
              <div class="checkout-item">
@@ -297,56 +199,23 @@ Checkout Page
                       <h3 class="sub-section-title-heading">What's Payment Method</h3>
                    </div>
                    <div class="checkout-payment-form">
-                      <form>
                          <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                            <input type="radio" id="check3" name="payment">
-                            <label for="check3">Bank Transfer</label>
-                         </div>
-                         <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                            <input type="radio" id="check4" name="payment">
-                            <label for="check4">Paypal</label>
-                         </div>
-                         <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                            <input type="radio" id="check5" name="payment">
-                            <label for="check5">Visa</label>
+                            <input type="radio" id="check3" name="cash">
+                            <label for="check3">Cash</label>
                          </div>
                          <div class="sub-section-title">
                             <h3 class="sub-section-title-heading">Payment</h3>
                          </div>
                          <div class="row">
                             <div class="col-12">
-                               <div class="form-group mb-20">
-                                  <label>Card Holder Name</label>
-                                  <input type="text" name="email" class="form-control form-control-background-white" required placeholder="Name on the card*">
-                               </div>
-                            </div>
-                            <div class="col-12">
-                               <div class="form-group mb-20">
-                                  <label>Card Number</label>
-                                  <input type="text" name="email" class="form-control form-control-background-white" required placeholder="1234 4567 7890">
-                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                               <div class="form-group mb-20">
-                                  <label>Card Expire</label>
-                                  <input type="text" name="number" class="form-control form-control-background-white" required placeholder="Card expire*">
-                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                               <div class="form-group mb-20">
-                                  <label>CVC</label>
-                                  <input type="text" name="number" class="form-control form-control-background-white" required placeholder="123*">
-                               </div>
-                            </div>
-                            <div class="col-12">
                                <button class="btn main-btn main-btn-secondary full-width" type="submit">
                                Make Payment
                                </button>
                             </div>
                          </div>
-                      </form>
                    </div>
                 </div>
+            </form>
              </div>
           </div>
        </div>

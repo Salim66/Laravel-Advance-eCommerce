@@ -29,4 +29,13 @@ class CheckoutController extends Controller
         return response()->json($ship);
 
     }
+
+
+    /**
+     * Checkout Store
+     */
+    public function checkoutStore(Request $request){
+
+    }
+
 }
