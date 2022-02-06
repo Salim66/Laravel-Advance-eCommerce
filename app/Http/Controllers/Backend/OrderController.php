@@ -31,7 +31,7 @@ class OrderController extends Controller
      * confirmed Orders List
      */
     public function confirmedOrders(){
-        $orders = Order::where('status', 'confirmed')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'confirm')->orderBy('id', 'DESC')->get();
         return view('backend.orders.confirmed_orders', compact('orders'));
     }
 
@@ -74,5 +74,18 @@ class OrderController extends Controller
     public function cancelOrders(){
         $orders = Order::where('status', 'cancel')->orderBy('id', 'DESC')->get();
         return view('backend.orders.cancel_orders', compact('orders'));
+    }
+
+    /**
+     * Pending To Confirm Status 
+     */
+    public function pendingToConfirm($order_id){
+        Order::findOrFail($order_id)->update(['status' => 'confirm']);
+        $notification = [
+            'message' => 'Order Confirm Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('pending.orders')->with($notification);
     }
 }
