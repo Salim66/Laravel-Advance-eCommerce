@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,55 @@ class CashController extends Controller
             'created_at' => Carbon::now(),
 
         ]);
+
+
+
+        $carts = Cart::content();
+
+
+
+        foreach ($carts as $cart) {
+
+            $color = '';
+            if($cart->options->color_ar == null){
+                $color = $cart->options->color_en;
+            }else {
+                $color = $cart->options->color_ar;
+            }
+
+            $size = '';
+            if($cart->options->size_ar == null){
+                $size = $cart->options->size_en;
+            }else {
+                $size = $cart->options->size_ar;
+            }
+
+            OrderItem::insert([
+                'order_id' => $order_id,
+                'product_id' => $cart->id,
+                'color' => $color,
+                'size' => $size,
+                'qty' => $cart->qty,
+                'price' => $cart->price,
+                'created_at' => Carbon::now(),
+
+            ]);
+        }
+
+
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
+
+        Cart::destroy();
+
+        $notification = array(
+               'message' => 'Your Order Place Successfully',
+               'alert-type' => 'success'
+        );
+
+        return redirect()->route('dashboard')->with($notification);
+
 
     }
 }
