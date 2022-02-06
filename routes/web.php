@@ -235,6 +235,7 @@ Route::middleware(['auth:admin'])->group(function(){
     // Admin Orders Routes
     Route::prefix('orders')->group(function(){
         Route::get('/pending-orders', [OrderController::class, 'pendingOrders'])->name('pending.orders');
+        Route::get('/pending-orders-details/{order_id}', [OrderController::class, 'pendingOrderDetails'])->name('pending.order.detials');
     });
 
 });
