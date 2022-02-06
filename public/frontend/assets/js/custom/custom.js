@@ -552,7 +552,9 @@
                 // console.log(data);
                 $(".coupon-popup-wrapepr").removeClass("active");
                 couponCalculation();
-                $('.coupon-btn').hide();
+                if(data.validity == true){
+                    $('.coupon-btn').hide();
+                }
 
                  // Start Message
                  const Toast = Swal.mixin({
