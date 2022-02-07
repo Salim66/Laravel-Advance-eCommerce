@@ -54,7 +54,7 @@ Route::middleware(['auth:admin'])->group(function(){
 
     Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
         return view('admin.index');
-    })->name('dashboard')->middleware('auth:admin');
+    })->name('admin.dashboard')->middleware('auth:admin');
 
     // All Admin Routes
     Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
@@ -244,6 +244,7 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/shipped-orders', [OrderController::class, 'shippedOrders'])->name('shipped.orders');
         Route::get('/delivered-orders', [OrderController::class, 'deliveredOrders'])->name('delivered.orders');
         Route::get('/cancel-orders', [OrderController::class, 'cancelOrders'])->name('cancel.orders');
+        Route::get('/return-orders', [OrderController::class, 'returnOrders'])->name('return.orders');
 
 
         // Update Status 

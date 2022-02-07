@@ -79,6 +79,14 @@ class OrderController extends Controller
         return view('backend.orders.cancel_orders', compact('orders'));
     }
 
+    /**
+     * Return Orders List
+     */
+    public function returnOrders(){
+        $orders = Order::where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
+        return view('backend.orders.return_orders', compact('orders'));
+    }
+
 
 
     public function PendingToConfirm($order_id){

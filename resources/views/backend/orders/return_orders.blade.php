@@ -11,7 +11,7 @@
 
          <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Cancel Order List <span class="badge badge-pill badge-danger"> {{ count($orders) }} </span> </h3>
+              <h3 class="box-title">Return Order List <span class="badge badge-pill badge-danger"> {{ count($orders) }} </span> </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -23,7 +23,11 @@
                             <th>Invoice</th>
                             <th>Amount</th>
                             <th>Payment</th>
-                            <th>Status</th>
+                            <th>User Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Return Date</th>
+                            <th>Return Reason</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,10 +38,12 @@
                             <td>{{ $data->invoice_no }}</td>
                             <td>${{ $data->amount }}</td>
                             <td>{{ $data->payment_method }}</td>
-                            <td><span class="badge badge-pill badge-success">{{ $data->status }}</span></td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->phone }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->return_date }}</td>
+                            <td>{{ $data->return_reason }}</td>
                             <td width="25%">
-                                <a title="Order Details" href="{{ route('pending.order.detials', $data->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-
                                 <a target="_blank" href="{{ route('invoice.download',$data->id) }}" class="btn btn-danger" title="Invoice Download">
                                     <i class="fa fa-download"></i></a>
                             </td>

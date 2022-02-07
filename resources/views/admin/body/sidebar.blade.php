@@ -10,7 +10,7 @@
 
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="{{ route('dashboard') }}">
+				 <a href="{{ url('/') }}">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
 						  <img class="backend_logo" src="{{ URL::to('/backend/') }}/images/favicon.png" alt="">
@@ -23,8 +23,8 @@
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree">
 
-		<li class="{{ ($route == 'dashboard')? 'active' : '' }}">
-          <a href="{{ route('dashboard') }}">
+		<li class="{{ ($route == 'admin.dashboard')? 'active' : '' }}">
+          <a href="{{ route('admin.dashboard') }}">
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
@@ -32,7 +32,7 @@
 
         <li class="treeview {{ ($prefix == '/brand')? 'active' : '' }}">
           <a href="#">
-            <i data-feather="message-circle"></i>
+            <i class="fa fa-superpowers" aria-hidden="true"></i>
             <span>Brands</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -45,7 +45,7 @@
 
         <li class="treeview {{ ($prefix == '/category')? 'active' : '' }}">
           <a href="#">
-            <i data-feather="mail"></i> <span>Category</span>
+            <i class="fa fa-codiepie" aria-hidden="true"></i> <span>Category</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -59,7 +59,7 @@
 
         <li class="treeview {{ ($prefix == '/product')? 'active' : '' }}">
           <a href="#">
-            <i data-feather="file"></i>
+            <i class="fa fa-product-hunt" aria-hidden="true"></i>
             <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -73,7 +73,7 @@
 
         <li class="treeview {{ ($prefix == '/slider')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+            <i class="fa fa-slideshare" aria-hidden="true"></i>
               <span>Slider</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -87,7 +87,7 @@
 
         <li class="treeview {{ ($prefix == '/coupons')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-diamond" aria-hidden="true"></i>
               <span>Coupon</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -101,7 +101,7 @@
 
         <li class="treeview {{ ($prefix == '/shipping')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-truck" aria-hidden="true"></i>
               <span>Shipping</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -117,7 +117,7 @@
 
         <li class="treeview {{ ($prefix == '/settings')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-cog" aria-hidden="true"></i>
               <span>Settings</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -134,7 +134,7 @@
 
         <li class="treeview {{ ($prefix == '/pages')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-file-text" aria-hidden="true"></i>
               <span>Pages</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -149,7 +149,7 @@
         
         <li class="treeview {{ ($prefix == '/contacts')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
               <span>Contact Us</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -164,7 +164,7 @@
 
         <li class="treeview {{ ($prefix == '/orders')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-first-order" aria-hidden="true"></i>
               <span>Orders</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -178,13 +178,14 @@
               <li class="{{ ($route == 'shipped.orders')? 'active' : '' }}"><a href="{{ route('shipped.orders') }}"><i class="ti-more"></i>Shipped Orders</a></li>
               <li class="{{ ($route == 'delivered.orders')? 'active' : '' }}"><a href="{{ route('delivered.orders') }}"><i class="ti-more"></i>Delivered Orders</a></li>
               <li class="{{ ($route == 'cancel.orders')? 'active' : '' }}"><a href="{{ route('cancel.orders') }}"><i class="ti-more"></i>Cancel Orders</a></li>
+              <li class="{{ ($route == 'return.orders')? 'active' : '' }}"><a href="{{ route('return.orders') }}"><i class="ti-more"></i>Return Orders</a></li>
             </ul>
         </li>
 
 
         <li class="treeview {{ ($prefix == '/reports')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-bug" aria-hidden="true"></i>
               <span>Reports</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -198,7 +199,7 @@
 
         <li class="treeview {{ ($prefix == '/alluser')? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
               <span>Users</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>

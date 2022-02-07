@@ -11,7 +11,7 @@
 
          <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Contact Us List</h3>
+              <h3 class="box-title">Contact Us List <span class="badge badge-pill badge-danger"> {{ count($contact_us) }} </span> </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
