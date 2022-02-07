@@ -239,15 +239,15 @@
 
 
                 @if($order)
-                <form action="" method="post">
+                <form action="{{ route('return.order', $order->id) }}" method="post">
                     @csrf
 
-                <div class="form-group">
-                    <label for="label"> Order Return Reason:</label>
-                    <textarea name="return_reason" id="" class="form-control  color_return" cols="30" rows="05">Return Reason</textarea>    
-                </div>
+                    <div class="form-group">
+                        <label for="label"> Order Return Reason:</label>
+                        <textarea name="return_reason" id="" class="form-control  color_return" cols="30" rows="05" placeholder="Return Reason"></textarea>    
+                    </div><br>
 
-                <button type="submit" class="btn btn-danger">Order Return</button>
+                    <button type="submit" class="btn btn-danger">Order Return</button>
 
                 </form>
                 @else

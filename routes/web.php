@@ -323,6 +323,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/order_details/{order_id}', [AllUserController::class, 'orderDetails']);
     // Order Invoice Download Route
     Route::get('/invoice_download/{order_id}', [AllUserController::class, 'invoiceDownload']);
+    // Return Order Route
+    Route::post('/return/order/{order_id}', [AllUserController::class, 'returnOrder'])->name('return.order');
+    // Return Order List Route
+    Route::get('/return/order/list', [AllUserController::class, 'returnOrderList'])->name('return.order.list');
 
 });
 
