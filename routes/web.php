@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PrivacyPolicyController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
@@ -260,6 +261,12 @@ Route::middleware(['auth:admin'])->group(function(){
 
         Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
         
+    });
+
+
+    // All Reports Routes
+    Route::prefix('reports')->group(function(){
+        Route::get('/view', [ReportController::class, 'reportView'])->name('all.reports');
     });
 
 });
