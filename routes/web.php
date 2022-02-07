@@ -346,6 +346,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/return/order/list', [AllUserController::class, 'returnOrderList'])->name('return.order.list');
     // Cancel Order List Route
     Route::get('/cancel/order/list', [AllUserController::class, 'cancelOrderList'])->name('cancel.order');
+    // Checkout Store Route
+    Route::post('/checkout-store', [CheckoutController::class, 'checkoutStore'])->name('checkout.store');
 
 });
 
@@ -385,8 +387,9 @@ Route::get('/checkout', [CartController::class, 'checkoutCreate'])->name('checko
 Route::get('/get-division/ajax/{division_id}', [CheckoutController::class, 'getDivisionByAjax']);
 // Get State By Ajax Route
 Route::get('/get-state/ajax/{district_id}', [CheckoutController::class, 'getStateByAjax']);
-// Checkout Store Route
-Route::post('/checkout-store', [CheckoutController::class, 'checkoutStore'])->name('checkout.store');
+
+// Product Search Route
+Route::post('/product/search', [IndexController::class, 'productSearch'])->name('product.search');
 
 
 

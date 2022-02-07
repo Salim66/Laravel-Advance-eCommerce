@@ -283,4 +283,17 @@ class IndexController extends Controller
         return redirect()->back()->with($notification);
     }
 
+
+    /**
+     * Product Search 
+     */
+    public function productSearch(Request $request){
+        $request->validate(["search" => "required"]);
+
+		$item = $request->search;
+		$products = Product::where('product_name_en','LIKE',"%$item%")->orWhere('product_name_ar','LIKE',"%$item%")->get();
+		return view('frontend.product.search',compact('products'));
+    }
+
+
 }

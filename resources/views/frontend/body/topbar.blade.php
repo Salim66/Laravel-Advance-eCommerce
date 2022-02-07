@@ -14,8 +14,9 @@
              </div>
              <div class="topbar-item">
                 <div class="topbar-search">
-                   <form>
-                     <input type="text" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif">
+                   <form action="{{ route('product.search') }}" method="POST">
+                    @csrf
+                     <input type="text" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif">
                      <button class="btn main-btn" type="submit">
                       @if(session()->get('language') == 'arabic') بحث @else Search @endif   
                       </button>
