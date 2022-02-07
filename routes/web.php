@@ -327,6 +327,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::post('/return/order/{order_id}', [AllUserController::class, 'returnOrder'])->name('return.order');
     // Return Order List Route
     Route::get('/return/order/list', [AllUserController::class, 'returnOrderList'])->name('return.order.list');
+    // Cancel Order List Route
+    Route::get('/cancel/order/list', [AllUserController::class, 'cancelOrderList'])->name('cancel.order');
 
 });
 
