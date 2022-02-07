@@ -391,6 +391,10 @@ Route::get('/get-state/ajax/{district_id}', [CheckoutController::class, 'getStat
 // Product Search Route
 Route::post('/product/search', [IndexController::class, 'productSearch'])->name('product.search');
 
+// Advance Search
+Route::post('/search-product', [IndexController::class, 'searchProduct'])->name('search.product');
+
+
 
 
 

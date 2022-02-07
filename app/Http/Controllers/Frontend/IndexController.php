@@ -296,4 +296,14 @@ class IndexController extends Controller
     }
 
 
+    /**
+     * Advance Search Method
+     */
+    public function searchProduct(Request $request){
+
+        return $request;
+
+    }
+
+
 }
