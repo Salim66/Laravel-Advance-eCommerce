@@ -686,7 +686,7 @@
 
                 },
                 success:function(result){
-                    // $("#searchProducts").html(result);
+                    $("#searchProducts").html(result);
                 }
 
             }); // end ajax 
@@ -697,3 +697,11 @@
 
 
     }); // end one 
+
+
+    function search_result_hide(){
+        $("#searchProducts").slideUp();
+    }
+    function search_result_show(){
+        $("#searchProducts").slideDown();
+    }

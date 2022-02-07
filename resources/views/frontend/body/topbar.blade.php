@@ -16,11 +16,12 @@
                 <div class="topbar-search">
                    <form action="{{ route('product.search') }}" method="POST">
                     @csrf
-                     <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif">
+                     <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif" onfocus="search_result_show()" onblur="search_result_hide()">
                      <button class="btn main-btn" type="submit">
                       @if(session()->get('language') == 'arabic') بحث @else Search @endif   
                       </button>
                    </form>
+                   <div id="searchProducts"></div>
                 </div>
              </div>
              <div class="topbar-item topbar-item-rightside">

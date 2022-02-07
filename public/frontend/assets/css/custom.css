@@ -213,3 +213,17 @@ i {
 
 }
 
+.topbar-search {
+    position: relative;
+}
+
+#searchProducts {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    z-index: 99999999;
+    border-radius: 8px;
+    margin-top: 5px;
+}
