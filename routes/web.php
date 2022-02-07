@@ -272,6 +272,12 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::post('/search-by-year', [ReportController::class, 'searchByYear'])->name('search.by.year');
     });
 
+
+    // All Users Routes
+    Route::prefix('alluser')->group(function(){
+        Route::get('/view', [AdminProfileController::class, 'allUserView'])->name('all.user');
+    });
+
 });
 
 
