@@ -267,6 +267,9 @@ Route::middleware(['auth:admin'])->group(function(){
     // All Reports Routes
     Route::prefix('reports')->group(function(){
         Route::get('/view', [ReportController::class, 'reportView'])->name('all.reports');
+        Route::post('/search-by-date', [ReportController::class, 'searchByDate'])->name('search.by.date');
+        Route::post('/search-by-month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
+        Route::post('/search-by-year', [ReportController::class, 'searchByYear'])->name('search.by.year');
     });
 
 });
