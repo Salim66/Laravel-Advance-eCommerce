@@ -693,7 +693,7 @@
 
         } // end if
 
-    // if (text.length < 1 ) $("#searchProducts").html("");
+    if (text.length < 1 ) $("#searchProducts").html("");
 
 
     }); // end one 

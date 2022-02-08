@@ -119,12 +119,16 @@
                    <i class="flaticon-search"></i>
                    </button>
                    <div class="dropdown-menu mobile-search" aria-labelledby="search2">
-                      <form>
-                         <input type="text" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif">
-                         <button class="btn main-btn" type="submit">
-                          @if(session()->get('language') == 'arabic') بحث @else Search @endif   
-                          </button>
-                      </form>
+                     <div class="topbar-search">
+                        <form action="{{ route('product.search') }}" method="POST">
+                         @csrf
+                          <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif" onfocus="search_result_show()" onblur="search_result_hide()">
+                          <button class="btn main-btn" type="submit">
+                           @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                           </button>
+                        </form>
+                        <div id="searchProducts"></div>
+                     </div>
                    </div>
                 </div>
                 <div class="navbar-option-item">
@@ -165,10 +169,16 @@
              <i class="flaticon-search"></i>
              </button>
              <div class="dropdown-menu mobile-search" aria-labelledby="search1">
-                <form>
-                   <input type="text" class="form-control" placeholder="Search product">
-                   <button class="btn main-btn" type="submit">Search</button>
-                </form>
+                <div class="topbar-search">
+                    <form action="{{ route('product.search') }}" method="POST">
+                     @csrf
+                      <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif" onfocus="search_result_show()" onblur="search_result_hide()">
+                      <button class="btn main-btn" type="submit">
+                       @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                       </button>
+                    </form>
+                    <div id="searchProducts"></div>
+                 </div>
              </div>
           </div>
           <div class="navbar-option-item d-none d-lg-none d-md-block">
