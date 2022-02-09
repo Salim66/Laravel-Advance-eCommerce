@@ -30,7 +30,7 @@
        </div>
     </div>
  </header>
- 
+
 <!--- Start Product Details -->
 <section class="product-details-section pt-100 pb-100">
     <div class="container">
@@ -40,7 +40,7 @@
                 <div class="product-details-item desk-pad-right-40">
                    <div class="product-details-slider">
                       <div class="product-slider-for owl-carousel owl-theme gallery-grid">
-                         
+
                         @foreach($multiple_img as $img)
                         <div class="item">
                             <div class="product-gallery-trigger">
@@ -49,7 +49,7 @@
                             <img class="product_details-img" src="{{ URL::to($img->photo_name) }}" alt="product">
                          </div>
                         @endforeach
-                      
+
                       </div>
                       <div class="product-slider-nav owl-carousel owl-theme">
 
@@ -58,7 +58,7 @@
                             <img src="{{ URL::to($img->photo_name) }}" alt="product">
                          </div>
                         @endforeach
-                         
+
                       </div>
                    </div>
                 </div>
@@ -66,7 +66,7 @@
              <div class="col-12 col-lg-6 pb-30">
                 <div class="product-details-item">
                    <div class="product-details-caption product-details-caption-secondcolor">
-                      
+
                         @if(session()->get('language') == 'arabic')
                         <h3 class="pname_cart-ar">{{ $product->product_name_ar }}</h3>
                         @else
@@ -101,14 +101,14 @@
                       <div class="product-choice">
                          <div class="product-choice-item">
                             <label>@if(session()->get('language') == 'arabic') حدد الألوان @else Select Colors @endif</label>
-    
+
                                @if(session()->get('language') == 'arabic')
                                <select class="form-control product-color product-color-ar" name="color-ar">
                                 <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
                                 @foreach($product_color_ar as $color)
                                     <option value="{{ $color }}">{{ $color }}</option>
                                 @endforeach
-                               @else    
+                               @else
                                <select class="form-control product-color product-color-en" name="color-en">
                                 <option selected disabled>@if(session()->get('language') == 'arabic') الألوان المتاحة @else Available colors @endif</option>
                                 @foreach($product_color_en as $color)
@@ -119,7 +119,7 @@
                          </div>
                          <div class="product-choice-item">
                             <label>@if(session()->get('language') == 'arabic') أختر الحجم @else Select Size @endif</label>
-    
+
                                @if(session()->get('language') == 'arabic')
                                <select class="form-control product-color product-size-ar" name="size-ar">
                                 <option selected disabled>@if(session()->get('language') == 'arabic') الحجم متوفر @else Available Size @endif</option>
@@ -193,108 +193,11 @@
                 </div>
                 <div class="product-tab-information-item" data-product-details-tab="2">
                    <div class="max-455 ms-auto me-auto">
-                      <div class="product-review-box">
-                         <div class="post-review-box mb-30">
-                            <div class="review-holder-item">
-                               <div class="post-review-item post-review-item-main">
-                                  <div class="post-review-thumb">
-                                     <img src="assets/images/blogs/blog-author-1.jpg" alt="user">
-                                  </div>
-                                  <div class="post-review-content">
-                                     <div class="post-review-content-header">
-                                        <div class="post-review-header-item">
-                                           <h3>Jennifer Andrew</h3>
-                                           <ul class="review-star">
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                           </ul>
-                                           <p>3 weeks ago</p>
-                                        </div>
-                                        <div class="post-review-header-item">
-                                           <a href="#" class="post-review-btn">Reply</a>
-                                        </div>
-                                     </div>
-                                     <p>Lorem ipsum dolor sit amet, consetetur sa dipscing elitr, sed diam nonumy ser irmodey tey mporep invidunt ut laboredi et dolore ma gna aliquyam.</p>
-                                  </div>
-                               </div>
-                            </div>
-                            <div class="review-holder-item">
-                               <div class="post-review-item post-review-item-main">
-                                  <div class="post-review-thumb">
-                                     <img src="assets/images/blogs/blog-author-3.jpg" alt="review">
-                                  </div>
-                                  <div class="post-review-content">
-                                     <div class="post-review-content-header">
-                                        <div class="post-review-header-item">
-                                           <h3>Robert John</h3>
-                                           <ul class="review-star">
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                              <li class="full-star"><i class="flaticon-star"></i></li>
-                                           </ul>
-                                           <p>3 weeks ago</p>
-                                        </div>
-                                        <div class="post-review-header-item">
-                                           <a href="#" class="post-review-btn">Reply</a>
-                                        </div>
-                                     </div>
-                                     <p>Lorem ipsum dolor sit amet, consetetur sa dipscing elitr, sed diam nonumy ser irmodey tey mporep invidunt ut laboredi et dolore ma gna aliquyam.</p>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="post-comment-area">
-                            <div class="sub-section-title">
-                               <h2 class="sub-section-title-heading">Leave A Review</h2>
-                            </div>
-                            <form class="contact-form" id="contactForm">
-                               <div class="star-rating mb-20">
-                                  <input type="radio" id="5-stars" name="rating" value="5" />
-                                  <label for="5-stars" class="star"></label>
-                                  <input type="radio" id="4-stars" name="rating" value="4" />
-                                  <label for="4-stars" class="star"></label>
-                                  <input type="radio" id="3-stars" name="rating" value="3" />
-                                  <label for="3-stars" class="star"></label>
-                                  <input type="radio" id="2-stars" name="rating" value="2" />
-                                  <label for="2-stars" class="star"></label>
-                                  <input type="radio" id="1-star" name="rating" value="1" />
-                                  <label for="1-star" class="star"></label>
-                               </div>
-                               <div class="row">
-                                  <div class="col-sm-6">
-                                     <div class="form-group mb-20">
-                                        <input type="text" name="name" id="name" class="form-control form-control-borderbg form-control-borderbg-secondcolor" placeholder="Your name*" required data-error="Please enter your name" />
-                                        <div class="help-block with-errors"></div>
-                                     </div>
-                                  </div>
-                                  <div class="col-sm-6">
-                                     <div class="form-group mb-20">
-                                        <input type="text" name="email" id="email" class="form-control form-control-borderbg form-control-borderbg-secondcolor" placeholder="Your email*" required data-error="Please enter your email" />
-                                        <div class="help-block with-errors"></div>
-                                     </div>
-                                  </div>
-                                  <div class="col-sm-12">
-                                     <div class="form-group mb-20">
-                                        <textarea name="message" class="form-control form-control-borderbg form-control-borderbg-secondcolor" id="message" rows="6" placeholder="Your comment*"></textarea>
-                                     </div>
-                                  </div>
-                               </div>
-                               <div class="input-checkbox input-checkbox-secondcolor mb-20">
-                                  <input type="checkbox" id="contact1">
-                                  <label for="contact1">Save my name and email in this browser for the next time I comment.</label>
-                               </div>
-                               <div class="form-button">
-                                  <button class="btn main-btn main-btn-secondary" type="submit">Send A Review</button>
-                                  <div id="msgSubmit"></div>
-                               </div>
-                            </form>
-                         </div>
-                      </div>
+                        @if(session()->get('language') == 'arabic')
+                        {!! $product->specifications_ar !!}
+                        @else
+                        {!! $product->specifications_en !!}
+                        @endif
                    </div>
                 </div>
              </div>
@@ -361,7 +264,7 @@
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                @endphp
-                 
+
                @if($product->discount_price == NULL)
                <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                @else
