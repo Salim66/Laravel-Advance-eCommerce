@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use PDF;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -90,103 +91,106 @@ class OrderController extends Controller
 
 
     public function PendingToConfirm($order_id){
-   
+
         Order::findOrFail($order_id)->update(['status' => 'confirm']);
-  
+
         $notification = array(
               'message' => 'Order Confirm Successfully',
               'alert-type' => 'success'
           );
-  
-          return redirect()->route('pending-orders')->with($notification);
-  
-  
+
+          return redirect()->route('pending.orders')->with($notification);
+
+
       } // end method
-  
-  
-  
-  
-  
+
+
+
+
+
       public function ConfirmToProcessing($order_id){
-     
+
         Order::findOrFail($order_id)->update(['status' => 'processing']);
-  
+
         $notification = array(
               'message' => 'Order Processing Successfully',
               'alert-type' => 'success'
           );
-  
+
           return redirect()->route('confirmed.orders')->with($notification);
-  
-  
+
+
       } // end method
-  
-  
-  
+
+
+
         public function ProcessingToPicked($order_id){
-     
+
         Order::findOrFail($order_id)->update(['status' => 'picked']);
-  
+
         $notification = array(
               'message' => 'Order Picked Successfully',
               'alert-type' => 'success'
           );
-  
+
           return redirect()->route('processing.orders')->with($notification);
-  
-  
+
+
       } // end method
-  
-  
+
+
        public function PickedToShipped($order_id){
-     
+
         Order::findOrFail($order_id)->update(['status' => 'shipped']);
-  
+
         $notification = array(
               'message' => 'Order Shipped Successfully',
               'alert-type' => 'success'
           );
-  
+
           return redirect()->route('picked.orders')->with($notification);
-  
-  
+
+
       } // end method
 
-  
-  
+
+
        public function ShippedToDelivered($order_id){
-  
+
        $product = OrderItem::where('order_id',$order_id)->get();
        foreach ($product as $item) {
            Product::where('id',$item->product_id)
                    ->update(['product_qty' => DB::raw('product_qty-'.$item->qty)]);
-       } 
-   
-        Order::findOrFail($order_id)->update(['status' => 'delivered']);
-  
+       }
+
+        Order::findOrFail($order_id)->update([
+            'status' => 'delivered', 
+            'delivered_date' => Carbon::now()->format('d-M-Y')
+        ]);
+
         $notification = array(
               'message' => 'Order Delivered Successfully',
               'alert-type' => 'success'
           );
-  
+
           return redirect()->route('shipped.orders')->with($notification);
-  
-  
+
+
       } // end method
 
-  
+
       public function deliveredToCancel($order_id){
-     
+
         Order::findOrFail($order_id)->update(['status' => 'cancel']);
-  
+
         $notification = array(
               'message' => 'Order Cancel Successfully',
               'alert-type' => 'success'
           );
-  
+
           return redirect()->route('delivered.orders')->with($notification);
-  
-  
+
+
       } // end method
 
 
@@ -194,12 +198,14 @@ class OrderController extends Controller
 
 		$order = Order::with('division','district','state','user')->where('id',$order_id)->first();
     	$orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
-    	 
+
+        //  return view('backend.orders.order_invoice', compact('order', 'orderItem'));
+
 		$pdf = PDF::loadView('backend.orders.order_invoice',compact('order','orderItem'))->setPaper('a4')->setOptions([
 				'tempDir' => public_path(),
 				'chroot' => public_path(),
 		]);
 		return $pdf->download('invoice.pdf');
 
-	} // end method 
+	} // end method
 }

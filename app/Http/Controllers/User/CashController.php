@@ -20,6 +20,7 @@ class CashController extends Controller
 
     	if (Session::has('coupon')) {
     		$total_amount = Session::get('coupon')['total_amount'];
+            $coupon_amount = Session::get('coupon')['coupon_amount'],
     	}else{
     		$total_amount = round(Cart::total());
     	}
@@ -41,6 +42,7 @@ class CashController extends Controller
 
             'currency' =>  'Usd',
             'amount' => $total_amount,
+            'discount_amount' => $coupon_amount,
 
 
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),

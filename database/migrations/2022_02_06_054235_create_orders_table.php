@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->string('transaction_id')->nullable();
             $table->string('currency')->nullable();
             $table->float('amount',8,2);
+            $table->float('discount_amount',8,2);
             $table->string('order_number')->nullable();
             $table->string('invoice_no');
             $table->string('order_date')->nullable();

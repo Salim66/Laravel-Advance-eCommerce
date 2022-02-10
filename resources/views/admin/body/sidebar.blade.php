@@ -128,6 +128,7 @@
               <li class="{{ ($route == 'manage.favicon')? 'active' : '' }}"><a href="{{ route('manage.favicon') }}"><i class="ti-more"></i>Favicon</a></li>
               <li class="{{ ($route == 'manage.contact-info')? 'active' : '' }}"><a href="{{ route('manage.contact-info') }}"><i class="ti-more"></i>Contact Info</a></li>
               <li class="{{ ($route == 'manage.social')? 'active' : '' }}"><a href="{{ route('manage.social') }}"><i class="ti-more"></i>Social Media</a></li>
+              <li class="{{ ($route == 'seo.setting')? 'active' : '' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>Seo Setting</a></li>
             </ul>
         </li>
 

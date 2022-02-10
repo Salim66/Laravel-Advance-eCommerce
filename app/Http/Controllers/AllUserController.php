@@ -29,7 +29,7 @@ class AllUserController extends Controller
     	$orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
         // dd($orderItem);
         return view('frontend.user.order.order_details', compact('order', 'orderItem'));
-    
+
     }
 
     /**
@@ -46,7 +46,7 @@ class AllUserController extends Controller
             'chroot'  => public_path()
         ]);
         return $pdf->download('invoice.pdf');
-    
+
     }
 
 

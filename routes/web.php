@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\PrivacyPolicyController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
+use App\Http\Controllers\Backend\SeoSettingController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SocialMediaController;
@@ -195,6 +196,13 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/social/edit/{id}', [SocialMediaController::class, 'socialEdit'])->name('social.edit');
         Route::post('/social/update', [SocialMediaController::class, 'socialUpdate'])->name('social.update');
         Route::get('/social/delete/{id}', [SocialMediaController::class, 'socialDelete'])->name('social.delete');
+        
+        
+        //Social Media All Route
+        Route::get('/seo/settings', [SeoSettingController::class, 'seoSettings'])->name('seo.setting');
+        Route::post('/social/update', [SocialMediaController::class, 'socialUpdate'])->name('social.update');
+        Route::get('/social/delete/{id}', [SocialMediaController::class, 'socialDelete'])->name('social.delete');
+
     });
 
 
