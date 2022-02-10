@@ -1,6 +1,6 @@
 <!-- //////////// Get Category Data ///////////// -->
 @php
-    $categories = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
+    $categories = App\Models\Category::all();
 @endphp
 
 <div class="container">
@@ -14,7 +14,7 @@
                       <div class="category-button">
                         <i class="flaticon-menu"></i>
                         <a href="javascript:void(0)" class="nav-link dropdown-toggle">
-                          @if(session()->get('language') == 'arabic') التصنيفات @else Categories @endif         
+                          @if(session()->get('language') == 'arabic') التصنيفات @else Categories @endif
                           </a>
                       </div>
                      <ul class="dropdown-menu">
@@ -22,11 +22,11 @@
                       @foreach($categories as $category)
                         <li class="nav-item nav-item__border">
                            <a href="{{ url('/category/products/'.$category->id.'/'.$category->category_slug_en) }}" class="nav-link dropdown-toggle">
-                              @if(session()->get('language') == 'arabic') 
+                              @if(session()->get('language') == 'arabic')
                               {{ $category->category_name_ar }}
-                              @else 
+                              @else
                               {{ $category->category_name_en }}
-                              @endif                                     
+                              @endif
                            </a>
                            <ul class="dropdown-menu">
 
@@ -37,12 +37,12 @@
                               @foreach($subcategories as $sub)
                               <li class="nav-item nav-item__border">
                                   <a href="{{ url('/subcategory/products/'.$sub->id.'/'.$sub->subcategory_slug_en) }}" class="nav-link dropdown-toggle">
-                                      @if(session()->get('language') == 'arabic') 
+                                      @if(session()->get('language') == 'arabic')
                                       {{ $sub->subcategory_name_ar }}
-                                      @else 
+                                      @else
                                       {{ $sub->subcategory_name_en }}
                                       @endif
-                                      
+
                                   </a>
                                  <ul class="dropdown-menu">
 
@@ -53,9 +53,9 @@
                                   @foreach($subsubcategories as $subsub)
                                      <li class="nav-item nav-item__border">
                                       <a href="{{ url('/subsubcategory/products/'.$subsub->id.'/'.$subsub->subsubcategory_slug_en) }}" class="nav-link">
-                                          @if(session()->get('language') == 'arabic') 
+                                          @if(session()->get('language') == 'arabic')
                                           {{ $subsub->subsubcategory_name_ar }}
-                                          @else 
+                                          @else
                                           {{ $subsub->subsubcategory_name_en }}
                                           @endif
                                       </a>
@@ -124,7 +124,7 @@
                          @csrf
                           <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif" onfocus="search_result_show()" onblur="search_result_hide()">
                           <button class="btn main-btn" type="submit">
-                           @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                           @if(session()->get('language') == 'arabic') بحث @else Search @endif
                            </button>
                         </form>
                         <div id="searchProducts"></div>
@@ -174,7 +174,7 @@
                      @csrf
                       <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif" onfocus="search_result_show()" onblur="search_result_hide()">
                       <button class="btn main-btn" type="submit">
-                       @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                       @if(session()->get('language') == 'arabic') بحث @else Search @endif
                        </button>
                     </form>
                     <div id="searchProducts"></div>
@@ -201,7 +201,7 @@
  </div>
  <!-- //////////// Get Category Data ///////////// -->
  @php
-      $categories = App\Models\Category::orderBy('category_name_en', 'ASC')->get();
+      $categories = App\Models\Category::all();
  @endphp
  <div class="main-nav">
     <div class="container">
@@ -213,7 +213,7 @@
                     <div class="category-button">
                         <i class="flaticon-menu"></i>
                         <a href="javascript:void(0)" class="nav-link dropdown-toggle">
-                          @if(session()->get('language') == 'arabic') التصنيفات @else Categories @endif         
+                          @if(session()->get('language') == 'arabic') التصنيفات @else Categories @endif
                           </a>
                      </div>
                      <ul class="dropdown-menu">
@@ -221,11 +221,11 @@
                       @foreach($categories as $category)
                         <li class="nav-item nav-item__border">
                            <a href="{{ url('/category/products/'.$category->id.'/'.$category->category_slug_en) }}" class="nav-link dropdown-toggle">
-                              @if(session()->get('language') == 'arabic') 
+                              @if(session()->get('language') == 'arabic')
                               {{ $category->category_name_ar }}
-                              @else 
+                              @else
                               {{ $category->category_name_en }}
-                              @endif                                     
+                              @endif
                            </a>
                            <ul class="dropdown-menu">
 
@@ -236,12 +236,12 @@
                               @foreach($subcategories as $sub)
                               <li class="nav-item nav-item__border">
                                   <a href="{{ url('/subcategory/products/'.$sub->id.'/'.$sub->subcategory_slug_en) }}" class="nav-link dropdown-toggle">
-                                      @if(session()->get('language') == 'arabic') 
+                                      @if(session()->get('language') == 'arabic')
                                       {{ $sub->subcategory_name_ar }}
-                                      @else 
+                                      @else
                                       {{ $sub->subcategory_name_en }}
                                       @endif
-                                      
+
                                   </a>
                                  <ul class="dropdown-menu">
 
@@ -252,9 +252,9 @@
                                   @foreach($subsubcategories as $subsub)
                                      <li class="nav-item nav-item__border">
                                       <a href="{{ url('/subsubcategory/products/'.$subsub->id.'/'.$subsub->subsubcategory_slug_en) }}" class="nav-link">
-                                          @if(session()->get('language') == 'arabic') 
+                                          @if(session()->get('language') == 'arabic')
                                           {{ $subsub->subsubcategory_name_ar }}
-                                          @else 
+                                          @else
                                           {{ $subsub->subsubcategory_name_en }}
                                           @endif
                                       </a>
@@ -285,15 +285,15 @@
 
                   <!-- //////////// Get Category Data ///////////// -->
                   @php
-                      $categories_h = App\Models\Category::orderBy('category_name_en', 'ASC')->take(5)->get();
+                      $categories_h = App\Models\Category::take(5)->get();
                   @endphp
-                
+
                 @foreach($categories_h as $category)
                       <li class="nav-item">
                           <a href="{{ url('/category/products/'.$category->id.'/'.$category->category_slug_en) }}" class="nav-link dropdown-toggle">
-                              @if(session()->get('language') == 'arabic') {{ $category->category_name_ar }} 
-                              @else 
-                              {{ $category->category_name_en }} 
+                              @if(session()->get('language') == 'arabic') {{ $category->category_name_ar }}
+                              @else
+                              {{ $category->category_name_en }}
                               @endif
                           </a>
                           <ul class="dropdown-menu">
@@ -305,12 +305,12 @@
                           @foreach($subcategories as $sub)
                           <li class="nav-item nav-item__border">
                               <a href="{{ url('/subcategory/products/'.$sub->id.'/'.$sub->subcategory_slug_en) }}" class="nav-link dropdown-toggle">
-                                  @if(session()->get('language') == 'arabic') 
+                                  @if(session()->get('language') == 'arabic')
                                   {{ $sub->subcategory_name_ar }}
-                                  @else 
+                                  @else
                                   {{ $sub->subcategory_name_en }}
                                   @endif
-                                  
+
                               </a>
                               <ul class="dropdown-menu">
 
@@ -321,9 +321,9 @@
                               @foreach($subsubcategories as $subsub)
                                   <li class="nav-item nav-item__border">
                                       <a href="{{ url('/subsubcategory/products/'.$subsub->id.'/'.$subsub->subsubcategory_slug_en) }}" class="nav-link">
-                                          @if(session()->get('language') == 'arabic') 
+                                          @if(session()->get('language') == 'arabic')
                                           {{ $subsub->subsubcategory_name_ar }}
-                                          @else 
+                                          @else
                                           {{ $subsub->subsubcategory_name_en }}
                                           @endif
                                       </a>
@@ -337,7 +337,7 @@
                           </ul>
                       </li>
                   @endforeach
-                
+
              </ul>
           </div>
           <div class="navbar-option">

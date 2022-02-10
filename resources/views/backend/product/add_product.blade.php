@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>SubCategory Select <span class="text-danger">*</span></h5>
+                                    <h5>SubCategory Select <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <select name="subcategory_id" id="select" class="form-control">
                                             <option value="" selected disabled>Select SubCategory</option>
@@ -74,7 +74,7 @@
                         <div class="row"> <!-- start 2nd row -->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Sub-SubCategory Select <span class="text-danger">*</span></h5>
+                                    <h5>Sub-SubCategory Select <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <select name="subsubcategory_id" id="select" class="form-control">
                                             <option value="" selected disabled>Select Sub-SubCategory</option>
@@ -113,9 +113,9 @@
                         <div class="row"> <!-- start 3rd row -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Product Code <span class="text-danger">*</span></h5>
+                                    <h5>Product Code <span class="text-danger"></span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_code" class="form-control" required>
+                                        <input type="text" name="product_code" class="form-control">
                                         @error('product_code')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -138,9 +138,9 @@
                         <div class="row"> <!-- start 4th row -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Product Size English <span class="text-danger">*</span></h5>
+                                    <h5>Product Size English <span class="text-danger"></span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_size_en" value="Small,Medium,Large" data-role="tagsinput" required />
+                                        <input type="text" name="product_size_en" value="Small,Medium,Large" data-role="tagsinput" />
                                         @error('product_tags_ar')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -149,9 +149,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Product Size Arabic <span class="text-danger">*</span></h5>
+                                    <h5>Product Size Arabic <span class="text-danger"></span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_size_ar" value="صغير,متوسط,كبير" data-role="tagsinput" required />
+                                        <input type="text" name="product_size_ar" value="صغير,متوسط,كبير" data-role="tagsinput" />
                                         @error('product_size_ar')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -163,9 +163,9 @@
                         <div class="row"> <!-- start 5th row -->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product Color English <span class="text-danger">*</span></h5>
+                                    <h5>Product Color English <span class="text-danger"></span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_color_en" value="Red,Green,Blue" data-role="tagsinput" required />
+                                        <input type="text" name="product_color_en" value="Red,Green,Blue" data-role="tagsinput" />
                                         @error('product_color_en')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -174,9 +174,9 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product Color Arabic <span class="text-danger">*</span></h5>
+                                    <h5>Product Color Arabic <span class="text-danger"></span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_color_ar" value="أحمر,لون أخضر,أزرق" data-role="tagsinput" required />
+                                        <input type="text" name="product_color_ar" value="أحمر,لون أخضر,أزرق" data-role="tagsinput" />
                                         @error('product_color_ar')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -210,7 +210,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Main Thumbnail <span class="text-danger">*</span></h5>
+                                    <h5>Main Thumbnail <span class="text-danger">( Image size 550x600  )*</span></h5>
                                     <div class="controls">
                                         <input type="file" name="product_thumbnail" class="form-control" onchange="mainThamUrl(this)" required />
                                         @error('product_thumbnail')
@@ -222,7 +222,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Multiple Image <span class="text-danger">*</span></h5>
+                                    <h5>Multiple Image <span class="text-danger">( Image size 550x600  )*</span></h5>
                                     <div class="controls">
                                         <input type="file" name="multiple_img[]" class="form-control" multiple id="multiImg" required />
                                         @error('multiple_img')
@@ -256,7 +256,7 @@
                         <div class="row"> <!-- start 8th row -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Long Description English <span class="text-danger">*</span></h5>
+                                    <h5>Long Description English <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <textarea name="long_descp_en" id="editor1" class="form-control" placeholder="Long Description English"></textarea>
                                     </div>
@@ -264,7 +264,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Long Description Arabic <span class="text-danger">*</span></h5>
+                                    <h5>Long Description Arabic <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <textarea name="long_descp_ar" id="editor2" class="form-control" placeholder="وصف طويل عربي"></textarea>
                                     </div>
@@ -275,7 +275,7 @@
                         <div class="row"> <!-- start 8th row -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Specifications English <span class="text-danger">*</span></h5>
+                                    <h5>Specifications English <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <textarea name="specifications_en" id="editor3" class="form-control" placeholder="Long Description English"></textarea>
                                     </div>
@@ -283,7 +283,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <h5>Specifications Arabic <span class="text-danger">*</span></h5>
+                                    <h5>Specifications Arabic <span class="text-danger"></span></h5>
                                     <div class="controls">
                                         <textarea name="specifications_ar" id="editor4" class="form-control" placeholder="وصف طويل عربي"></textarea>
                                     </div>

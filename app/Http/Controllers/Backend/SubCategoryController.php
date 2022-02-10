@@ -13,7 +13,7 @@ class SubCategoryController extends Controller {
      * SubCategory view page
      */
     public function subCategoryView() {
-        $categories = Category::orderBy( 'category_name_en', 'ASC' )->get();
+        $categories = Category::all();
         $subcategories = SubCategory::latest()->get();
         return view( 'backend.category.sub_category_view', compact( 'subcategories', 'categories' ) );
     }
@@ -108,7 +108,7 @@ class SubCategoryController extends Controller {
      * SubSubCategory view page
      */
     public function subSubCategoryView() {
-        $categories = Category::orderBy( 'category_name_en', 'ASC' )->get();
+        $categories = Category::all();
         $subsubcategories = SubSubCategory::latest()->get();
         return view( 'backend.category.sub_sub_category_view', compact( 'subsubcategories', 'categories' ) );
     }

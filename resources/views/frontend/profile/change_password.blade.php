@@ -4,7 +4,7 @@
 <div class="body-content">
     <div class="container user-container">
         <div class="row">
-            @include('frontend.return-policy.return-policy')
+            @include('frontend.common.user_sidebar')
             <div class="col-md-2"></div>
             <div class="col-md-6 my-4">
                 <div class="card">

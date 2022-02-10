@@ -247,7 +247,7 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/return-orders', [OrderController::class, 'returnOrders'])->name('return.orders');
 
 
-        // Update Status 
+        // Update Status
         Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingToConfirm'])->name('pending-confirm');
 
         Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm.processing');
@@ -261,7 +261,7 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/delivered/cancel/{order_id}', [OrderController::class, 'deliveredToCancel'])->name('delivered.cancel');
 
         Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
-        
+
     });
 
 

@@ -19,8 +19,8 @@ class ProductController extends Controller
      * Add product
      */
     public function addProduct(){
-        $categories = Category::latest()->get();
-        $brands = Brand::latest()->get();
+        $categories = Category::all();
+        $brands = Brand::all();
         return view('backend.product.add_product', compact('categories', 'brands'));
     }
 
@@ -34,12 +34,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'product_name_en' => 'required',
             'product_name_ar' => 'required',
-            'product_code' => 'required',
             'product_qty' => 'required',
-            'product_size_en' => 'required',
-            'product_size_ar' => 'required',
-            'product_color_en' => 'required',
-            'product_color_ar' => 'required',
             'selling_price' => 'required',
             'product_thumbnail' => 'required',
             'multiple_img' => 'required',

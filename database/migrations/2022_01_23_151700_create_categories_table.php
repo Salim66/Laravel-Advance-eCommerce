@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category_name_ar');
             $table->string('category_slug_en');
             $table->string('category_slug_ar');
-            $table->string('category_icon');
+            $table->string('category_icon')->nullable();
             $table->timestamps();
         });
     }

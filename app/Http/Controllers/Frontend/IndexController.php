@@ -37,8 +37,12 @@ class IndexController extends Controller
         $product_category_skip_1 = Product::where('status', 1)->where('category_id', $category_skip_1->id)->limit(8)->get();
         $category_skip_2 = Category::skip(2)->first();
         $product_category_skip_2 = Product::where('status', 1)->where('category_id', $category_skip_2->id)->limit(8)->get();
+        $category_skip_3 = Category::skip(3)->first();
+        $product_category_skip_3 = Product::where('status', 1)->where('category_id', $category_skip_3->id)->limit(8)->get();
+        $category_skip_4 = Category::skip(4)->first();
+        $product_category_skip_4 = Product::where('status', 1)->where('category_id', $category_skip_4->id)->limit(8)->get();
 
-        return view('frontend.index', compact('categories', 'products', 'best_selles', 'new_arrivals', 'category_skip_0', 'product_category_skip_0', 'category_skip_1', 'product_category_skip_1', 'category_skip_2', 'product_category_skip_2', 'offer_products' ));
+        return view('frontend.index', compact('categories', 'products', 'best_selles', 'new_arrivals', 'category_skip_0', 'product_category_skip_0', 'category_skip_1', 'product_category_skip_1', 'category_skip_2', 'product_category_skip_2', 'category_skip_3', 'product_category_skip_3', 'category_skip_4', 'product_category_skip_4', 'offer_products' ));
     }
 
     /**
@@ -285,7 +289,7 @@ class IndexController extends Controller
 
 
     /**
-     * Product Search 
+     * Product Search
      */
     public function productSearch(Request $request){
         $request->validate(["search" => "required"]);

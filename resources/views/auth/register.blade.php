@@ -65,6 +65,7 @@
                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                     @enderror
                  </div>
+                 <small class="text-danger">( Password must be 8 length )</small>
                 <div class="input-group input-group-bg mb-20">
                    <span class="input-group-text" id="basic-addon3"><i class="flaticon-key"></i></span>
                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" aria-describedby="basic-addon3" required autocomplete="new-password">
@@ -74,7 +75,7 @@
                 </div>
                 <div class="input-group input-group-bg mb-20">
                    <span class="input-group-text" id="basic-addon4"><i class="flaticon-key"></i></span>
-                   <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Enter password" aria-describedby="basic-addon4" required autocomplete="new-password">
+                   <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm password" aria-describedby="basic-addon4" required autocomplete="new-password">
                    @error('password_confirmation')
                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                    @enderror

@@ -36,21 +36,21 @@ Elegant Furnitur QR
                    <div class="col-lg-5 pb-30">
                       <div class="header-content text-center text-lg-start">
                          <h1>
-                            @if(session()->get('language') == 'arabic') 
+                            @if(session()->get('language') == 'arabic')
                             {{ $slider->slider_title_ar }}
-                            @else 
+                            @else
                             {{ $slider->slider_title_en }}
-                            @endif 
+                            @endif
                             </h1>
                          <p>
-                            @if(session()->get('language') == 'arabic') 
+                            @if(session()->get('language') == 'arabic')
                             {{ $slider->slider_descp_ar }}
-                            @else 
+                            @else
                             {{ $slider->slider_descp_en }}
-                            @endif  
+                            @endif
                             </p>
                          <a href="shop-details.html" class="btn main-btn main-btn-radius">
-                            @if(session()->get('language') == 'arabic') اشتري الآن @else Buy Now @endif 
+                            @if(session()->get('language') == 'arabic') اشتري الآن @else Buy Now @endif
                             </a>
                       </div>
                    </div>
@@ -86,7 +86,7 @@ Elegant Furnitur QR
                       </a>
                       <ul class="product-card-action">
                          <li>
-                            <a href="javascript:void(0)" class="quick-add-to-cart-trigger" id="{{ $product->id }}" onclick="productAddToCart(this.id)"> 
+                            <a href="javascript:void(0)" class="quick-add-to-cart-trigger" id="{{ $product->id }}" onclick="productAddToCart(this.id)">
                             <i class="flaticon-shopping-cart"></i>
                             <span>Add Cart</span>
                             </a>
@@ -102,7 +102,7 @@ Elegant Furnitur QR
                       $amount = $product->selling_price - $product->discount_price;
                       $discount = round(($amount/$product->selling_price)*100);
                       @endphp
-                        
+
                       @if($product->discount_price == NULL)
                       <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                       @else
@@ -192,7 +192,7 @@ Elegant Furnitur QR
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                 @endphp
-                  
+
                 @if($product->discount_price == NULL)
                 <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                 @else
@@ -200,7 +200,7 @@ Elegant Furnitur QR
                 @endif
              </div>
           </div>
-        @endforeach  
+        @endforeach
 
 
        </div>
@@ -266,7 +266,7 @@ Elegant Furnitur QR
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                @endphp
-                 
+
                @if($product->discount_price == NULL)
                <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                @else
@@ -332,7 +332,7 @@ Elegant Furnitur QR
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                 @endphp
-                  
+
                 @if($product->discount_price == NULL)
                 <div class="product-status">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                 @else
@@ -340,7 +340,7 @@ Elegant Furnitur QR
                 @endif
              </div>
           </div>
-        @endforeach  
+        @endforeach
 
 
        </div>
@@ -405,7 +405,7 @@ Elegant Furnitur QR
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                @endphp
-                 
+
                @if($product->discount_price == NULL)
                <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                @else
@@ -475,7 +475,7 @@ Elegant Furnitur QR
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                @endphp
-                 
+
                @if($product->discount_price == NULL)
                <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                @else
@@ -545,7 +545,147 @@ Elegant Furnitur QR
                 $amount = $product->selling_price - $product->discount_price;
                 $discount = round(($amount/$product->selling_price)*100);
                @endphp
-                 
+
+               @if($product->discount_price == NULL)
+               <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+               @else
+               <div class="product-status">{{ $discount }}%</div>
+               @endif
+             </div>
+          </div>
+        @endforeach
+
+       </div>
+    </div>
+</section>
+
+ <!-- // Category Skip 3 -->
+<section class="related-product-section pb-100">
+    <div class="container">
+       <div class="product-info-header product-info-header-two product-info-header-borderless">
+          <h2>@if(session()->get('language') == 'arabic') {{ $category_skip_3->category_name_ar }}  @else {{ $category_skip_3->category_name_en }} @endif</h2>
+          <div class="carousel-control-arrows">
+             <button class="product-control-left carousel-control-arrow">
+             <i class="flaticon-back"></i>
+             </button>
+             <button class="product-control-right carousel-control-arrow">
+             <i class="flaticon-next"></i>
+             </button>
+          </div>
+       </div>
+       <div class="product-carousel owl-carousel">
+        @foreach($product_category_skip_3 as $key => $product)
+          <div class="item">
+             <div class="product-card-two product-card-two-secondcolor">
+                <div class="product-card-thumb">
+                    <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                        <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                    </a>
+                   <ul class="product-card-action">
+                      <li>
+                         <a href="javascript:void(0)" class="quick-add-to-cart-trigger" id="{{ $product->id }}" onclick="productAddToCart(this.id)">
+                         <i class="flaticon-shopping-cart"></i>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="javascript:void(0)" id="{{ $product->id }}" onclick="productAddToWishlist(this.id)">
+                         <i class="flaticon-like"></i>
+                         </a>
+                      </li>
+                   </ul>
+                </div>
+                <div class="product-card-content">
+                   <h3>
+                    <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                        @if(session()->get('language') == 'arabic')
+                        {{ $product->product_name_ar }}
+                        @else
+                        {{ $product->product_name_en }}
+                        @endif
+                    </a>
+                   </h3>
+                   <p class="product-id">{{ $product->product_code }}</p>
+                   @if($product->discount_price == NULL)
+                  <div class="product-price">${{ $product->selling_price }}</div>
+                  @else
+                  <div class="product-price">${{ $product->discount_price }} <del>${{ $product->selling_price }}</del></div>
+                  @endif
+                </div>
+                @php
+                $amount = $product->selling_price - $product->discount_price;
+                $discount = round(($amount/$product->selling_price)*100);
+               @endphp
+
+               @if($product->discount_price == NULL)
+               <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
+               @else
+               <div class="product-status">{{ $discount }}%</div>
+               @endif
+             </div>
+          </div>
+        @endforeach
+
+       </div>
+    </div>
+</section>
+
+ <!-- // Category Skip 4 -->
+<section class="related-product-section pb-100">
+    <div class="container">
+       <div class="product-info-header product-info-header-two product-info-header-borderless">
+          <h2>@if(session()->get('language') == 'arabic') {{ $category_skip_4->category_name_ar }}  @else {{ $category_skip_4->category_name_en }} @endif</h2>
+          <div class="carousel-control-arrows">
+             <button class="product-control-left carousel-control-arrow">
+             <i class="flaticon-back"></i>
+             </button>
+             <button class="product-control-right carousel-control-arrow">
+             <i class="flaticon-next"></i>
+             </button>
+          </div>
+       </div>
+       <div class="product-carousel owl-carousel">
+        @foreach($product_category_skip_4 as $key => $product)
+          <div class="item">
+             <div class="product-card-two product-card-two-secondcolor">
+                <div class="product-card-thumb">
+                    <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                        <img src="{{ URL::to($product->product_thumbnail) }}" alt="product">
+                    </a>
+                   <ul class="product-card-action">
+                      <li>
+                         <a href="javascript:void(0)" class="quick-add-to-cart-trigger" id="{{ $product->id }}" onclick="productAddToCart(this.id)">
+                         <i class="flaticon-shopping-cart"></i>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="javascript:void(0)" id="{{ $product->id }}" onclick="productAddToWishlist(this.id)">
+                         <i class="flaticon-like"></i>
+                         </a>
+                      </li>
+                   </ul>
+                </div>
+                <div class="product-card-content">
+                   <h3>
+                    <a href="{{ url('/product/detials/'. $product->id .'/'. $product->product_slug_en) }}">
+                        @if(session()->get('language') == 'arabic')
+                        {{ $product->product_name_ar }}
+                        @else
+                        {{ $product->product_name_en }}
+                        @endif
+                    </a>
+                   </h3>
+                   <p class="product-id">{{ $product->product_code }}</p>
+                   @if($product->discount_price == NULL)
+                  <div class="product-price">${{ $product->selling_price }}</div>
+                  @else
+                  <div class="product-price">${{ $product->discount_price }} <del>${{ $product->selling_price }}</del></div>
+                  @endif
+                </div>
+                @php
+                $amount = $product->selling_price - $product->discount_price;
+                $discount = round(($amount/$product->selling_price)*100);
+               @endphp
+
                @if($product->discount_price == NULL)
                <div class="product-status product-status-purple">@if(session()->get('language') == 'arabic') جديد  @else New @endif</div>
                @else

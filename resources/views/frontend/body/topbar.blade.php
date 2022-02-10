@@ -18,7 +18,7 @@
                     @csrf
                      <input type="text" id="search" name="search" class="form-control" placeholder="@if(session()->get('language') == 'arabic') البحث عن المنتج @else Search product @endif" onfocus="search_result_show()" onblur="search_result_hide()">
                      <button class="btn main-btn" type="submit">
-                      @if(session()->get('language') == 'arabic') بحث @else Search @endif   
+                      @if(session()->get('language') == 'arabic') بحث @else Search @endif
                       </button>
                    </form>
                    <div id="searchProducts"></div>
@@ -31,7 +31,7 @@
                       <a href="{{ route('dashboard') }}">
                          <i class="flaticon-user"></i>
 
-                         <span>@if(session()->get('language') == 'arabic') ملف تعريفي للمستخدم @else User Profile @endif</span>
+                         <span>@if(session()->get('language') == 'arabic') ملفي @else My Profile @endif</span>
                       </a>
                       @else
                       <a href="{{ route('login') }}">

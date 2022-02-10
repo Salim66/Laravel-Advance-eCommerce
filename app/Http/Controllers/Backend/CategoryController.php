@@ -24,8 +24,7 @@ class CategoryController extends Controller
         // Validation
         $request->validate([
             'category_name_en' => 'required',
-            'category_name_ar' => 'required',
-            'category_icon' => 'required'
+            'category_name_ar' => 'required'
         ],
         [
             'category_name_en.required' => 'The category name english is required!',
