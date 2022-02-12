@@ -40,6 +40,7 @@
 
                                 <a target="_blank" href="{{ route('invoice.download',$data->id) }}" class="btn btn-danger" title="Invoice Download">
                                     <i class="fa fa-download"></i></a>
+                                    <a title="Order Delete" id="delete" href="{{ route('pending.order.delete', $data->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

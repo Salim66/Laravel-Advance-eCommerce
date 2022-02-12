@@ -40,6 +40,7 @@ class SliderController extends Controller
             'slider_title_ar' => $request->slider_title_ar,
             'slider_descp_en' => $request->slider_descp_en,
             'slider_descp_ar' => $request->slider_descp_ar,
+            'slider_link' => $request->slider_link,
             'slider_img'   => $save_url
         ]);
 
@@ -86,6 +87,7 @@ class SliderController extends Controller
             'slider_title_ar' => $request->slider_title_ar,
             'slider_descp_en' => $request->slider_descp_en,
             'slider_descp_ar' => $request->slider_descp_ar,
+            'slider_link' => $request->slider_link,
             'slider_img'   => $save_url
         ]);
 

@@ -16,7 +16,7 @@
                <!-- /.box-header -->
                <div class="box-body">
                    <div class="table-responsive">
-                        <form action="{{ route('logo.update', $data->id) }}" method="POST">
+                        <form action="{{ route('update.seosettings') }}" method="POST">
                             @csrf
 
                             <input type="hidden" name="id" value="{{ $data->id }}">

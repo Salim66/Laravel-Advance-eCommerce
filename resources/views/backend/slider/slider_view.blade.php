@@ -119,6 +119,12 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <h5>Slider Link <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <input type="text" name="slider_link" class="form-control">
+                                </div>
+                            </div>
                            <div class="text-xs-right">
                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">
                            </div>

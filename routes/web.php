@@ -200,8 +200,7 @@ Route::middleware(['auth:admin'])->group(function(){
         
         //Social Media All Route
         Route::get('/seo/settings', [SeoSettingController::class, 'seoSettings'])->name('seo.setting');
-        Route::post('/social/update', [SocialMediaController::class, 'socialUpdate'])->name('social.update');
-        Route::get('/social/delete/{id}', [SocialMediaController::class, 'socialDelete'])->name('social.delete');
+        Route::post('/seo/settings/update', [SeoSettingController::class, 'seoSettingUpdate'])->name('update.seosettings');
 
     });
 
@@ -269,6 +268,8 @@ Route::middleware(['auth:admin'])->group(function(){
         Route::get('/delivered/cancel/{order_id}', [OrderController::class, 'deliveredToCancel'])->name('delivered.cancel');
 
         Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+
+        Route::get('/invoice/delete/{order_id}', [OrderController::class, 'orderDelete'])->name('pending.order.delete');
 
     });
 

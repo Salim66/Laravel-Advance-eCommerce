@@ -20,6 +20,7 @@ class CreateSlidersTable extends Migration
             $table->string('slider_title_ar')->nullable();
             $table->text('slider_descp_en')->nullable();
             $table->text('slider_descp_ar')->nullable();
+            $table->string('slider_link')->nullable();
             $table->text('status')->default(1);
             $table->timestamps();
         });

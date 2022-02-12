@@ -39,13 +39,13 @@ class AllUserController extends Controller
         $order = Order::with('division','district','state','user')->where('id',$order_id)->where('user_id',Auth::id())->first();
     	$orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
         // dd($orderItem);
-        // return view('frontend.user.order.order_invoice', compact('order', 'orderItem'));
+        return view('frontend.user.order.order_invoice', compact('order', 'orderItem'));
 
-        $pdf = PDF::loadView('frontend.user.order.order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOptions([
-            'tempDir' => public_path(),
-            'chroot'  => public_path()
-        ]);
-        return $pdf->download('invoice.pdf');
+        // $pdf = PDF::loadView('frontend.user.order.order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOptions([
+        //     'tempDir' => public_path(),
+        //     'chroot'  => public_path()
+        // ]);
+        // return $pdf->download('invoice.pdf');
 
     }
 

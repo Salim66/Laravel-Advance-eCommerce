@@ -49,7 +49,7 @@ Elegant Furnitur QR
                             {{ $slider->slider_descp_en }}
                             @endif
                             </p>
-                         <a href="shop-details.html" class="btn main-btn main-btn-radius">
+                         <a href="{{ $slider->slider_link }}" class="btn main-btn main-btn-radius">
                             @if(session()->get('language') == 'arabic') اشتري الآن @else Buy Now @endif
                             </a>
                       </div>
